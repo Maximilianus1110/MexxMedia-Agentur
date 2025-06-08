@@ -6,16 +6,18 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
+          DEFAULT: '#1f3fff',
+          50: '#eef1ff',
+          100: '#e0e5ff',
+          200: '#c7d0ff',
+          300: '#a5b3ff',
+          400: '#8491ff',
+          500: '#476bff',
+          600: '#1f3fff', // Main brand color
+          700: '#0026ff',
+          800: '#001ce6',
+          900: '#0016bd',
+          950: '#000d70',
         },
         secondary: {
           50: '#eef2ff',
@@ -32,11 +34,31 @@ export default {
         theme: {
           bg: 'var(--color-bg)',
           text: 'var(--color-text)',
+        },
+        neutral: {
+          50: '#f5f5f5',
+          900: '#1a1a1d',
+          950: '#0f0f11',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        display: ['Clash Display', 'Satoshi', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'Manrope', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'card': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        'card-hover': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        'glow': '0 0 15px rgba(31, 63, 255, 0.5)',
+        'glow-sm': '0 0 10px rgba(31, 63, 255, 0.3)',
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
     },
   },

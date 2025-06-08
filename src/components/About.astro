@@ -1,138 +1,125 @@
 ---
 const teamMembers = [
   {
-    name: "Max Mustermann",
-    role: "Geschäftsführer & Creative Director",
-    description: "Mit über 10 Jahren Erfahrung in der digitalen Welt leitet Max die kreative Vision von MexxMedia.",
+    name: "Max Grüner",
+    role: "Gründer & Entwickler",
+    description: "Als erfahrener Entwickler bringt Max technische Expertise und innovative Lösungen in jedes Projekt ein.",
     image: "/team/max.png"
   },
   {
-    name: "Anna Schmidt",
-    role: "Lead Developer",
-    description: "Anna ist unsere technische Expertin und sorgt für die Umsetzung innovativer Webprojekte.",
+    name: "Kürsat",
+    role: "Gründer & Designer",
+    description: "Kürsat vereint kreatives Design mit strategischem Denken, um einzigartige digitale Erlebnisse zu schaffen.",
     image: "/team/kursat.png"
   }
 ];
 ---
 
-<section id="about" class="py-24 relative overflow-hidden">
-  <!-- Background Elements -->
-  <div class="absolute inset-0 bg-gradient-to-tr from-[#F4E8D9]/30 via-transparent to-[#F4E8D9]/20 dark:from-[#2C2620]/20 dark:via-transparent dark:to-[#2C2620]/10"></div>
-  
-  <!-- Content -->
+<section class="relative py-24 overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0">
+    <!-- Base gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 via-transparent to-primary-400/5"></div>
+    
+    <!-- Animated grid with mask -->
+    <div class="absolute inset-0">
+      <!-- Grid pattern -->
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [transform-style:preserve-3d] animate-grid-fade"></div>
+      
+      <!-- Gradient mask for grid -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-neutral-950/30 dark:to-neutral-950"></div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(31,63,255,0.05)_0%,transparent_40%)]"></div>
+    <div class="absolute -left-40 -top-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
+    <div class="absolute -right-40 -bottom-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
+  </div>
+
   <div class="container mx-auto px-4 relative">
     <!-- Section Header -->
     <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
-      <span class="text-[#8B6B47] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4">Über MexxMedia</span>
-      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155] text-transparent bg-clip-text">
-        Ihre Vision ist unsere Mission
+      <span class="text-primary-600 dark:text-primary-400 font-medium tracking-wide uppercase text-sm mb-4 bg-primary-100 dark:bg-primary-900/50 px-4 py-2 rounded-full">Das Team</span>
+      <h2 class="text-4xl md:text-5xl font-clash font-medium mb-6 text-neutral-900 dark:text-white">
+        Die Köpfe hinter MexxMedia
       </h2>
-      <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        Als Full-Service Digitalagentur vereinen wir kreatives Design mit technischer Expertise. 
-        Seit über 5 Jahren gestalten wir digitale Erlebnisse, die begeistern und Ihre Ziele erreichen.
+      <p class="text-lg font-inter text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Als junges, dynamisches Duo vereinen wir technische Expertise mit kreativem Design. 
+        Gemeinsam gestalten wir digitale Lösungen, die Ihre Ziele erreichen und begeistern.
       </p>
     </div>
 
-    <!-- Main Content Grid -->
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-      <!-- Left Column: Image & Stats -->
-      <div class="space-y-8" data-aos="fade-right">
-        <!-- Main Image -->
-        <div class="relative rounded-2xl overflow-hidden shadow-xl">
-          <div class="absolute inset-0 bg-gradient-to-tr from-[#8B6B47]/10 to-transparent mix-blend-overlay"></div>
-          <img
-            src="/team/team-meeting.jpg"
-            alt="Unser Team bei der Arbeit"
-            class="w-full h-[500px] object-cover"
-          />
-          <!-- Decorative Elements -->
-          <div class="absolute -top-4 -left-4 w-32 h-32 bg-[#F4E8D9]/40 dark:bg-[#2C2620]/30 rounded-full blur-2xl"></div>
-          <div class="absolute -bottom-4 -right-4 w-40 h-40 bg-[#F4E8D9]/30 dark:bg-[#2C2620]/20 rounded-full blur-2xl"></div>
-        </div>
+    <!-- Team Grid -->
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+      {teamMembers.map((member) => (
+        <div class="group" data-aos="fade-up">
+          <div class="h-full p-8 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg dark:shadow-none
+                      border border-gray-200 dark:border-neutral-800
+                      transition-all duration-300 ease-in-out
+                      hover:-translate-y-1 hover:shadow-xl dark:hover:border-primary-500/20">
+            <div class="space-y-6">
+              <!-- Member Image -->
+              <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/10 to-transparent mix-blend-overlay"></div>
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-3 gap-6">
-          <div class="premium-card p-6 text-center">
-            <h3 class="text-3xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">100+</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Erfolgreiche Projekte</p>
-          </div>
-          <div class="premium-card p-6 text-center">
-            <h3 class="text-3xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">98%</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Kundenzufriedenheit</p>
-          </div>
-          <div class="premium-card p-6 text-center">
-            <h3 class="text-3xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">5+</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Jahre Erfahrung</p>
+              <!-- Member Info -->
+              <div class="space-y-4">
+                <div>
+                  <h3 class="text-2xl font-clash font-medium text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                    {member.name}
+                  </h3>
+                  <p class="text-lg font-inter text-neutral-600 dark:text-neutral-400">
+                    {member.role}
+                  </p>
+                </div>
+                <p class="text-neutral-700 dark:text-neutral-300 font-inter">
+                  {member.description}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      ))}
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="max-w-4xl mx-auto grid grid-cols-3 gap-6 mt-16" data-aos="fade-up">
+      <div class="p-6 text-center bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 transition-all duration-300 hover:border-primary-600/30 dark:hover:border-primary-400/30">
+        <h3 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">100+</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">Erfolgreiche Projekte</p>
       </div>
-
-      <!-- Right Column: Content -->
-      <div class="space-y-8" data-aos="fade-left">
-        <!-- Core Values -->
-        <div class="space-y-6">
-          <div class="premium-card p-6 group hover:border-[#8B6B47] dark:hover:border-[#C4A47D] transition-colors">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-[#F4E8D9] dark:bg-[#2C2620] flex items-center justify-center flex-shrink-0
-                          group-hover:bg-[#8B6B47] dark:group-hover:bg-[#C4A47D] transition-colors">
-                <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">Innovation & Technologie</h3>
-                <p class="text-neutral-700 dark:text-neutral-300">
-                  Wir setzen auf modernste Technologien und kreative Lösungen, um Ihre digitale Präsenz zukunftssicher zu gestalten.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="premium-card p-6 group hover:border-[#8B6B47] dark:hover:border-[#C4A47D] transition-colors">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-[#F4E8D9] dark:bg-[#2C2620] flex items-center justify-center flex-shrink-0
-                          group-hover:bg-[#8B6B47] dark:group-hover:bg-[#C4A47D] transition-colors">
-                <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">Qualität & Perfektion</h3>
-                <p class="text-neutral-700 dark:text-neutral-300">
-                  Jedes Projekt wird mit höchster Sorgfalt und Liebe zum Detail umgesetzt. Wir geben uns erst zufrieden, wenn Sie begeistert sind.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="premium-card p-6 group hover:border-[#8B6B47] dark:hover:border-[#C4A47D] transition-colors">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-[#F4E8D9] dark:bg-[#2C2620] flex items-center justify-center flex-shrink-0
-                          group-hover:bg-[#8B6B47] dark:group-hover:bg-[#C4A47D] transition-colors">
-                <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-[#8B6B47] dark:text-[#C4A47D] mb-2">Partnerschaftliche Zusammenarbeit</h3>
-                <p class="text-neutral-700 dark:text-neutral-300">
-                  Wir verstehen uns als Ihr langfristiger Partner und begleiten Sie von der ersten Idee bis über den Launch hinaus.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="flex gap-4">
-          <a href="#contact" class="button-primary">
-            Projekt starten
-          </a>
-          <a href="#services" class="button-secondary">
-            Unsere Leistungen
-          </a>
-        </div>
+      <div class="p-6 text-center bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 transition-all duration-300 hover:border-primary-600/30 dark:hover:border-primary-400/30">
+        <h3 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">98%</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">Kundenzufriedenheit</p>
       </div>
+      <div class="p-6 text-center bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 transition-all duration-300 hover:border-primary-600/30 dark:hover:border-primary-400/30">
+        <h3 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">5+</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">Jahre Erfahrung</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex gap-4 justify-center mt-12" data-aos="fade-up">
+      <a href="#contact" 
+         class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-body text-white bg-primary-600 hover:bg-primary-700 transition-all duration-300 ease-in-out hover:shadow-glow">
+        Projekt starten
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <a href="#services" 
+         class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-body text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 hover:bg-primary-600/10 dark:hover:bg-primary-400/10 transition-all duration-300 ease-in-out">
+        Unsere Leistungen
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
   </div>
 </section> 

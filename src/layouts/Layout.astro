@@ -39,78 +39,64 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 			}
 		</script>
 	</head>
-	<body class="bg-[#F5F1EA] dark:bg-[#0A0A0B] text-neutral-900 dark:text-neutral-100 relative min-h-screen overflow-x-hidden selection:bg-[#8B6B47]/30 dark:selection:bg-[#C4A47D]/30">
+	<body class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 relative min-h-screen overflow-x-hidden selection:bg-primary-600/30 dark:selection:bg-primary-400/30">
 		<!-- Enhanced Background Effects -->
 		<div class="fixed inset-0 pointer-events-none">
 			<!-- Base layer with refined texture -->
-			<div class="absolute inset-0 opacity-[0.2] mix-blend-overlay">
+			<div class="absolute inset-0 opacity-20 mix-blend-overlay">
 				<div class="absolute inset-0 bg-[url('/noise.png')] opacity-30"></div>
 			</div>
 
-			<!-- Dark mode specific patterns -->
-			<div class="absolute inset-0 dark:block hidden">
-				<!-- Subtle grid lines -->
-				<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_98%,#0B3B6F05_99%,transparent)] bg-[length:50px_50px]"></div>
-				<div class="absolute inset-0 bg-[linear-gradient(0deg,transparent_98%,#0B3B6F05_99%,transparent)] bg-[length:50px_50px]"></div>
+			<!-- Modern Grid Pattern -->
+			<div class="absolute inset-0">
+				<div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+			</div>
+
+			<!-- Gradient Orbs -->
+			<div class="absolute inset-0 overflow-hidden">
+				<!-- Top Right Orb -->
+				<div class="absolute -top-[25%] -right-[25%] w-[50%] h-[50%] rounded-full 
+							bg-gradient-to-br from-primary-600/[0.07] to-transparent 
+							dark:from-primary-400/[0.05] dark:to-transparent 
+							animate-float-slow"></div>
 				
-				<!-- Diagonal lines -->
-				<div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_49.5%,#0B3B6F04_49.8%,#0B3B6F04_50.2%,transparent_50.5%)] bg-[length:100px_100px] animate-slide-slow opacity-30"></div>
-				<div class="absolute inset-0 bg-[linear-gradient(-45deg,transparent_49.5%,#0B3B6F03_49.8%,#0B3B6F03_50.2%,transparent_50.5%)] bg-[length:120px_120px] animate-slide-slower opacity-20"></div>
-			</div>
-
-			<!-- Subtle geometric patterns -->
-			<div class="absolute inset-0">
-				<!-- Hexagon grid - very subtle -->
-				<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMzQuNjQxYTIgMiAwIDAgMS0yLTJWNy4zNTlhMiAyIDAgMSAxIDQgMHYyNS4yODJhMiAyIDAgMCAxLTIgMnoiIGZpbGw9InJnYmEoMTM5LCAxMDcsIDcxLCAwLjAzKSIvPjxwYXRoIGQ9Ik03LjM1OSAyMGEyIDIgMCAwIDEtMi0yVjdhMiAyIDAgMSAxIDQgMHYxMWEyIDIgMCAwIDEtMiAyeiIgZmlsbD0icmdiYSgxMzksIDEwNywgNzEsIDAuMDMpIi8+PC9zdmc+')] opacity-50 dark:opacity-0"></div>
+				<!-- Bottom Left Orb -->
+				<div class="absolute -bottom-[25%] -left-[25%] w-[50%] h-[50%] rounded-full 
+							bg-gradient-to-tr from-primary-600/[0.07] to-transparent 
+							dark:from-primary-400/[0.05] dark:to-transparent 
+							animate-float-slower"></div>
 				
-				<!-- Dotted overlay -->
-				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#8B6B4705_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,#0B3B6F04_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+				<!-- Center Orb -->
+				<div class="absolute top-[25%] left-[25%] w-[50%] h-[50%] rounded-full 
+							bg-gradient-to-tr from-primary-600/[0.05] via-primary-600/[0.02] to-transparent 
+							dark:from-primary-400/[0.03] dark:via-primary-400/[0.01] dark:to-transparent 
+							animate-float-slowest"></div>
 			</div>
 
-			<!-- Dynamic background elements -->
+			<!-- Subtle Dot Pattern -->
 			<div class="absolute inset-0">
-				<!-- Floating shapes with subtle animation -->
-				<div class="absolute inset-0 overflow-hidden">
-					<div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_center,#8B6B4705,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,#0B3B6F06,transparent_70%)] rounded-full transform rotate-12 animate-float-slow"></div>
-					<div class="absolute top-[20%] -right-[30%] w-[90%] h-[90%] bg-[radial-gradient(ellipse_at_center,#6B4D2E05,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,#0D4B8F05,transparent_70%)] rounded-full transform -rotate-15 animate-float-slower"></div>
-					<div class="absolute -bottom-[30%] left-[10%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,#8B6B4704,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,#0B3B6F04,transparent_70%)] rounded-full animate-float-slowest"></div>
-				</div>
-
-				<!-- Subtle gradient flows -->
-				<div class="absolute inset-0">
-					<div class="absolute inset-0 bg-gradient-to-br from-[#8B6B47]/[0.02] via-transparent to-[#6B4D2E]/[0.02] dark:from-[#0B3B6F]/[0.02] dark:to-[#0D4B8F]/[0.02] animate-gradient-slow"></div>
-					<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-[#8B6B47]/[0.01] to-transparent dark:via-[#0B3B6F]/[0.01] animate-gradient-slower"></div>
-				</div>
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(31,63,255,0.05)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(31,63,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
 			</div>
 
-			<!-- Interactive light effects -->
+			<!-- Dynamic Light Effects -->
 			<div class="absolute inset-0">
-				<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,#8B6B4702,transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_0%,#0B3B6F03,transparent_50%)] animate-pulse-slow"></div>
-				<div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_100%,#6B4D2E02,transparent_50%)] dark:bg-[radial-gradient(circle_at_100%_100%,#0D4B8F03,transparent_50%)] animate-pulse-slower"></div>
+				<div class="absolute inset-0 bg-gradient-to-br from-primary-600/[0.02] via-transparent to-primary-600/[0.02] dark:from-primary-400/[0.01] dark:via-transparent dark:to-primary-400/[0.01] animate-gradient-slow"></div>
 			</div>
 
-			<!-- Dark mode circuit-like patterns -->
-			<div class="absolute inset-0 dark:block hidden">
-				<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_40%,#0B3B6F02_40.5%,#0B3B6F02_41.5%,transparent_42%)] bg-[length:200px_200px]"></div>
-				<div class="absolute inset-0 bg-[linear-gradient(0deg,transparent_40%,#0D4B8F02_40.5%,#0D4B8F02_41.5%,transparent_42%)] bg-[length:200px_200px]"></div>
-				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#0B3B6F01_1px,transparent_1px)] bg-[length:40px_40px]"></div>
-			</div>
+			<!-- Section Transitions -->
+			<div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-transparent dark:via-neutral-950/50 opacity-40"></div>
 		</div>
 
 		<!-- Main Content -->
 		<div class="relative">
-		<slot />
+			<slot />
 		</div>
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--accent: 139, 107, 71;      /* Deeper brown */
-		--accent-light: 196, 164, 125; /* Rich gold */
-		--accent-dark: 44, 38, 32;    /* Deep brown */
-		--dark-blue: 11, 59, 111;     /* Dark blue for dark mode */
-		--darker-blue: 13, 75, 143;   /* Slightly lighter blue for contrast */
+		color-scheme: light dark;
 	}
 
 	* {
@@ -120,48 +106,23 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 	}
 
 	@keyframes float-slow {
-		0%, 100% { transform: translate(0, 0) rotate(12deg); }
-		50% { transform: translate(10px, -10px) rotate(14deg); }
+		0%, 100% { transform: translate(0, 0) rotate(0deg); }
+		50% { transform: translate(-20px, 20px) rotate(5deg); }
 	}
 
 	@keyframes float-slower {
-		0%, 100% { transform: translate(0, 0) rotate(-15deg); }
-		50% { transform: translate(-15px, 10px) rotate(-17deg); }
+		0%, 100% { transform: translate(0, 0) rotate(0deg); }
+		50% { transform: translate(20px, -20px) rotate(-5deg); }
 	}
 
 	@keyframes float-slowest {
-		0%, 100% { transform: translate(0, 0); }
-		50% { transform: translate(5px, -5px); }
+		0%, 100% { transform: translate(0, 0) scale(1); }
+		50% { transform: translate(-10px, 10px) scale(1.05); }
 	}
 
 	@keyframes gradient-slow {
-		0%, 100% { opacity: 0.02; }
-		50% { opacity: 0.04; }
-	}
-
-	@keyframes gradient-slower {
-		0%, 100% { opacity: 0.01; }
-		50% { opacity: 0.03; }
-	}
-
-	@keyframes pulse-slow {
-		0%, 100% { opacity: 0.02; }
-		50% { opacity: 0.04; }
-	}
-
-	@keyframes pulse-slower {
-		0%, 100% { opacity: 0.01; }
-		50% { opacity: 0.03; }
-	}
-
-	@keyframes slide-slow {
-		0% { background-position: 0 0; }
-		100% { background-position: 100px 100px; }
-	}
-
-	@keyframes slide-slower {
-		0% { background-position: 0 0; }
-		100% { background-position: -100px -100px; }
+		0%, 100% { opacity: 0.5; }
+		50% { opacity: 1; }
 	}
 
 	.animate-float-slow {
@@ -180,140 +141,58 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 		animation: gradient-slow 15s ease infinite;
 	}
 
-	.animate-gradient-slower {
-		animation: gradient-slower 20s ease infinite;
-	}
-
-	.animate-pulse-slow {
-		animation: pulse-slow 10s ease infinite;
-	}
-
-	.animate-pulse-slower {
-		animation: pulse-slower 15s ease infinite;
-	}
-
-	.animate-slide-slow {
-		animation: slide-slow 30s linear infinite;
-	}
-
-	.animate-slide-slower {
-		animation: slide-slower 40s linear infinite;
-	}
-
 	/* Section Styles */
 	section {
 		position: relative;
-		overflow: hidden;
 		z-index: 1;
+		background-color: transparent;
 	}
 
-	/* Section Dividers - Now more subtle */
+	/* Section Dividers */
 	section:not(:first-child)::before {
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 15%;
-		right: 15%;
+		left: 20%;
+		right: 20%;
 		height: 1px;
-		background: linear-gradient(to right, 
+		background: linear-gradient(
+			to right, 
 			transparent, 
-			rgb(var(--accent) / 0.08) 20%, 
-			rgb(var(--accent) / 0.08) 80%, 
+			rgb(31 63 255 / 0.1) 20%, 
+			rgb(31 63 255 / 0.1) 80%, 
 			transparent
-		);
-	}
-
-	/* Enhanced Section Backgrounds */
-	section::after {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		inset: 0;
-		background: radial-gradient(
-			100% 100% at 50% 50%,
-			rgb(var(--accent) / 0.03) 0%,
-			transparent 100%
-		);
-		opacity: 0;
-		transition: opacity 0.5s ease;
-	}
-
-	section:hover::after {
-		opacity: 1;
-	}
-
-	/* Alternating Section Backgrounds */
-	section:nth-child(even) {
-		background: radial-gradient(
-			ellipse at center,
-			rgb(var(--accent) / 0.02) 0%,
-			transparent 70%
-		);
-	}
-
-	/* Dark Mode Adjustments */
-	.dark section:nth-child(even) {
-		background: radial-gradient(
-			ellipse at center,
-			rgb(var(--accent-dark) / 0.2) 0%,
-			transparent 70%
 		);
 	}
 
 	.dark section:not(:first-child)::before {
-		background: linear-gradient(to right, 
+		background: linear-gradient(
+			to right, 
 			transparent, 
-			rgb(var(--accent) / 0.15) 20%, 
-			rgb(var(--accent) / 0.15) 80%, 
+			rgb(31 63 255 / 0.2) 20%, 
+			rgb(31 63 255 / 0.2) 80%, 
 			transparent
 		);
 	}
 
-	/* Sophisticated Card Base Styles */
-	.premium-card {
-		@apply bg-white/90 dark:bg-neutral-900/90 backdrop-blur-lg
-			   border border-[#8B6B47]/15 dark:border-neutral-800/50 
-			   hover:border-[#8B6B47] dark:hover:border-[#C4A47D]
-			   rounded-xl shadow-sm
-			   transition-all duration-500 ease-out
-			   hover:translate-y-[-2px]
-			   hover:shadow-xl hover:shadow-[#8B6B47]/15 dark:hover:shadow-[#C4A47D]/5
-			   relative
-			   before:absolute before:inset-0 before:rounded-xl
-			   before:bg-gradient-to-b before:from-[#8B6B47]/10 before:to-transparent
-			   dark:before:from-[#2C2620]/5 dark:before:to-transparent
-			   before:opacity-0 hover:before:opacity-100
-			   before:transition-opacity before:duration-500;
+	/* Section Hover Effect */
+	section::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+			rgb(31 63 255 / 0.05),
+			transparent 50%
+		);
+		opacity: 0;
+		transition: opacity 0.5s;
+		pointer-events: none;
+		z-index: -1;
 	}
 
-	/* Refined Gradient Text */
-	.gradient-text {
-		@apply bg-clip-text text-transparent bg-gradient-to-r from-[#6B4D2E] to-[#8B6B47] dark:from-[#C4A47D] dark:to-[#A48155];
-	}
-
-	/* Subtle Animations */
-	.hover-lift {
-		@apply transition-transform duration-500 hover:-translate-y-1;
-	}
-
-	/* Sophisticated Button Styles */
-	.button-primary {
-		@apply bg-[#8B6B47] hover:bg-[#6B4D2E] text-white
-			   px-6 py-3 rounded-lg transition-all duration-300
-			   shadow-sm hover:shadow-lg hover:shadow-[#8B6B47]/20
-			   border border-[#8B6B47] hover:border-[#6B4D2E]
-			   dark:bg-[#8B6B47] dark:hover:bg-[#A48155]
-			   dark:border-[#8B6B47] dark:hover:border-[#A48155];
-	}
-
-	.button-secondary {
-		@apply bg-white/90 hover:bg-[#8B6B47]/10 text-[#6B4D2E]
-			   px-6 py-3 rounded-lg transition-all duration-300
-			   shadow-sm hover:shadow-lg hover:shadow-[#8B6B47]/10
-			   border border-[#8B6B47]/20 hover:border-[#8B6B47]
-			   dark:bg-neutral-900 dark:hover:bg-neutral-800
-			   dark:border-neutral-800 dark:hover:border-[#A48155]
-			   dark:text-[#C4A47D];
+	section:hover::after {
+		opacity: 1;
 	}
 
 	/* Custom Scrollbar */
@@ -322,55 +201,42 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 	}
 
 	::-webkit-scrollbar-track {
-		@apply bg-[#8B6B47]/10 dark:bg-neutral-900;
+		background: rgb(31 63 255 / 0.05);
 	}
 
 	::-webkit-scrollbar-thumb {
-		@apply bg-[#8B6B47] rounded-full;
+		background: rgb(31 63 255 / 0.2);
+		border-radius: 9999px;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		@apply bg-[#6B4D2E];
+		background: rgb(31 63 255 / 0.3);
 	}
 
-	/* Section Separator */
-	.section-separator {
-		position: relative;
-		height: 4rem;
-		margin: 2rem 0;
-		overflow: hidden;
+	.dark ::-webkit-scrollbar-track {
+		background: rgb(31 63 255 / 0.1);
 	}
 
-	.section-separator::before {
-		content: '';
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: 100vw;
-		height: 100vw;
-		background: conic-gradient(
-			from 0deg at 50% 50%,
-			rgb(var(--accent) / 0.12),
-			transparent 25%,
-			transparent 75%,
-			rgb(var(--accent) / 0.12)
-		);
-		transform: translate(-50%, -50%) rotate(0deg);
-		animation: rotateSeparator 30s linear infinite;
+	.dark ::-webkit-scrollbar-thumb {
+		background: rgb(31 63 255 / 0.3);
 	}
 
-	@keyframes rotateSeparator {
-		from { transform: translate(-50%, -50%) rotate(0deg); }
-		to { transform: translate(-50%, -50%) rotate(360deg); }
-	}
-
-	.dark .section-separator::before {
-		background: conic-gradient(
-			from 0deg at 50% 50%,
-			rgb(var(--accent) / 0.2),
-			transparent 25%,
-			transparent 75%,
-			rgb(var(--accent) / 0.2)
-		);
+	.dark ::-webkit-scrollbar-thumb:hover {
+		background: rgb(31 63 255 / 0.4);
 	}
 </style>
+
+<script>
+	// Add interactive hover effect to sections
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll('section').forEach(section => {
+			section.addEventListener('mousemove', e => {
+				const rect = section.getBoundingClientRect();
+				const x = ((e.clientX - rect.left) / rect.width) * 100;
+				const y = ((e.clientY - rect.top) / rect.height) * 100;
+				section.style.setProperty('--mouse-x', `${x}%`);
+				section.style.setProperty('--mouse-y', `${y}%`);
+			});
+		});
+	});
+</script>

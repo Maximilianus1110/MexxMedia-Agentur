@@ -41,25 +41,24 @@ const problems: Problem[] = [
 <section class="py-24 relative bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
   <!-- Decorative elements -->
   <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute w-[500px] h-[500px] -right-40 -top-40 rounded-full bg-[#C4A47D]/5"></div>
-    <div class="absolute w-[500px] h-[500px] -left-40 -bottom-40 rounded-full bg-[#8B6B47]/5"></div>
+    <div class="absolute w-[500px] h-[500px] -right-40 -top-40 rounded-full bg-primary-600/5"></div>
+    <div class="absolute w-[500px] h-[500px] -left-40 -bottom-40 rounded-full bg-primary-600/5"></div>
   </div>
 
   <div class="container mx-auto px-4 relative">
     <!-- Section Header -->
     <div class="text-center mb-20">
       <div class="inline-block" data-aos="fade-up">
-        <p class="text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4 
-                  bg-[#2C2620] px-4 py-2 rounded-full">
+        <p class="text-primary-600 dark:text-primary-400 font-medium tracking-wide uppercase text-sm mb-4 
+                  bg-primary-100 dark:bg-primary-900/50 px-4 py-2 rounded-full">
           Ihre Herausforderungen
         </p>
       </div>
-      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 
-                 bg-gradient-to-r from-[#C4A47D] to-[#8B6B47] bg-clip-text text-transparent"
+      <h2 class="font-display text-4xl md:text-5xl text-neutral-900 dark:text-white mb-6"
           data-aos="fade-up" data-aos-delay="100">
         Kennen Sie diese Probleme?
       </h2>
-      <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+      <p class="font-body text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
          data-aos="fade-up" data-aos-delay="200">
         Viele Unternehmen kämpfen mit ähnlichen Herausforderungen. Wir haben die Lösungen.
       </p>
@@ -72,43 +71,47 @@ const problems: Problem[] = [
           <!-- Card -->
           <div class="h-full rounded-2xl p-8 relative overflow-hidden
                       bg-white dark:bg-neutral-900
-                      border border-neutral-200/50 dark:border-neutral-800
-                      transition-all duration-500
-                      hover:border-[#C4A47D]/30 hover:shadow-xl hover:shadow-[#C4A47D]/5">
+                      border border-gray-200 dark:border-neutral-800
+                      transition-all duration-300 ease-in-out
+                      hover:border-primary-600/30 dark:hover:border-primary-400/30 
+                      hover:shadow-lg hover:shadow-primary-600/5 dark:hover:shadow-primary-400/5">
             
             <!-- Icon -->
-            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#C4A47D] to-[#8B6B47]
+            <div class="w-14 h-14 rounded-xl bg-primary-100 dark:bg-primary-900/50
                         flex items-center justify-center mb-6
-                        transform transition-transform duration-500
+                        transform transition-transform duration-300
                         group-hover:scale-110 group-hover:rotate-3">
-              <Fragment set:html={problem.icon} />
+              <div class="text-primary-600 dark:text-primary-400">
+                <Fragment set:html={problem.icon} />
+              </div>
             </div>
 
             <!-- Content -->
             <div class="space-y-4">
-              <h3 class="text-xl font-bold text-neutral-900 dark:text-white
-                         group-hover:text-[#C4A47D] transition-colors duration-300">
+              <h3 class="font-display text-xl text-neutral-900 dark:text-white
+                         group-hover:text-primary-600 dark:group-hover:text-primary-400 
+                         transition-colors duration-300">
                 {problem.title}
               </h3>
-              <p class="text-neutral-600 dark:text-neutral-400">
+              <p class="font-body text-neutral-600 dark:text-neutral-400">
                 {problem.description}
               </p>
             </div>
 
             <!-- Solution -->
-            <div class="mt-6 pt-6 border-t border-neutral-200/50 dark:border-neutral-800">
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-neutral-800">
               <div class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#2C2620] 
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/50
                            flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#C4A47D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-[#C4A47D] mb-2">
+                  <h4 class="font-display text-primary-600 dark:text-primary-400 mb-2">
                     {problem.solutionTitle}
                   </h4>
-                  <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                  <p class="font-body text-sm text-neutral-600 dark:text-neutral-400">
                     {problem.solution}
                   </p>
                 </div>
@@ -116,8 +119,8 @@ const problems: Problem[] = [
             </div>
 
             <!-- Decorative gradient -->
-            <div class="absolute inset-0 bg-gradient-to-br from-[#C4A47D]/0 to-[#8B6B47]/0
-                        transition-opacity duration-500 opacity-0
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-600/0 to-primary-600/0
+                        transition-opacity duration-300 opacity-0
                         group-hover:opacity-5"></div>
           </div>
         </div>
@@ -126,12 +129,12 @@ const problems: Problem[] = [
 
     <!-- CTA -->
     <div class="mt-16 text-center" data-aos="fade-up">
-      <a href="#contact" 
-         class="inline-flex items-center gap-2 px-8 py-4 rounded-xl
-                bg-gradient-to-r from-[#C4A47D] to-[#8B6B47] 
-                text-white font-medium
-                transform transition-all duration-300
-                hover:scale-105 hover:shadow-lg hover:shadow-[#C4A47D]/20">
+      <a href="/contact" 
+         class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-body
+                bg-primary-600 hover:bg-primary-700
+                text-white
+                transition-all duration-300 ease-in-out
+                hover:shadow-lg hover:shadow-primary-600/20">
         <span>Jetzt Gespräch vereinbaren</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -159,8 +162,8 @@ const problems: Problem[] = [
       115deg,
       transparent,
       transparent 40%,
-      rgba(196, 164, 125, 0.05) 45%,
-      rgba(196, 164, 125, 0.05) 55%,
+      rgba(31, 63, 255, 0.05) 45%,
+      rgba(31, 63, 255, 0.05) 55%,
       transparent 60%,
       transparent
     );

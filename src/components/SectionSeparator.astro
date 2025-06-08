@@ -1,9 +1,41 @@
 ---
-// No props needed
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
 ---
 
-<div class="section-separator">
-    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
-        <div class="w-2 h-2 rounded-full bg-[#A48155]/20 dark:bg-[#C4A47D]/20"></div>
-    </div>
-</div> 
+<div class={`relative h-24 ${className}`}>
+  <div class="absolute inset-0 flex items-center">
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-primary-600/20 dark:via-primary-400/20 to-transparent"></div>
+  </div>
+  
+  <!-- Glowing Dot -->
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="w-4 h-4 rounded-full bg-primary-600 dark:bg-primary-400 animate-pulse"></div>
+    <div class="absolute inset-0 w-4 h-4 rounded-full bg-primary-600/50 dark:bg-primary-400/50 animate-ping"></div>
+  </div>
+</div>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+</style> 
