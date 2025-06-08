@@ -39,20 +39,62 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 			}
 		</script>
 	</head>
-	<body class="bg-neutral-50 dark:bg-[#0A0A0B] text-neutral-900 dark:text-neutral-100 relative min-h-screen overflow-x-hidden">
-		<!-- Subtle noise texture -->
-		<div class="fixed inset-0 pointer-events-none opacity-[0.015] dark:opacity-[0.03]">
-			<div class="absolute inset-0 bg-[url('/noise.png')] opacity-20"></div>
-		</div>
-
-		<!-- Sophisticated gradient overlays -->
+	<body class="bg-[#F5F1EA] dark:bg-[#0A0A0B] text-neutral-900 dark:text-neutral-100 relative min-h-screen overflow-x-hidden selection:bg-[#8B6B47]/30 dark:selection:bg-[#C4A47D]/30">
+		<!-- Enhanced Background Effects -->
 		<div class="fixed inset-0 pointer-events-none">
-			<!-- Light theme gradients -->
-			<div class="absolute inset-0 bg-gradient-to-br from-neutral-100/80 via-transparent to-neutral-100/80 dark:from-neutral-900/80 dark:to-neutral-900/80"></div>
-			
-			<!-- Accent color areas - more muted and sophisticated -->
-			<div class="absolute top-0 left-0 w-[1200px] h-[800px] bg-[#F4E8D9]/10 dark:bg-[#2C2620]/20 rounded-full blur-[130px] opacity-60 mix-blend-multiply dark:mix-blend-screen"></div>
-			<div class="absolute bottom-0 right-0 w-[800px] h-[500px] bg-[#E4EAF2]/20 dark:bg-[#1A2028]/30 rounded-full blur-[120px] opacity-50 mix-blend-multiply dark:mix-blend-screen"></div>
+			<!-- Base layer with refined texture -->
+			<div class="absolute inset-0 opacity-[0.2] mix-blend-overlay">
+				<div class="absolute inset-0 bg-[url('/noise.png')] opacity-30"></div>
+			</div>
+
+			<!-- Dark mode specific patterns -->
+			<div class="absolute inset-0 dark:block hidden">
+				<!-- Subtle grid lines -->
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_98%,#0B3B6F05_99%,transparent)] bg-[length:50px_50px]"></div>
+				<div class="absolute inset-0 bg-[linear-gradient(0deg,transparent_98%,#0B3B6F05_99%,transparent)] bg-[length:50px_50px]"></div>
+				
+				<!-- Diagonal lines -->
+				<div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_49.5%,#0B3B6F04_49.8%,#0B3B6F04_50.2%,transparent_50.5%)] bg-[length:100px_100px] animate-slide-slow opacity-30"></div>
+				<div class="absolute inset-0 bg-[linear-gradient(-45deg,transparent_49.5%,#0B3B6F03_49.8%,#0B3B6F03_50.2%,transparent_50.5%)] bg-[length:120px_120px] animate-slide-slower opacity-20"></div>
+			</div>
+
+			<!-- Subtle geometric patterns -->
+			<div class="absolute inset-0">
+				<!-- Hexagon grid - very subtle -->
+				<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMzQuNjQxYTIgMiAwIDAgMS0yLTJWNy4zNTlhMiAyIDAgMSAxIDQgMHYyNS4yODJhMiAyIDAgMCAxLTIgMnoiIGZpbGw9InJnYmEoMTM5LCAxMDcsIDcxLCAwLjAzKSIvPjxwYXRoIGQ9Ik03LjM1OSAyMGEyIDIgMCAwIDEtMi0yVjdhMiAyIDAgMSAxIDQgMHYxMWEyIDIgMCAwIDEtMiAyeiIgZmlsbD0icmdiYSgxMzksIDEwNywgNzEsIDAuMDMpIi8+PC9zdmc+')] opacity-50 dark:opacity-0"></div>
+				
+				<!-- Dotted overlay -->
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#8B6B4705_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,#0B3B6F04_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+			</div>
+
+			<!-- Dynamic background elements -->
+			<div class="absolute inset-0">
+				<!-- Floating shapes with subtle animation -->
+				<div class="absolute inset-0 overflow-hidden">
+					<div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_center,#8B6B4705,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,#0B3B6F06,transparent_70%)] rounded-full transform rotate-12 animate-float-slow"></div>
+					<div class="absolute top-[20%] -right-[30%] w-[90%] h-[90%] bg-[radial-gradient(ellipse_at_center,#6B4D2E05,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,#0D4B8F05,transparent_70%)] rounded-full transform -rotate-15 animate-float-slower"></div>
+					<div class="absolute -bottom-[30%] left-[10%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,#8B6B4704,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,#0B3B6F04,transparent_70%)] rounded-full animate-float-slowest"></div>
+				</div>
+
+				<!-- Subtle gradient flows -->
+				<div class="absolute inset-0">
+					<div class="absolute inset-0 bg-gradient-to-br from-[#8B6B47]/[0.02] via-transparent to-[#6B4D2E]/[0.02] dark:from-[#0B3B6F]/[0.02] dark:to-[#0D4B8F]/[0.02] animate-gradient-slow"></div>
+					<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-[#8B6B47]/[0.01] to-transparent dark:via-[#0B3B6F]/[0.01] animate-gradient-slower"></div>
+				</div>
+			</div>
+
+			<!-- Interactive light effects -->
+			<div class="absolute inset-0">
+				<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,#8B6B4702,transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_0%,#0B3B6F03,transparent_50%)] animate-pulse-slow"></div>
+				<div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_100%,#6B4D2E02,transparent_50%)] dark:bg-[radial-gradient(circle_at_100%_100%,#0D4B8F03,transparent_50%)] animate-pulse-slower"></div>
+			</div>
+
+			<!-- Dark mode circuit-like patterns -->
+			<div class="absolute inset-0 dark:block hidden">
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_40%,#0B3B6F02_40.5%,#0B3B6F02_41.5%,transparent_42%)] bg-[length:200px_200px]"></div>
+				<div class="absolute inset-0 bg-[linear-gradient(0deg,transparent_40%,#0D4B8F02_40.5%,#0D4B8F02_41.5%,transparent_42%)] bg-[length:200px_200px]"></div>
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#0B3B6F01_1px,transparent_1px)] bg-[length:40px_40px]"></div>
+			</div>
 		</div>
 
 		<!-- Main Content -->
@@ -64,9 +106,11 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 
 <style is:global>
 	:root {
-		--accent: 164, 129, 85;        /* Sophisticated warm brown */
-		--accent-light: 244, 232, 217; /* Warm beige */
-		--accent-dark: 44, 38, 32;     /* Deep brown */
+		--accent: 139, 107, 71;      /* Deeper brown */
+		--accent-light: 196, 164, 125; /* Rich gold */
+		--accent-dark: 44, 38, 32;    /* Deep brown */
+		--dark-blue: 11, 59, 111;     /* Dark blue for dark mode */
+		--darker-blue: 13, 75, 143;   /* Slightly lighter blue for contrast */
 	}
 
 	* {
@@ -75,26 +119,168 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 		box-sizing: border-box;
 	}
 
-	body {
-		font-family: 'Inter', system-ui, sans-serif;
+	@keyframes float-slow {
+		0%, 100% { transform: translate(0, 0) rotate(12deg); }
+		50% { transform: translate(10px, -10px) rotate(14deg); }
 	}
 
-	h1, h2, h3, h4, h5, h6 {
-		font-family: 'Playfair Display', serif;
+	@keyframes float-slower {
+		0%, 100% { transform: translate(0, 0) rotate(-15deg); }
+		50% { transform: translate(-15px, 10px) rotate(-17deg); }
+	}
+
+	@keyframes float-slowest {
+		0%, 100% { transform: translate(0, 0); }
+		50% { transform: translate(5px, -5px); }
+	}
+
+	@keyframes gradient-slow {
+		0%, 100% { opacity: 0.02; }
+		50% { opacity: 0.04; }
+	}
+
+	@keyframes gradient-slower {
+		0%, 100% { opacity: 0.01; }
+		50% { opacity: 0.03; }
+	}
+
+	@keyframes pulse-slow {
+		0%, 100% { opacity: 0.02; }
+		50% { opacity: 0.04; }
+	}
+
+	@keyframes pulse-slower {
+		0%, 100% { opacity: 0.01; }
+		50% { opacity: 0.03; }
+	}
+
+	@keyframes slide-slow {
+		0% { background-position: 0 0; }
+		100% { background-position: 100px 100px; }
+	}
+
+	@keyframes slide-slower {
+		0% { background-position: 0 0; }
+		100% { background-position: -100px -100px; }
+	}
+
+	.animate-float-slow {
+		animation: float-slow 20s ease-in-out infinite;
+	}
+
+	.animate-float-slower {
+		animation: float-slower 25s ease-in-out infinite;
+	}
+
+	.animate-float-slowest {
+		animation: float-slowest 30s ease-in-out infinite;
+	}
+
+	.animate-gradient-slow {
+		animation: gradient-slow 15s ease infinite;
+	}
+
+	.animate-gradient-slower {
+		animation: gradient-slower 20s ease infinite;
+	}
+
+	.animate-pulse-slow {
+		animation: pulse-slow 10s ease infinite;
+	}
+
+	.animate-pulse-slower {
+		animation: pulse-slower 15s ease infinite;
+	}
+
+	.animate-slide-slow {
+		animation: slide-slow 30s linear infinite;
+	}
+
+	.animate-slide-slower {
+		animation: slide-slower 40s linear infinite;
+	}
+
+	/* Section Styles */
+	section {
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+	}
+
+	/* Section Dividers - Now more subtle */
+	section:not(:first-child)::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 15%;
+		right: 15%;
+		height: 1px;
+		background: linear-gradient(to right, 
+			transparent, 
+			rgb(var(--accent) / 0.08) 20%, 
+			rgb(var(--accent) / 0.08) 80%, 
+			transparent
+		);
+	}
+
+	/* Enhanced Section Backgrounds */
+	section::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		inset: 0;
+		background: radial-gradient(
+			100% 100% at 50% 50%,
+			rgb(var(--accent) / 0.03) 0%,
+			transparent 100%
+		);
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+
+	section:hover::after {
+		opacity: 1;
+	}
+
+	/* Alternating Section Backgrounds */
+	section:nth-child(even) {
+		background: radial-gradient(
+			ellipse at center,
+			rgb(var(--accent) / 0.02) 0%,
+			transparent 70%
+		);
+	}
+
+	/* Dark Mode Adjustments */
+	.dark section:nth-child(even) {
+		background: radial-gradient(
+			ellipse at center,
+			rgb(var(--accent-dark) / 0.2) 0%,
+			transparent 70%
+		);
+	}
+
+	.dark section:not(:first-child)::before {
+		background: linear-gradient(to right, 
+			transparent, 
+			rgb(var(--accent) / 0.15) 20%, 
+			rgb(var(--accent) / 0.15) 80%, 
+			transparent
+		);
 	}
 
 	/* Sophisticated Card Base Styles */
 	.premium-card {
 		@apply bg-white/90 dark:bg-neutral-900/90 backdrop-blur-lg
-			   border border-neutral-200/50 dark:border-neutral-800/50 
-			   hover:border-[#A4815580] dark:hover:border-[#C4A47D]
-			   rounded-xl shadow-md
+			   border border-[#8B6B47]/15 dark:border-neutral-800/50 
+			   hover:border-[#8B6B47] dark:hover:border-[#C4A47D]
+			   rounded-xl shadow-sm
 			   transition-all duration-500 ease-out
 			   hover:translate-y-[-2px]
-			   hover:shadow-xl hover:shadow-[#A48155]/5 dark:hover:shadow-[#C4A47D]/5
+			   hover:shadow-xl hover:shadow-[#8B6B47]/15 dark:hover:shadow-[#C4A47D]/5
 			   relative
 			   before:absolute before:inset-0 before:rounded-xl
-			   before:bg-gradient-to-b before:from-[#F4E8D9]/5 before:to-transparent
+			   before:bg-gradient-to-b before:from-[#8B6B47]/10 before:to-transparent
 			   dark:before:from-[#2C2620]/5 dark:before:to-transparent
 			   before:opacity-0 hover:before:opacity-100
 			   before:transition-opacity before:duration-500;
@@ -102,7 +288,7 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 
 	/* Refined Gradient Text */
 	.gradient-text {
-		@apply bg-clip-text text-transparent bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155];
+		@apply bg-clip-text text-transparent bg-gradient-to-r from-[#6B4D2E] to-[#8B6B47] dark:from-[#C4A47D] dark:to-[#A48155];
 	}
 
 	/* Subtle Animations */
@@ -112,17 +298,19 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 
 	/* Sophisticated Button Styles */
 	.button-primary {
-		@apply bg-[#A48155] hover:bg-[#8B6B47] text-white
+		@apply bg-[#8B6B47] hover:bg-[#6B4D2E] text-white
 			   px-6 py-3 rounded-lg transition-all duration-300
-			   shadow-sm hover:shadow-lg hover:shadow-[#A48155]/10
-			   border border-[#A48155] hover:border-[#8B6B47];
+			   shadow-sm hover:shadow-lg hover:shadow-[#8B6B47]/20
+			   border border-[#8B6B47] hover:border-[#6B4D2E]
+			   dark:bg-[#8B6B47] dark:hover:bg-[#A48155]
+			   dark:border-[#8B6B47] dark:hover:border-[#A48155];
 	}
 
 	.button-secondary {
-		@apply bg-white hover:bg-neutral-50 text-[#A48155]
+		@apply bg-white/90 hover:bg-[#8B6B47]/10 text-[#6B4D2E]
 			   px-6 py-3 rounded-lg transition-all duration-300
-			   shadow-sm hover:shadow-lg
-			   border border-neutral-200 hover:border-[#A48155]/30
+			   shadow-sm hover:shadow-lg hover:shadow-[#8B6B47]/10
+			   border border-[#8B6B47]/20 hover:border-[#8B6B47]
 			   dark:bg-neutral-900 dark:hover:bg-neutral-800
 			   dark:border-neutral-800 dark:hover:border-[#A48155]
 			   dark:text-[#C4A47D];
@@ -134,14 +322,55 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 	}
 
 	::-webkit-scrollbar-track {
-		@apply bg-neutral-100 dark:bg-neutral-900;
+		@apply bg-[#8B6B47]/10 dark:bg-neutral-900;
 	}
 
 	::-webkit-scrollbar-thumb {
-		@apply bg-[#A48155] rounded-full;
+		@apply bg-[#8B6B47] rounded-full;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		@apply bg-[#8B6B47];
+		@apply bg-[#6B4D2E];
+	}
+
+	/* Section Separator */
+	.section-separator {
+		position: relative;
+		height: 4rem;
+		margin: 2rem 0;
+		overflow: hidden;
+	}
+
+	.section-separator::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 100vw;
+		height: 100vw;
+		background: conic-gradient(
+			from 0deg at 50% 50%,
+			rgb(var(--accent) / 0.12),
+			transparent 25%,
+			transparent 75%,
+			rgb(var(--accent) / 0.12)
+		);
+		transform: translate(-50%, -50%) rotate(0deg);
+		animation: rotateSeparator 30s linear infinite;
+	}
+
+	@keyframes rotateSeparator {
+		from { transform: translate(-50%, -50%) rotate(0deg); }
+		to { transform: translate(-50%, -50%) rotate(360deg); }
+	}
+
+	.dark .section-separator::before {
+		background: conic-gradient(
+			from 0deg at 50% 50%,
+			rgb(var(--accent) / 0.2),
+			transparent 25%,
+			transparent 75%,
+			rgb(var(--accent) / 0.2)
+		);
 	}
 </style>
