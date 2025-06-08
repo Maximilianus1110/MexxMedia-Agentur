@@ -1,22 +1,147 @@
+---
+import '@fontsource/inter';
+import '@fontsource/playfair-display';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "MexxMedia - Ihre Webagentur für professionelle Online-Präsenz" } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="de" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<ViewTransitions />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script is:inline>
+			document.addEventListener('astro:page-load', () => {
+				AOS.init({
+					duration: 800,
+					once: true,
+				});
+			});
+
+			// Check for saved theme preference, otherwise use system preference
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark')
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		</script>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-neutral-50 dark:bg-[#0A0A0B] text-neutral-900 dark:text-neutral-100 relative min-h-screen overflow-x-hidden">
+		<!-- Subtle noise texture -->
+		<div class="fixed inset-0 pointer-events-none opacity-[0.015] dark:opacity-[0.03]">
+			<div class="absolute inset-0 bg-[url('/noise.png')] opacity-20"></div>
+		</div>
+
+		<!-- Sophisticated gradient overlays -->
+		<div class="fixed inset-0 pointer-events-none">
+			<!-- Light theme gradients -->
+			<div class="absolute inset-0 bg-gradient-to-br from-neutral-100/80 via-transparent to-neutral-100/80 dark:from-neutral-900/80 dark:to-neutral-900/80"></div>
+			
+			<!-- Accent color areas - more muted and sophisticated -->
+			<div class="absolute top-0 left-0 w-[1200px] h-[800px] bg-[#F4E8D9]/10 dark:bg-[#2C2620]/20 rounded-full blur-[130px] opacity-60 mix-blend-multiply dark:mix-blend-screen"></div>
+			<div class="absolute bottom-0 right-0 w-[800px] h-[500px] bg-[#E4EAF2]/20 dark:bg-[#1A2028]/30 rounded-full blur-[120px] opacity-50 mix-blend-multiply dark:mix-blend-screen"></div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="relative">
+			<slot />
+		</div>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	:root {
+		--accent: 164, 129, 85;        /* Sophisticated warm brown */
+		--accent-light: 244, 232, 217; /* Warm beige */
+		--accent-dark: 44, 38, 32;     /* Deep brown */
+	}
+
+	* {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Inter', system-ui, sans-serif;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Playfair Display', serif;
+	}
+
+	/* Sophisticated Card Base Styles */
+	.premium-card {
+		@apply bg-white/90 dark:bg-neutral-900/90 backdrop-blur-lg
+			   border border-neutral-200/50 dark:border-neutral-800/50 
+			   hover:border-[#A4815580] dark:hover:border-[#C4A47D]
+			   rounded-xl shadow-md
+			   transition-all duration-500 ease-out
+			   hover:translate-y-[-2px]
+			   hover:shadow-xl hover:shadow-[#A48155]/5 dark:hover:shadow-[#C4A47D]/5
+			   relative
+			   before:absolute before:inset-0 before:rounded-xl
+			   before:bg-gradient-to-b before:from-[#F4E8D9]/5 before:to-transparent
+			   dark:before:from-[#2C2620]/5 dark:before:to-transparent
+			   before:opacity-0 hover:before:opacity-100
+			   before:transition-opacity before:duration-500;
+	}
+
+	/* Refined Gradient Text */
+	.gradient-text {
+		@apply bg-clip-text text-transparent bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155];
+	}
+
+	/* Subtle Animations */
+	.hover-lift {
+		@apply transition-transform duration-500 hover:-translate-y-1;
+	}
+
+	/* Sophisticated Button Styles */
+	.button-primary {
+		@apply bg-[#A48155] hover:bg-[#8B6B47] text-white
+			   px-6 py-3 rounded-lg transition-all duration-300
+			   shadow-sm hover:shadow-lg hover:shadow-[#A48155]/10
+			   border border-[#A48155] hover:border-[#8B6B47];
+	}
+
+	.button-secondary {
+		@apply bg-white hover:bg-neutral-50 text-[#A48155]
+			   px-6 py-3 rounded-lg transition-all duration-300
+			   shadow-sm hover:shadow-lg
+			   border border-neutral-200 hover:border-[#A48155]/30
+			   dark:bg-neutral-900 dark:hover:bg-neutral-800
+			   dark:border-neutral-800 dark:hover:border-[#A48155]
+			   dark:text-[#C4A47D];
+	}
+
+	/* Custom Scrollbar */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		@apply bg-neutral-100 dark:bg-neutral-900;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-[#A48155] rounded-full;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-[#8B6B47];
 	}
 </style>

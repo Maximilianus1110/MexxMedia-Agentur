@@ -1,0 +1,91 @@
+---
+const services = [
+  {
+    title: "Webdesign & Entwicklung",
+    description: "Moderne, responsive Webseiten mit benutzerfreundlichem Design und optimaler Performance.",
+    features: [
+      "Responsive Design für alle Geräte",
+      "Moderne Technologien & Frameworks",
+      "Optimierte Ladezeiten",
+      "Barrierefreie Gestaltung"
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`
+  },
+  {
+    title: "SEO & Content Marketing",
+    description: "Optimierung Ihrer Online-Präsenz für bessere Sichtbarkeit in Suchmaschinen.",
+    features: [
+      "Keyword-Recherche & Strategie",
+      "On-Page & Off-Page SEO",
+      "Content-Erstellung & Optimierung",
+      "Performance-Tracking"
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>`
+  },
+  {
+    title: "Social Media Marketing",
+    description: "Professionelle Betreuung Ihrer Social Media Kanäle für mehr Reichweite.",
+    features: [
+      "Kanalstrategie & Setup",
+      "Content-Planung & Erstellung",
+      "Community Management",
+      "Performance-Analyse"
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>`
+  }
+];
+---
+
+<section id="services" class="py-24 relative overflow-hidden">
+  <div class="container mx-auto px-4 relative">
+    <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+      <p class="text-[#A48155] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4">Unsere Expertise</p>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        Unsere Leistungen
+      </h2>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+        Professionelle Lösungen für Ihren digitalen Erfolg
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div
+          class="group"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="premium-card p-8 h-full">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-14 h-14 bg-[#F4E8D9] dark:bg-[#2C2620] rounded-xl flex items-center justify-center
+                          group-hover:bg-[#E9D5BB] dark:group-hover:bg-[#3D332B] transition-colors duration-500
+                          shadow-sm group-hover:shadow-md">
+                <div class="text-[#8B6B47] dark:text-[#C4A47D] transform group-hover:scale-110 transition-transform duration-500" set:html={service.icon} />
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors duration-500">
+                {service.title}
+              </h3>
+            </div>
+            
+            <p class="text-neutral-600 dark:text-neutral-400 mb-10 leading-relaxed">
+              {service.description}
+            </p>
+            
+            <ul class="space-y-4">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-neutral-600 dark:text-neutral-400">
+                  <svg class="w-5 h-5 text-[#A48155] dark:text-[#C4A47D] mr-4 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="group-hover:text-neutral-800 dark:group-hover:text-neutral-200 transition-colors duration-500">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

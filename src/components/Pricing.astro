@@ -1,0 +1,140 @@
+---
+const packages = [
+  {
+    name: "Basis",
+    price: "ab 2.499€",
+    description: "Perfekt für kleine Unternehmen und Selbstständige",
+    features: [
+      "Responsive Webseite (bis zu 5 Seiten)",
+      "SEO-Grundoptimierung",
+      "Kontaktformular",
+      "Google Maps Integration",
+      "Basis Content Management System",
+      "3 Monate Support",
+      "Hosting & Domain (1. Jahr inklusive)"
+    ],
+    recommended: false
+  },
+  {
+    name: "Business",
+    price: "ab 4.999€",
+    description: "Ideal für wachsende Unternehmen",
+    features: [
+      "Responsive Webseite (bis zu 10 Seiten)",
+      "Umfassende SEO-Optimierung",
+      "Blog-System",
+      "Newsletter-Integration",
+      "Erweitertes Content Management",
+      "6 Monate Support",
+      "Hosting & Domain (1. Jahr inklusive)",
+      "Social Media Integration",
+      "Google Analytics Setup"
+    ],
+    recommended: true
+  },
+  {
+    name: "Premium",
+    price: "ab 9.999€",
+    description: "Maßgeschneiderte Lösung für große Unternehmen",
+    features: [
+      "Individuelle Webseite (unbegrenzte Seiten)",
+      "Premium SEO-Paket",
+      "E-Commerce Integration",
+      "Individuelles Design",
+      "Multi-Language Support",
+      "12 Monate Premium Support",
+      "Hosting & Domain (1. Jahr inklusive)",
+      "Social Media Marketing Setup",
+      "Analytics & Reporting Dashboard",
+      "Conversion Tracking"
+    ],
+    recommended: false
+  }
+];
+---
+
+<section id="pricing" class="py-24 relative overflow-hidden">
+  <div class="container mx-auto px-4 relative">
+    <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+      <p class="text-[#A48155] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4">Unsere Pakete</p>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        Transparente Preisgestaltung
+      </h2>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+        Wählen Sie das passende Paket für Ihre Anforderungen
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {packages.map((pkg, index) => (
+        <div
+          class="group"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class:list={[
+            "premium-card p-8 h-full relative overflow-hidden",
+            pkg.recommended && "ring-2 ring-[#A48155] dark:ring-[#C4A47D] before:opacity-10"
+          ]}>
+            {pkg.recommended && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155] text-white px-6 py-1.5 rounded-full text-sm font-medium shadow-lg">
+                  Empfohlen
+                </span>
+              </div>
+            )}
+
+            <div class="text-center mb-10">
+              <h3 class="text-2xl font-serif font-bold mb-4 text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors duration-500">
+                {pkg.name}
+              </h3>
+              <div class="mb-6">
+                <span class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155]">
+                  {pkg.price}
+                </span>
+              </div>
+              <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                {pkg.description}
+              </p>
+            </div>
+
+            <ul class="space-y-4 mb-10">
+              {pkg.features.map((feature) => (
+                <li class="flex items-start text-neutral-600 dark:text-neutral-400">
+                  <svg
+                    class="w-5 h-5 text-[#A48155] dark:text-[#C4A47D] mr-4 mt-1 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  <span class="group-hover:text-neutral-800 dark:group-hover:text-neutral-200 transition-colors duration-500">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="text-center">
+              <a
+                href="#contact"
+                class:list={[
+                  "inline-block w-full",
+                  pkg.recommended ? "button-primary" : "button-secondary"
+                ]}
+              >
+                Jetzt anfragen
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

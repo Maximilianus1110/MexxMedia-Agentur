@@ -1,0 +1,112 @@
+---
+const teamMembers = [
+  {
+    name: "Max Mustermann",
+    role: "Geschäftsführer & Creative Director",
+    description: "Mit über 10 Jahren Erfahrung in der digitalen Welt leitet Max die kreative Vision von MexxMedia.",
+    image: "/team/max.png"
+  },
+  {
+    name: "Anna Schmidt",
+    role: "Lead Developer",
+    description: "Anna ist unsere technische Expertin und sorgt für die Umsetzung innovativer Webprojekte.",
+    image: "/team/kursat.png"
+  }
+];
+---
+
+<section id="about" class="py-20 bg-neutral-50 dark:bg-[#0A0A0B] relative overflow-hidden">
+  <!-- Glowing Background Effect -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#F4E8D9]/10 to-transparent dark:from-[#2C2620]/20"></div>
+  <div class="absolute -top-40 -right-40 w-80 h-80 bg-[#F4E8D9] rounded-full blur-[100px] opacity-20 dark:opacity-10 dark:bg-[#2C2620]"></div>
+  <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-[#F4E8D9] rounded-full blur-[100px] opacity-10 dark:opacity-10 dark:bg-[#2C2620]"></div>
+
+  <div class="container mx-auto px-4 relative">
+    <!-- Vision -->
+    <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+      <p class="text-[#A48155] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4">Unsere Vision</p>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+        Digitale Exzellenz
+      </h2>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+        Wir glauben daran, dass jedes Unternehmen eine starke digitale Präsenz verdient. Mit unserer Expertise helfen wir Ihnen dabei, Ihre Online-Ziele zu erreichen und Ihre Marke erfolgreich zu positionieren.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div class="premium-card group">
+          <div class="w-14 h-14 bg-[#F4E8D9] dark:bg-[#2C2620] rounded-xl flex items-center justify-center mb-6
+                      group-hover:bg-[#E9D5BB] dark:group-hover:bg-[#3D332B] transition-colors duration-500
+                      shadow-sm group-hover:shadow-md">
+            <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-serif font-bold mb-4 text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors duration-500">Innovation</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-500">
+            Wir setzen auf modernste Technologien und kreative Lösungen für Ihren digitalen Erfolg.
+          </p>
+        </div>
+        <div class="premium-card group">
+          <div class="w-14 h-14 bg-[#F4E8D9] dark:bg-[#2C2620] rounded-xl flex items-center justify-center mb-6
+                      group-hover:bg-[#E9D5BB] dark:group-hover:bg-[#3D332B] transition-colors duration-500
+                      shadow-sm group-hover:shadow-md">
+            <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-serif font-bold mb-4 text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors duration-500">Qualität</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-500">
+            Höchste Standards in Design, Entwicklung und Kundenservice sind unsere Priorität.
+          </p>
+        </div>
+        <div class="premium-card group">
+          <div class="w-14 h-14 bg-[#F4E8D9] dark:bg-[#2C2620] rounded-xl flex items-center justify-center mb-6
+                      group-hover:bg-[#E9D5BB] dark:group-hover:bg-[#3D332B] transition-colors duration-500
+                      shadow-sm group-hover:shadow-md">
+            <svg class="w-6 h-6 text-[#8B6B47] dark:text-[#C4A47D] transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-serif font-bold mb-4 text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors duration-500">Partnerschaft</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-500">
+            Wir verstehen uns als langfristiger Partner für Ihren digitalen Erfolg.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="max-w-6xl mx-auto">
+      <p class="text-[#A48155] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm text-center mb-4">Unser Team</p>
+      <h3 class="text-4xl font-serif font-bold text-center mb-12 text-neutral-900 dark:text-neutral-100">
+        Die Experten hinter MexxMedia
+      </h3>
+      <div class="grid md:grid-cols-2 gap-12">
+        {teamMembers.map((member, index) => (
+          <div 
+            class="group"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div class="premium-card flex flex-col md:flex-row items-center gap-8 p-8">
+              <!-- Image Container with Glow -->
+              <div class="relative w-48 h-48 rounded-full overflow-hidden flex-shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155] rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  class="relative w-full h-full object-cover rounded-full border-2 border-[#A48155]/30 dark:border-[#C4A47D]/30 group-hover:border-[#A48155] dark:group-hover:border-[#C4A47D] transition-colors"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 class="text-2xl font-serif font-bold mb-2 text-neutral-900 dark:text-neutral-100 group-hover:text-[#8B6B47] dark:group-hover:text-[#C4A47D] transition-colors">{member.name}</h4>
+                <p class="text-[#A48155] dark:text-[#C4A47D] mb-4 font-medium">{member.role}</p>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">{member.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section> 

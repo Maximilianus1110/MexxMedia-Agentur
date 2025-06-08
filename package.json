@@ -4,11 +4,19 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.9.1"
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/inter": "^5.0.16",
+    "@fontsource/playfair-display": "^5.0.18",
+    "aos": "^2.3.4",
+    "astro": "^4.4.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }

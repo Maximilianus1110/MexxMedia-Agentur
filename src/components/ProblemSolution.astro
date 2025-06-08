@@ -1,0 +1,68 @@
+---
+const problems = [
+  {
+    title: "Veraltete Webseite",
+    description: "Ihre aktuelle Webseite entspricht nicht mehr den modernen Standards und verliert wertvolle Besucher.",
+    solution: "Wir entwickeln eine moderne, schnelle und benutzerfreundliche Webseite, die Ihre Besucher begeistert."
+  },
+  {
+    title: "Schlechte Sichtbarkeit",
+    description: "Potenzielle Kunden finden Sie nicht in den Suchergebnissen von Google & Co.",
+    solution: "Mit unserer SEO-Expertise verbessern wir Ihr Ranking und machen Sie sichtbar für Ihre Zielgruppe."
+  },
+  {
+    title: "Mangelnde Conversion",
+    description: "Ihre Webseite generiert zu wenig Anfragen und Neukunden.",
+    solution: "Durch optimierte User Experience und strategische Call-to-Actions steigern wir Ihre Conversion-Rate."
+  }
+];
+---
+
+<section id="problems" class="py-24 relative overflow-hidden">
+  <div class="container mx-auto px-4 relative">
+    <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+      <p class="text-[#A48155] dark:text-[#C4A47D] font-medium tracking-wide uppercase text-sm mb-4">Ihre Herausforderungen</p>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        Kennen Sie diese Probleme?
+      </h2>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+        Viele Unternehmen kämpfen mit ähnlichen Herausforderungen. Wir haben die Lösungen.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {problems.map((problem, index) => (
+        <div
+          class="group"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="premium-card p-8 h-full">
+            <div class="mb-6">
+              <div class="w-12 h-12 bg-[#F4E8D9] dark:bg-[#2C2620] rounded-lg flex items-center justify-center mb-4
+                          group-hover:bg-[#E9D5BB] dark:group-hover:bg-[#3D332B] transition-colors duration-500">
+                <span class="text-2xl font-bold text-[#8B6B47] dark:text-[#C4A47D]">
+                  {index + 1}
+                </span>
+              </div>
+              <h3 class="text-xl font-serif font-bold mb-4 text-neutral-900 dark:text-neutral-100">
+                {problem.title}
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                {problem.description}
+              </p>
+              <div class="border-t border-neutral-200 dark:border-neutral-800 pt-6">
+                <h4 class="text-lg font-semibold mb-2 text-[#A48155] dark:text-[#C4A47D]">
+                  Unsere Lösung:
+                </h4>
+                <p class="text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-300 transition-colors duration-500">
+                  {problem.solution}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

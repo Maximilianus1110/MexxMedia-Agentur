@@ -1,0 +1,179 @@
+---
+const navItems = [
+  { href: "#home", text: "Start" },
+  { href: "#services", text: "Leistungen" },
+  { href: "#pricing", text: "Preise" },
+  { href: "#about", text: "Über uns" },
+  { href: "#contact", text: "Kontakt" },
+];
+---
+
+<header class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 py-4">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="text-2xl font-serif font-bold text-primary-600 dark:text-primary-400">
+        MexxMedia
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {
+          navItems.map(({ href, text }) => (
+            <a
+              href={href}
+              class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            >
+              {text}
+            </a>
+          ))
+        }
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        >
+          <svg
+            id="theme-toggle-dark-icon"
+            class="w-5 h-5 hidden"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <svg
+            id="theme-toggle-light-icon"
+            class="w-5 h-5 hidden"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Toggle -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-50"
+    >
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex justify-end">
+          <button
+            id="mobile-menu-close"
+            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-col items-center space-y-8 mt-8">
+          {
+            navItems.map(({ href, text }) => (
+              <a
+                href={href}
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >
+                {text}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Change the icons inside the button based on previous settings
+    if (document.documentElement.classList.contains('dark')) {
+      themeToggleLightIcon?.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon?.classList.remove('hidden');
+    }
+
+    themeToggleBtn?.addEventListener('click', function () {
+      // Toggle icons
+      themeToggleDarkIcon?.classList.toggle('hidden');
+      themeToggleLightIcon?.classList.toggle('hidden');
+
+      // Toggle dark mode
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+  }
+
+  function setupMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+
+    function toggleMobileMenu() {
+      mobileMenu?.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden');
+    }
+
+    mobileMenuToggle?.addEventListener('click', toggleMobileMenu);
+    mobileMenuClose?.addEventListener('click', toggleMobileMenu);
+    mobileMenuLinks?.forEach((link) => {
+      link.addEventListener('click', toggleMobileMenu);
+    });
+  }
+
+  // Setup on initial load
+  setupThemeToggle();
+  setupMobileMenu();
+
+  // Setup on view transitions
+  document.addEventListener('astro:after-swap', function () {
+    setupThemeToggle();
+    setupMobileMenu();
+  });
+</script> 
