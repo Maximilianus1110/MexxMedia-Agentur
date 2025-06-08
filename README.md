@@ -1,4 +1,79 @@
-# Astro Starter Kit: Basics
+# MexxMedia Website
+
+Eine moderne, responsive Website für MexxMedia, entwickelt mit Astro und TailwindCSS.
+
+## Features
+
+- 🎨 Premium Design mit warmen Erdtönen
+- 🌓 Eleganter Dark Mode
+- 📱 Vollständig responsive
+- ⚡ Optimierte Performance
+- 🎭 Moderne Animationen und Übergänge
+- 🔍 SEO-optimiert
+
+## Technologien
+
+- [Astro](https://astro.build)
+- [TailwindCSS](https://tailwindcss.com)
+- [AOS](https://michalsnik.github.io/aos/)
+
+## Installation
+
+1. Repository klonen:
+```bash
+git clone https://github.com/yourusername/mexxmedia.git
+```
+
+2. In das Projektverzeichnis wechseln:
+```bash
+cd mexxmedia
+```
+
+3. Abhängigkeiten installieren:
+```bash
+npm install
+```
+
+4. Entwicklungsserver starten:
+```bash
+npm run dev
+```
+
+## Entwicklung
+
+- `npm run dev` - Startet den Entwicklungsserver
+- `npm run build` - Erstellt die Produktionsversion
+- `npm run preview` - Zeigt die Produktionsversion lokal an
+
+## Struktur
+
+```
+mexxmedia/
+├── public/          # Statische Assets
+├── src/
+│   ├── components/  # UI Komponenten
+│   ├── layouts/     # Seitenlayouts
+│   └── pages/       # Seitenrouten
+├── astro.config.mjs # Astro Konfiguration
+└── tailwind.config.mjs # Tailwind Konfiguration
+```
+
+## Design System
+
+### Farben
+- Primary: `#A48155` (Warmes Braun)
+- Secondary: `#8B6B47` (Tiefes Braun)
+- Accent: `#F4E8D9` (Warmes Beige)
+- Dark Mode Highlight: `#C4A47D` (Gold)
+- Dark Mode Background: `#0A0A0B`
+
+### Typografie
+- Überschriften: Playfair Display
+- Text: Inter
+
+## Lizenz
+
+Alle Rechte vorbehalten © MexxMedia
 
 ```sh
 npm create astro@latest -- --template basics
