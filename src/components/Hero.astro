@@ -1,40 +1,244 @@
 ---
-// No imports needed for now
+import { Image } from 'astro:assets';
+import ParticlesEffect from './ParticlesEffect.astro';
+
+const codeExample = `/* Create wow effect */
+function createImpact() {
+  let design = "modern";
+  let tech = "cutting-edge";
+  let results = "exceptional";
+  
+  return {
+    implement() {
+      design = "innovative";
+      tech = "state-of-art";
+      results = "outstanding";
+    }
+  };
+}
+
+// Initialize wow effect
+createImpact();`;
 ---
 
-<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden py-32">
-  <!-- Background gradient -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[#F4E8D9]/30 via-transparent to-[#F4E8D9]/20 dark:from-[#2C2620]/20 dark:via-transparent dark:to-[#2C2620]/10"></div>
-  
-  <!-- Grid background -->
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#A4815520_1px,transparent_1px),linear-gradient(to_bottom,#A4815520_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#C4A47D10_1px,transparent_1px),linear-gradient(to_bottom,#C4A47D10_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-
-  <div class="container mx-auto px-4 relative">
-    <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-      <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-[#8B6B47] to-[#A48155] dark:from-[#C4A47D] dark:to-[#A48155] text-transparent bg-clip-text [text-shadow:0_2px_10px_rgba(164,129,85,0.1)]">
-        Ihre digitale Präsenz neu definiert
-      </h1>
-      <p class="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 mb-12 leading-relaxed">
-        Wir entwickeln maßgeschneiderte Webseiten für Ihr Unternehmen – modern, responsive und perfekt auf Ihre Zielgruppe abgestimmt.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-        <a
-          href="#contact"
-          class="button-primary w-full sm:w-auto text-lg"
-        >
-          Jetzt Beratung vereinbaren
-        </a>
-        <a
-          href="#services"
-          class="button-secondary w-full sm:w-auto text-lg"
-        >
-          Unsere Leistungen
-        </a>
+<section class="relative min-h-screen bg-neutral-950 overflow-hidden perspective">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <!-- 3D Grid -->
+    <div class="absolute inset-0 grid-animation">
+      <div class="absolute inset-0 bg-grid transform-style-3d rotate-x-60">
+        <div class="h-[200%] w-full transform translate-y-[-25%]
+                    [background-image:_linear-gradient(0deg,transparent_24%,_#C4A47D08_25%,_#C4A47D08_26%,_transparent_27%,_transparent_74%,_#C4A47D08_75%,_#C4A47D08_76%,_transparent_77%,_transparent),_linear-gradient(90deg,transparent_24%,_#C4A47D08_25%,_#C4A47D08_26%,_transparent_27%,_transparent_74%,_#C4A47D08_75%,_#C4A47D08_76%,_transparent_77%,_transparent)]
+                    [background-size:_50px_50px]
+                    [background-position:_center]">
+        </div>
       </div>
     </div>
 
-    <!-- Floating elements -->
-    <div class="absolute top-1/4 left-10 w-32 h-32 bg-[#F4E8D9]/40 dark:bg-[#2C2620]/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-10 w-48 h-48 bg-[#F4E8D9]/30 dark:bg-[#2C2620]/10 rounded-full blur-3xl"></div>
+    <!-- Glowing Spheres -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-[#C4A47D] 
+                  opacity-[0.03] blur-[80px] animate-sphere-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[25vw] h-[25vw] rounded-full bg-[#8B6B47] 
+                  opacity-[0.02] blur-[60px] animate-sphere-float-reverse"></div>
+    </div>
+
+    <!-- Noise Texture -->
+    <div class="absolute inset-0 opacity-[0.15] mix-blend-soft-light">
+      <div class="h-full w-full" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==');"></div>
+    </div>
   </div>
-</section> 
+
+  <!-- Content Container -->
+  <div class="relative container mx-auto px-4 h-screen">
+    <div class="grid lg:grid-cols-2 gap-12 h-full items-center">
+      <!-- Left Content -->
+      <div class="space-y-8 lg:pr-12">
+        <!-- Logo with reveal animation -->
+        <div class="relative w-48 opacity-0 animate-slide-in" style="--slide-delay: 0s">
+          <img src="/logo.svg" alt="MexxMedia Logo" class="w-full" />
+          <div class="absolute inset-0 w-full scale-x-0 animate-reveal-mask bg-gradient-to-r from-neutral-950/50 via-neutral-950 to-neutral-950/50"></div>
+        </div>
+
+        <!-- Main Headline -->
+        <div class="space-y-4">
+          <h1 class="text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+            <span class="block text-white opacity-0 animate-slide-in" style="--slide-delay: 0.2s">
+              Digitale
+            </span>
+            <span class="block text-white opacity-0 animate-slide-in" style="--slide-delay: 0.3s">
+              <span class="text-gradient">Visionen</span>
+            </span>
+            <span class="block text-white opacity-0 animate-slide-in" style="--slide-delay: 0.4s">
+              Realisieren
+            </span>
+          </h1>
+          
+          <p class="text-neutral-400 text-xl opacity-0 animate-slide-in" style="--slide-delay: 0.6s">
+            Wir entwickeln maßgeschneiderte digitale Lösungen, 
+            die Ihre Marke in die Zukunft führen.
+          </p>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="flex flex-wrap gap-6 opacity-0 animate-slide-in" style="--slide-delay: 0.8s">
+          <a href="#contact" 
+             class="group relative px-8 py-4 bg-white text-neutral-950 rounded-full 
+                    transition-transform duration-300 ease-out hover:scale-105">
+            <span class="relative z-10 font-medium">Projekt starten</span>
+            <div class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 
+                        bg-gradient-to-r from-[#C4A47D] to-[#8B6B47] group-hover:opacity-10"></div>
+          </a>
+          <a href="#services" 
+             class="group px-8 py-4 rounded-full border border-neutral-800 text-white
+                    transition duration-300 ease-out hover:border-neutral-700">
+            <span>Unsere Services</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Content - Abstract 3D Element -->
+      <div class="relative hidden lg:block">
+        <div class="absolute inset-0 opacity-0 animate-fade-in" style="--fade-delay: 1s">
+          <!-- 3D Decorative Elements -->
+          <div class="relative w-full h-full">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <!-- Golden Ring -->
+              <div class="w-[400px] h-[400px] border-[2px] border-[#C4A47D]/20 rounded-full
+                          transform rotate-45 animate-spin-slow"></div>
+              <!-- Floating Spheres -->
+              <div class="absolute top-0 left-1/2 w-4 h-4 bg-[#C4A47D] rounded-full
+                          transform -translate-x-1/2 animate-float-y"></div>
+              <div class="absolute bottom-0 left-1/2 w-6 h-6 bg-[#8B6B47] rounded-full
+                          transform -translate-x-1/2 animate-float-y-reverse"></div>
+              <!-- Gradient Lines -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C4A47D]/20 to-transparent
+                            transform -rotate-45"></div>
+                <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8B6B47]/20 to-transparent
+                            transform rotate-45"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in" style="--fade-delay: 1.2s">
+    <div class="flex flex-col items-center gap-2">
+      <span class="text-neutral-500 text-sm tracking-wider uppercase">Scroll</span>
+      <div class="w-[1px] h-12 bg-gradient-to-b from-neutral-500/50 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#C4A47D] to-[#8B6B47] text-transparent bg-clip-text;
+  }
+
+  @keyframes reveal {
+    0% { transform: scaleX(0); transform-origin: left; }
+    45% { transform: scaleX(1); transform-origin: left; }
+    55% { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+  }
+
+  @keyframes slide-in {
+    0% { 
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes float-y {
+    0%, 100% { transform: translate(-50%, -20px); }
+    50% { transform: translate(-50%, 20px); }
+  }
+
+  @keyframes float-y-reverse {
+    0%, 100% { transform: translate(-50%, 20px); }
+    50% { transform: translate(-50%, -20px); }
+  }
+
+  @keyframes sphere-float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, 30px); }
+  }
+
+  @keyframes sphere-float-reverse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-reveal-mask {
+    animation: reveal 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  .animate-slide-in {
+    animation: slide-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--slide-delay, 0s);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+    animation-delay: var(--fade-delay, 0s);
+  }
+
+  .animate-float-y {
+    animation: float-y 4s ease-in-out infinite;
+  }
+
+  .animate-float-y-reverse {
+    animation: float-y-reverse 4s ease-in-out infinite;
+  }
+
+  .animate-sphere-float {
+    animation: sphere-float 15s ease-in-out infinite;
+  }
+
+  .animate-sphere-float-reverse {
+    animation: sphere-float-reverse 15s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .grid-animation {
+    animation: grid-fade 3s ease-out forwards;
+  }
+
+  @keyframes grid-fade {
+    from { opacity: 0; transform: translateZ(-100px); }
+    to { opacity: 1; transform: translateZ(0); }
+  }
+
+  .rotate-x-60 {
+    transform: rotateX(60deg);
+  }
+</style> 
