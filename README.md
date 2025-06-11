@@ -6,7 +6,11 @@ Eine moderne, responsive Website für MexxMedia, entwickelt mit Astro und Tailwi
 
 - 🎨 Premium Design mit warmen Erdtönen
 - 🌓 Eleganter Dark Mode
-- 📱 Vollständig responsive
+- 📱 Vollständig responsiveAuf der Webseite sollen Kunden Automatisch Temrine selber buchen können wenn sie das möchten. Das termine buchungs tool soll gesamteinheitlich zum restlichen Stiel der Webseite passen. Du sollt die Logik sowie die Oberfläche dazu Implementieren. Wird eine Termin gebucht wird das automatisch in meinen Google Kalender Eingetragen und eine Email mit den Relevanten Termin Informationen sowie ein Kalendaereintrag sollen an "info@mexxmedia.de" gesendet werden. 
+
+Nenne mir noch 3 weitere Dinge die zu diesem Tool gehören und Implementiere sie Direkt. 
+
+Desweiteren sollst du mir noch mindestens 7 Verbesserungsvorschläge für die gesamte Webseite geben. 
 - ⚡ Optimierte Performance
 - 🎭 Moderne Animationen und Übergänge
 - 🔍 SEO-optimiert

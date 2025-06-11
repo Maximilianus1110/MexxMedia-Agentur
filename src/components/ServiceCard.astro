@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  features: string[];
+  icon: string;
+  href: string;
+}
+
+const { title, description, features, icon, href } = Astro.props;
+---
+
+<a 
+  href={href}
+  class="block h-full group"
+>
+  <div class="h-full p-8 bg-white dark:bg-neutral-900 rounded-lg shadow-lg dark:shadow-none
+              border border-gray-200 dark:border-neutral-800
+              transition-all duration-300 ease-in-out
+              hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(37,99,235,0.2)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]"
+  >
+    <!-- Icon & Title -->
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-12 h-12 rounded-md bg-primary-100 dark:bg-primary-500/10 flex items-center justify-center
+                  group-hover:bg-primary-200 dark:group-hover:bg-primary-500/20 transition-colors duration-300">
+        <div class="text-primary-600 dark:text-primary-400" set:html={icon} />
+      </div>
+      <h3 class="font-display text-xl text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+        {title}
+      </h3>
+    </div>
+
+    <!-- Description -->
+    <p class="font-body text-neutral-700 dark:text-neutral-300 mb-8">
+      {description}
+    </p>
+
+    <!-- Features List -->
+    <ul class="space-y-4">
+      {features.map((feature) => (
+        <li class="flex items-center text-neutral-700 dark:text-neutral-300">
+          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="font-body group-hover:text-neutral-900 dark:group-hover:text-white transition-colors duration-300">
+            {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</a> 

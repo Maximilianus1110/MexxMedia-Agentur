@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+
+const painPoints = [
+  {
+    stat: "99.9%",
+    text: "Verfügbarkeit garantiert durch redundante Server-Infrastruktur",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+          </svg>`
+  },
+  {
+    stat: "47%",
+    text: "der Nutzer erwarten eine Ladezeit von maximal 2 Sekunden",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>`
+  },
+  {
+    stat: "24/7",
+    text: "Monitoring und Support für Ihre Website",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>`
+  }
+];
+
+const features = [
+  {
+    title: "DSGVO-konformes Hosting",
+    description: "Hosting in deutschen Rechenzentren mit höchsten Datenschutzstandards.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>`
+  },
+  {
+    title: "Tägliche Backups",
+    description: "Automatische Sicherungen Ihrer Website und Datenbank für maximale Sicherheit.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+          </svg>`
+  },
+  {
+    title: "Updates & Security",
+    description: "Regelmäßige Updates und proaktive Sicherheitsüberwachung.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>`
+  },
+  {
+    title: "Domain & SSL inklusive",
+    description: "Professionelle Domain-Verwaltung und SSL-Verschlüsselung für Ihre Sicherheit.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>`
+  },
+  {
+    title: "E-Mail-Service",
+    description: "Professionelle E-Mail-Adressen und Weiterleitungen für Ihr Business.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>`
+  },
+  {
+    title: "Technischer Support",
+    description: "Persönlicher Support und schnelle Hilfe bei allen technischen Fragen.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>`
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Analyse & Beratung",
+    subtitle: "Anforderungen & Planung",
+    description: "Ermittlung Ihrer spezifischen Hosting-Anforderungen und Empfehlung der optimalen Lösung.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>`
+  },
+  {
+    step: 2,
+    title: "Setup & Migration",
+    subtitle: "Einrichtung & Umzug",
+    description: "Professionelle Einrichtung der Hosting-Umgebung und reibungslose Migration bestehender Inhalte.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+          </svg>`
+  },
+  {
+    step: 3,
+    title: "Performance-Optimierung",
+    subtitle: "Speed & Sicherheit",
+    description: "Performance-Optimierung und Einrichtung aller sicherheitsrelevanten Komponenten.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>`
+  },
+  {
+    step: 4,
+    title: "Tests & Monitoring",
+    subtitle: "Qualität & Überwachung",
+    description: "Umfangreiche Tests und Einrichtung des kontinuierlichen Monitorings.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>`
+  },
+  {
+    step: 5,
+    title: "Support & Wartung",
+    subtitle: "Betreuung & Updates",
+    description: "Laufende Betreuung, Updates und technischer Support für einen reibungslosen Betrieb.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>`
+  }
+];
+---
+
+<Layout 
+  title="Hosting & Wartung | MexxMedia" 
+  description="Professionelles Webhosting in Deutschland. Schnell, sicher und zuverlässig – wir kümmern uns um Ihre Website."
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 via-transparent to-primary-400/5"></div>
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [transform-style:preserve-3d] animate-grid-fade"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-neutral-950/30 dark:to-neutral-950"></div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 relative py-24">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="font-clash text-4xl md:text-5xl lg:text-6xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Hosting & Wartung – sorgenfrei online.
+          </h1>
+          <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 mb-12 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+            Schnell, sicher und zuverlässig – wir kümmern uns um Ihre Website.
+          </p>
+          <a 
+            href="/kontakt" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Jetzt unverbindlich anfragen
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Warum professionelles Hosting wichtig ist
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Ihre Website verdient die beste technische Basis – für maximale Performance und Sicherheit.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {painPoints.map((point, index) => (
+            <div 
+              class="bg-white dark:bg-neutral-900 rounded-xl p-8 border border-neutral-200/50 dark:border-neutral-800/50 
+                     transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-primary-500/20"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="w-16 h-16 rounded-lg bg-primary-100 dark:bg-primary-900/50 
+                          flex items-center justify-center mb-6">
+                <div class="text-primary-600 dark:text-primary-400" set:html={point.icon} />
+              </div>
+              <div class="font-clash text-3xl text-primary-600 dark:text-primary-400 mb-2">
+                {point.stat}
+              </div>
+              <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                {point.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Unsere Hosting-Leistungen
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Professionelles Hosting mit allem, was Ihre Website braucht – aus einer Hand.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              class="bg-white dark:bg-neutral-900 rounded-xl p-8 border border-neutral-200/50 dark:border-neutral-800/50 
+                     transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-primary-500/20"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/50 
+                          flex items-center justify-center mb-6">
+                <div class="text-primary-600 dark:text-primary-400" set:html={feature.icon} />
+              </div>
+              <h3 class="font-clash text-xl text-neutral-900 dark:text-white mb-3">
+                {feature.title}
+              </h3>
+              <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            So arbeiten wir
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Von der Analyse bis zum laufenden Betrieb – wir begleiten Sie durch den gesamten Prozess.
+          </p>
+        </div>
+
+        <ProcessTimeline steps={process} />
+      </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Unsere Hosting-Infrastruktur
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            State-of-the-Art Technologie für maximale Performance und Sicherheit.
+          </p>
+        </div>
+
+        <div class="max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          <div class="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-xl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="font-clash text-4xl md:text-5xl text-neutral-900 dark:text-white mb-8" data-aos="fade-up">
+            Bereit loszulegen?
+          </h2>
+          <a 
+            href="/kontakt" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Jetzt Projekt starten
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

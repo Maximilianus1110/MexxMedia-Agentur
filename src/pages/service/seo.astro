@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+
+const painPoints = [
+  {
+    stat: "75%",
+    text: "der Nutzer klicken nie über die erste Seite der Suchergebnisse hinaus",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>`
+  },
+  {
+    stat: "53%",
+    text: "aller Website-Besucher kommen über organische Suchergebnisse",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>`
+  },
+  {
+    stat: "200+",
+    text: "Ranking-Faktoren beeinflussen Ihre Position in den Suchergebnissen",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>`
+  }
+];
+
+const features = [
+  {
+    title: "Keyword-Recherche & Strategie",
+    description: "Identifikation der relevantesten Keywords mit dem höchsten Potenzial für Ihr Business.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>`
+  },
+  {
+    title: "Technisches SEO",
+    description: "Optimierung der technischen Grundlagen für bessere Rankings und Performance.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>`
+  },
+  {
+    title: "Content-Erstellung",
+    description: "SEO-optimierte Texte und Inhalte, die Ihre Zielgruppe und Suchmaschinen überzeugen.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+          </svg>`
+  },
+  {
+    title: "Performance-Analyse",
+    description: "Kontinuierliche Überwachung und Optimierung Ihrer SEO-Performance.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>`
+  },
+  {
+    title: "Google Business Integration",
+    description: "Optimierung Ihres lokalen Rankings durch professionelles Google Business Profil Management.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>`
+  },
+  {
+    title: "Lokales SEO",
+    description: "Gezielte Optimierung für lokale Suchanfragen und regionale Sichtbarkeit.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>`
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Analyse & Beratung",
+    subtitle: "IST-Zustand & Potenziale",
+    description: "Umfassende Analyse Ihrer aktuellen SEO-Situation und Entwicklung einer maßgeschneiderten Strategie.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>`
+  },
+  {
+    step: 2,
+    title: "Keyword-Recherche",
+    subtitle: "Zielgruppe & Suchintentionen",
+    description: "Identifikation der relevantesten Keywords und Optimierungspotenziale für Ihre Zielgruppe.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>`
+  },
+  {
+    step: 3,
+    title: "Technische Optimierung",
+    subtitle: "OnPage & Performance",
+    description: "Implementierung technischer SEO-Maßnahmen und Beseitigung von Hindernissen.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>`
+  },
+  {
+    step: 4,
+    title: "Content-Optimierung",
+    subtitle: "Texte & Struktur",
+    description: "Erstellung und Optimierung von SEO-relevanten Inhalten für bessere Rankings.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>`
+  },
+  {
+    step: 5,
+    title: "Monitoring & Reporting",
+    subtitle: "Analyse & Anpassung",
+    description: "Kontinuierliche Überwachung der Rankings und Anpassung der Strategie.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>`
+  }
+];
+---
+
+<Layout 
+  title="SEO & Content Optimierung | MexxMedia" 
+  description="Professionelle Suchmaschinenoptimierung für mehr Sichtbarkeit und Reichweite. Wir bringen Sie auf die erste Seite bei Google."
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 via-transparent to-primary-400/5"></div>
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [transform-style:preserve-3d] animate-grid-fade"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-neutral-950/30 dark:to-neutral-950"></div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 relative py-24">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="font-clash text-4xl md:text-5xl lg:text-6xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            SEO & Content, der gefunden wird.
+          </h1>
+          <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 mb-12 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+            Mehr Sichtbarkeit, mehr Reichweite, mehr Kunden – mit smarter Optimierung.
+          </p>
+          <a 
+            href="/kontakt" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Jetzt unverbindlich anfragen
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Warum SEO entscheidend ist
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            In der digitalen Welt ist Sichtbarkeit der Schlüssel zum Erfolg. SEO macht Sie sichtbar – genau dort, wo Ihre Zielgruppe sucht.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {painPoints.map((point, index) => (
+            <div 
+              class="bg-white dark:bg-neutral-900 rounded-xl p-8 border border-neutral-200/50 dark:border-neutral-800/50 
+                     transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-primary-500/20"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="w-16 h-16 rounded-lg bg-primary-100 dark:bg-primary-900/50 
+                          flex items-center justify-center mb-6">
+                <div class="text-primary-600 dark:text-primary-400" set:html={point.icon} />
+              </div>
+              <div class="font-clash text-3xl text-primary-600 dark:text-primary-400 mb-2">
+                {point.stat}
+              </div>
+              <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                {point.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            Unsere SEO-Leistungen
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Von der Keyword-Recherche bis zum Performance-Monitoring – wir kümmern uns um alle Aspekte Ihrer SEO-Strategie.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              class="bg-white dark:bg-neutral-900 rounded-xl p-8 border border-neutral-200/50 dark:border-neutral-800/50 
+                     transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-primary-500/20"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/50 
+                          flex items-center justify-center mb-6">
+                <div class="text-primary-600 dark:text-primary-400" set:html={feature.icon} />
+              </div>
+              <h3 class="font-clash text-xl text-neutral-900 dark:text-white mb-3">
+                {feature.title}
+              </h3>
+              <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            So arbeiten wir
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Systematische Optimierung für nachhaltige Ergebnisse in den Suchergebnissen.
+          </p>
+        </div>
+
+        <ProcessTimeline steps={process} />
+      </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-3xl md:text-4xl text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
+            SEO-Erfolge unserer Kunden
+          </h2>
+          <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Echte Resultate durch strategische Suchmaschinenoptimierung.
+          </p>
+        </div>
+
+        <div class="max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          <div class="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-xl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="font-clash text-4xl md:text-5xl text-neutral-900 dark:text-white mb-8" data-aos="fade-up">
+            Bereit loszulegen?
+          </h2>
+          <a 
+            href="/kontakt" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Jetzt Projekt starten
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

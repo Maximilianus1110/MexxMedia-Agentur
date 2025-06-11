@@ -1,0 +1,324 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Pricing from '../components/Pricing.astro';
+
+const services = [
+  {
+    title: "Webdesign & Entwicklung", 
+    href: "/service/webdesign",
+    description: "Wir entwickeln maßgeschneiderte Websites und Webanwendungen, die nicht nur optisch beeindrucken, sondern auch technisch überzeugen. Unser Fokus liegt auf der perfekten Kombination aus ansprechendem Design, intuitiver Benutzerführung und technischer Exzellenz. Mit modernsten Technologien und bewährten Best Practices schaffen wir digitale Erlebnisse, die Ihre Zielgruppe begeistern und Ihre Conversion-Rate steigern.",
+    features: [
+      "Individuelles Design nach CI",
+      "Responsive & barrierefrei",
+      "Performance-optimiert",
+      "Moderne Technologien",
+      "SEO-freundliche Entwicklung",
+      "Regelmäßige Updates & Support"
+    ],
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>`
+  },
+  {
+    title: "SEO & Content Marketing",
+    href: "/service/seo",
+    description: "Mit unserer ganzheitlichen SEO-Strategie verbessern wir Ihre Online-Sichtbarkeit nachhaltig. Wir analysieren Ihre Zielgruppe, identifizieren relevante Keywords und optimieren Ihre Website für maximale Suchmaschinen-Performance. Unser Content-Marketing-Ansatz sorgt dafür, dass Sie als Experte in Ihrer Branche wahrgenommen werden und qualifizierte Leads generieren.",
+    features: [
+      "Keyword-Recherche & Strategie",
+      "Content-Erstellung & Optimierung",
+      "On-Page & Off-Page SEO",
+      "Performance-Tracking",
+      "Regelmäßige Reports",
+      "Content-Kalender & Planung"
+    ],
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>`
+  },
+  {
+    title: "Hosting & Wartung",
+    href: "/service/hosting",
+    description: "Wir kümmern uns um den reibungslosen Betrieb Ihrer Website – von der Bereitstellung bis zur kontinuierlichen Pflege. Mit unserem professionellen Hosting-Service und proaktiver Wartung gewährleisten wir maximale Verfügbarkeit, Sicherheit und Performance. Sie können sich auf Ihr Kerngeschäft konzentrieren, während wir Ihre digitale Präsenz am Laufen halten.",
+    features: [
+      "Schnelles Hosting inkl. SSL",
+      "Tägliche Backups",
+      "Regelmäßige Updates",
+      "24/7 Monitoring",
+      "Security-Schutz",
+      "DSGVO-konforme Umsetzung"
+    ],
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a4 4 0 004 4h10a4 4 0 004-4V7M3 7a4 4 0 014-4h10a4 4 0 014 4M3 7h18"></path>
+           </svg>`
+  }
+];
+
+const benefits = [
+  {
+    title: "Maßgeschneiderte Lösungen",
+    description: "Keine Templates, sondern individuelle Entwicklung nach Ihren Bedürfnissen",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+          </svg>`
+  },
+  {
+    title: "Performance & SEO",
+    description: "Optimierte Websites für beste Suchergebnisse und Conversion-Raten",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>`
+  },
+  {
+    title: "Persönliche Beratung",
+    description: "Transparente Kommunikation und individuelle Betreuung",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+          </svg>`
+  },
+  {
+    title: "Modernste Technologien",
+    description: "Einsatz aktueller Tools und Frameworks für zukunftssichere Lösungen",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>`
+  }
+];
+
+const workflow = [
+  {
+    step: 1,
+    title: "Erstgespräch",
+    description: "Wir lernen uns kennen und verstehen Ihre Ziele und Anforderungen"
+  },
+  {
+    step: 2,
+    title: "Konzept & Design",
+    description: "Entwicklung einer maßgeschneiderten Strategie und visuellen Identität"
+  },
+  {
+    step: 3,
+    title: "Entwicklung & Test",
+    description: "Technische Umsetzung mit kontinuierlicher Qualitätssicherung"
+  },
+  {
+    step: 4,
+    title: "Go-Live",
+    description: "Sorgfältig geplanter Launch mit allen notwendigen Optimierungen"
+  },
+  {
+    step: 5,
+    title: "Support & Weiterentwicklung",
+    description: "Kontinuierliche Betreuung und Optimierung Ihres Projekts"
+  }
+];
+
+const stats = [
+  { number: "100+", label: "Projekte abgeschlossen" },
+  { number: "98%", label: "Kundenzufriedenheit" },
+  { number: "5+", label: "Jahre Erfahrung" },
+  { number: "24/7", label: "Support & Service" }
+];
+---
+
+<Layout title="Services - MexxMedia" description="Entdecken Sie unsere maßgeschneiderten digitalen Lösungen für Ihren Erfolg im Web.">
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <div class="container mx-auto px-4 relative py-24">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="font-clash text-4xl md:text-5xl lg:text-6xl text-neutral-900 dark:text-white mb-6">
+            Unsere Services im Detail
+          </h1>
+          <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 mb-12 leading-relaxed">
+            Entdecken Sie, was MexxMedia einzigartig macht – und wie wir Ihre Marke digital nach vorn bringen.
+          </p>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+          >
+            Jetzt unverbindlich anfragen
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Services Section -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="space-y-32">
+          {services.map((service, index) => (
+            <div class={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+              <!-- Content Side -->
+              <div class={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                <div class="flex items-center gap-4 text-primary-600 dark:text-primary-400">
+                  <div class="w-16 h-16 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+                    <div set:html={service.icon} />
+                  </div>
+                  <h2 class="font-clash text-3xl">{service.title}</h2>
+                </div>
+                
+                <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <a 
+                  href={service.href} 
+                  class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
+                >
+                  Mehr erfahren
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Features Side -->
+              <div class={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                <div class="bg-white dark:bg-neutral-900 rounded-2xl p-8 border border-neutral-200/50 dark:border-neutral-800/50 shadow-xl dark:shadow-none">
+                  <ul class="space-y-4">
+                    {service.features.map((feature) => (
+                      <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="font-inter text-neutral-700 dark:text-neutral-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why MexxMedia Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-4xl text-neutral-900 dark:text-white mb-6">
+            Warum MexxMedia?
+          </h2>
+          <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
+            Wir verbinden technische Expertise mit kreativem Design, um Ihre digitale Präsenz auf das nächste Level zu heben.
+          </p>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {benefits.map((benefit) => (
+            <div class="group p-6 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 
+                        transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-primary-500/20">
+              <div class="w-16 h-16 rounded-lg bg-primary-100 dark:bg-primary-900/50 
+                          flex items-center justify-center mb-6
+                          group-hover:bg-primary-600 dark:group-hover:bg-primary-600
+                          transition-colors duration-300">
+                <div class="text-primary-600 dark:text-primary-400 
+                            group-hover:text-white dark:group-hover:text-white
+                            transition-colors duration-300"
+                     set:html={benefit.icon} />
+              </div>
+              <h3 class="font-clash text-xl text-neutral-900 dark:text-white mb-3">
+                {benefit.title}
+              </h3>
+              <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="font-clash text-4xl font-medium text-primary-600 dark:text-primary-400 mb-2">
+                {stat.number}
+              </div>
+              <div class="text-sm text-neutral-600 dark:text-neutral-400">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-clash text-4xl text-neutral-900 dark:text-white mb-6">
+            So arbeiten wir
+          </h2>
+          <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
+            Ein transparenter Prozess für maximalen Erfolg
+          </p>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto">
+          <!-- Timeline Line -->
+          <div class="absolute left-8 top-0 bottom-0 w-px bg-primary-600/20 dark:bg-primary-400/20 md:left-1/2 md:-translate-x-px"></div>
+
+          <!-- Timeline Items -->
+          <div class="space-y-16">
+            {workflow.map((item, index) => (
+              <div class={`relative grid md:grid-cols-2 gap-8 items-center ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                <!-- Step Number -->
+                <div class={`absolute left-8 -translate-x-1/2 w-8 h-8 rounded-full bg-primary-600 dark:bg-primary-400 text-white flex items-center justify-center font-clash md:left-1/2 ${index % 2 === 0 ? 'md:-translate-x-1/2' : 'md:-translate-x-1/2'}`}>
+                  {item.step}
+                </div>
+
+                <!-- Content -->
+                <div class={`md:col-span-1 ${index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'}`}>
+                  <h3 class="font-clash text-2xl text-neutral-900 dark:text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <Pricing />
+
+    <!-- Final CTA Section -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="font-clash text-4xl md:text-5xl text-neutral-900 dark:text-white mb-8">
+            Bereit loszulegen?
+          </h2>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full
+                   font-inter text-lg text-white bg-primary-600
+                   transition-all duration-300 ease-out
+                   hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25
+                   focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+          >
+            Jetzt Projekt starten
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

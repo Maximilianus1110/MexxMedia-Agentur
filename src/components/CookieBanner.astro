@@ -1,0 +1,49 @@
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800 p-4 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+        Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. 
+        Weitere Informationen finden Sie in unserer <a href="/datenschutz" class="text-primary-600 dark:text-primary-400 hover:underline">Datenschutzerklärung</a>.
+      </p>
+      <div class="flex gap-4">
+        <button
+          id="decline-cookies"
+          class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+        >
+          Ablehnen
+        </button>
+        <button
+          id="accept-cookies"
+          class="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors"
+        >
+          Akzeptieren
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptButton = document.getElementById('accept-cookies');
+const declineButton = document.getElementById('decline-cookies');
+
+if (!cookieBanner || !acceptButton || !declineButton) {
+  console.error('Cookie banner elements not found');
+} else {
+  // Hide banner immediately if user has already made a choice
+  if (localStorage.getItem('cookieConsent')) {
+    cookieBanner.classList.add('hidden');
+  }
+
+  acceptButton.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    cookieBanner.classList.add('hidden');
+  });
+
+  declineButton.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    cookieBanner.classList.add('hidden');
+  });
+}
+</script> 
