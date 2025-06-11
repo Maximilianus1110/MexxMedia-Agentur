@@ -1,16 +1,35 @@
 ---
+import { siteConfig } from "../data/site.config";
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   services: [
-    { name: "Webdesign", href: "/webdesign" },
-    { name: "SEO & Marketing", href: "/seo" },
-    { name: "Hosting & Wartung", href: "/hosting" }
+    { name: "Webdesign", href: "/service/webdesign" },
+    { name: "SEO & Marketing", href: "/service/seo" },
+    { name: "Hosting & Wartung", href: "/service/hosting" }
   ]
 };
 ---
 
-<footer class="bg-white dark:bg-neutral-950 border-t border-gray-200 dark:border-neutral-900">
+<script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "MexxMedia GbR",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bleichstraße 21",
+        "addressLocality": "Nürnberg",
+        "postalCode": "90429",
+        "addressCountry": "DE"
+    },
+    "telephone": siteConfig.contact.phone,
+    "email": siteConfig.contact.email,
+    "url": siteConfig.url,
+    "image": new URL(siteConfig.ogImage, siteConfig.url).href
+})} />
+
+<footer class="relative bg-neutral-100/50 dark:bg-neutral-900/50 border-t border-neutral-200/50 dark:border-neutral-800/50 pt-16 pb-8">
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- MexxMedia -->
@@ -48,10 +67,9 @@ const footerLinks = {
           Kontakt
         </h3>
         <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-          <li>+49 (0) 123 456789</li>
-          <li>info@mexxmedia.de</li>
-          <li>Musterstraße 123</li>
-          <li>12345 Musterstadt</li>
+          <li><a href="tel:+4915772150009" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">+49 157 7215 0009</a></li>
+          <li><a href="mailto:info@mexxmedia.de" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">info@mexxmedia.de</a></li>
+          <li>Nürnberg, Deutschland</li>
         </ul>
       </div>
 

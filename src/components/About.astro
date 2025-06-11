@@ -1,15 +1,13 @@
 ---
-const teamMembers = [
+const team = [
   {
-    name: "Max Grüner",
-    role: "Gründer & Entwickler",
-    description: "Als erfahrener Entwickler bringt Max technische Expertise und innovative Lösungen in jedes Projekt ein.",
+    name: "Max",
+    role: "Strategie & Entwicklung",
     image: "/team/max.png"
   },
   {
     name: "Kürsat",
-    role: "Gründer & Designer",
-    description: "Kürsat vereint kreatives Design mit strategischem Denken, um einzigartige digitale Erlebnisse zu schaffen.",
+    role: "Design & Kundenkontakt",
     image: "/team/kursat.png"
   }
 ];
@@ -39,179 +37,96 @@ const values = [
 ];
 ---
 
-<section class="relative py-24 overflow-hidden">
-  <!-- Background Effects -->
+<section class="py-24 relative overflow-hidden">
+  <!-- Background Elements -->
   <div class="absolute inset-0">
-    <!-- Base gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 via-transparent to-primary-400/5"></div>
-    
-    <!-- Animated grid with mask -->
-    <div class="absolute inset-0">
-      <!-- Grid pattern -->
-      <div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [transform-style:preserve-3d] animate-grid-fade"></div>
-      
-      <!-- Gradient mask for grid -->
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-neutral-950/30 dark:to-neutral-950"></div>
-    </div>
-    
-    <!-- Decorative elements -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(31,63,255,0.05)_0%,transparent_40%)]"></div>
-    <div class="absolute -left-40 -top-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
-    <div class="absolute -right-40 -bottom-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-600/[0.03] to-transparent"></div>
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 aspect-square bg-gradient-conic from-primary-600/[0.05] to-transparent rounded-full blur-3xl"></div>
   </div>
 
   <div class="container mx-auto px-4 relative">
-    <!-- Section Header -->
-    <div class="max-w-3xl mx-auto text-center mb-20" data-aos="fade-up">
-      <span class="text-primary-600 dark:text-primary-400 font-medium tracking-wide uppercase text-sm mb-4 bg-primary-100 dark:bg-primary-900/50 px-4 py-2 rounded-full">Über uns</span>
-      <h2 class="text-4xl md:text-5xl font-clash font-medium mb-6 text-neutral-900 dark:text-white">
-        Digitale Expertise trifft 
-        <span class="relative inline-block">
-          kreative Vision
-          <div class="absolute -bottom-2 left-0 right-0 h-3 bg-primary-600/10 dark:bg-primary-400/10 -skew-x-12"></div>
-        </span>
-      </h2>
-      <p class="text-lg font-inter text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        Als junges, dynamisches Team verbinden wir technische Innovation mit kreativem Design. 
-        Unsere Mission ist es, Ihre digitale Präsenz auf das nächste Level zu heben.
-      </p>
-    </div>
-
-    <!-- Combined Team and Values Section -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-      <!-- First Team Member -->
-      <div class="lg:col-span-1 md:col-span-1">
-        <div class="group relative max-w-sm mx-auto w-full" data-aos="fade-right">
-          <div class="relative rounded-lg overflow-hidden h-full">
-            <!-- Image Container -->
-            <div class="aspect-[2/3] relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/10 to-transparent mix-blend-overlay"></div>
-              <img
-                src={teamMembers[0].image}
-                alt={teamMembers[0].name}
-                class="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            
-            <!-- Info Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/95 via-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <!-- Blur backdrop for text -->
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <div class="absolute inset-0 backdrop-blur-md bg-neutral-900/30 rounded-lg"></div>
-                <div class="relative">
-                  <h3 class="text-2xl font-clash font-medium text-white mb-2">
-                    {teamMembers[0].name}
-                  </h3>
-                  <p class="text-lg text-neutral-200 mb-2">
-                    {teamMembers[0].role}
-                  </p>
-                  <p class="text-neutral-300 font-inter">
-                    {teamMembers[0].description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Values Cards -->
-      <div class="lg:col-span-2 md:col-span-2 flex flex-col justify-between h-full">
-        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
-          {values.map((value, index) => (
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
+      <!-- Team Photos -->
+      <div class="relative" data-aos="fade-up">
+        <div class="grid grid-cols-2 gap-4">
+          {team.map((member, index) => (
             <div 
-              class="p-4 bg-white dark:bg-neutral-900 rounded-lg border border-gray-200 dark:border-neutral-800 
-                     transition-all duration-300 hover:-translate-y-1 hover:border-primary-600/30 dark:hover:border-primary-400/30
-                     hover:shadow-lg dark:hover:shadow-none group"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
+              class="relative group"
+              style={`transform: translateY(${index * 2}rem)`}
             >
-              <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-md bg-primary-100 dark:bg-primary-900/50 
-                          flex items-center justify-center
-                          group-hover:bg-primary-600 dark:group-hover:bg-primary-600
-                          transition-colors duration-300">
-                  <div class="text-primary-600 dark:text-primary-400 
-                            group-hover:text-white dark:group-hover:text-white
-                            transition-colors duration-300"
-                       set:html={value.icon} />
+              <div class="absolute -inset-2 bg-gradient-to-br from-primary-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 </div>
-                <div class="flex-1">
-                  <h4 class="text-lg font-clash font-medium text-neutral-900 dark:text-white mb-1">
-                    {value.title}
-                  </h4>
-                  <p class="text-sm text-neutral-700 dark:text-neutral-300 font-inter">
-                    {value.description}
-                  </p>
-                </div>
+              <div class="absolute left-4 right-4 bottom-4 p-4 bg-white/90 dark:bg-neutral-900/90 backdrop-blur rounded-xl">
+                <h3 class="font-display text-lg text-neutral-900 dark:text-white">
+                  {member.name}
+                </h3>
+                <p class="text-sm text-primary-600 dark:text-primary-400">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Second Team Member -->
-      <div class="lg:col-span-1 md:col-span-1">
-        <div class="group relative max-w-sm mx-auto w-full" data-aos="fade-left">
-          <div class="relative rounded-lg overflow-hidden h-full">
-            <!-- Image Container -->
-            <div class="aspect-[2/3] relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/10 to-transparent mix-blend-overlay"></div>
-              <img
-                src={teamMembers[1].image}
-                alt={teamMembers[1].name}
-                class="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            
-            <!-- Info Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/95 via-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <!-- Blur backdrop for text -->
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <div class="absolute inset-0 backdrop-blur-md bg-neutral-900/30 rounded-lg"></div>
-                <div class="relative">
-                  <h3 class="text-2xl font-clash font-medium text-white mb-2">
-                    {teamMembers[1].name}
-                  </h3>
-                  <p class="text-lg text-neutral-200 mb-2">
-                    {teamMembers[1].role}
-                  </p>
-                  <p class="text-neutral-300 font-inter">
-                    {teamMembers[1].description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Content -->
+      <div class="lg:pl-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary-600/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 text-sm font-medium mb-8">
+          <span class="flex w-2 h-2 rounded-full bg-primary-600 dark:bg-primary-400 mr-2"></span>
+          Das Team
         </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="text-center mt-20" data-aos="fade-up">
-      <a 
-        href="#contact"
-        class="inline-flex items-center justify-center px-8 py-4 rounded-xl
-               font-inter text-white bg-primary-600
-               transition-all duration-300 ease-out
-               hover:bg-primary-700 hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25"
-      >
-        <span>Projekt starten</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <h2 class="font-display text-3xl md:text-5xl text-neutral-900 dark:text-white mb-6">
+          Zwei Gründer, <span class="text-primary-600 dark:text-primary-400">eine Vision</span>
+        </h2>
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+          Max bringt technisches Know-how und strategisches Denken mit, 
+          Kürsat sorgt für Design, das wirkt. Gemeinsam entwickeln wir 
+          digitale Lösungen, die nicht nur gut aussehen, sondern auch Ergebnisse liefern.
+        </p>
+        <a 
+          href="/about" 
+          class="inline-flex items-center gap-2 text-neutral-900 dark:text-white font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors group"
+        >
+          Mehr über uns
+          <svg 
+            class="w-5 h-5 transform transition-transform group-hover:translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
         </svg>
       </a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  @property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
   }
 
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
+  @keyframes rotation {
+    0% { --gradient-angle: 0deg; }
+    100% { --gradient-angle: 360deg; }
+  }
+
+  .bg-gradient-conic {
+    background-image: conic-gradient(from var(--gradient-angle), var(--tw-gradient-from), var(--tw-gradient-to));
+    animation: rotation 20s linear infinite;
   }
 </style> 

@@ -5,26 +5,83 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import { siteConfig } from '@/data/site.config';
 
 export interface Props {
 	title: string;
 	description?: string;
+	ogImage?: string;
 }
 
-const { title, description = "MexxMedia - Ihre Webagentur für professionelle Online-Präsenz" } = Astro.props;
+const { 
+	title: pageTitle, 
+	description: pageDescription, 
+	ogImage: pageOgImage 
+} = Astro.props;
+
+// Use Astro.site if available, otherwise fall back to siteConfig.url
+const siteUrl = Astro.site ? Astro.site.toString() : siteConfig.url;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const title = `${pageTitle} | ${siteConfig.title}`;
+const description = pageDescription || siteConfig.description;
+const ogImage = new URL(pageOgImage || siteConfig.ogImage, siteUrl).href;
 ---
 
 <!doctype html>
 <html lang="de" class="scroll-smooth">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
+		<meta charset="UTF-T-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content={siteConfig.keywords.join(', ')} />
+		
+		<!-- Primary Meta Tags -->
 		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl.href} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl.href} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImage} />
+		<meta name="twitter:creator" content={siteConfig.twitter} />
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalUrl.href} />
+
 		<ViewTransitions />
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		
+		<script is:inline>
+			// This script is inlined to prevent FOUC (Flash of Unstyled Content)
+			const theme = (() => {
+				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+					return localStorage.getItem("theme");
+				}
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark";
+				}
+				return "light";
+			})();
+
+			if (theme === "light") {
+				document.documentElement.classList.remove("dark");
+			} else {
+				document.documentElement.classList.add("dark");
+			}
+			// We don't need to set the theme here because the toggle button will do it on click.
+			// This avoids setting it on every page load.
+		</script>
+
 		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<script is:inline>
 			document.addEventListener('astro:page-load', () => {
@@ -33,13 +90,6 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 					once: true,
 				});
 			});
-
-			// Check for saved theme preference, otherwise use system preference
-			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-				document.documentElement.classList.add('dark')
-			} else {
-				document.documentElement.classList.remove('dark')
-			}
 		</script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 	</head>
@@ -48,7 +98,7 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 		<div class="fixed inset-0 pointer-events-none">
 			<!-- Base layer with refined texture -->
 			<div class="absolute inset-0 opacity-20 mix-blend-overlay">
-				<div class="absolute inset-0 bg-[url('/noise.png')] opacity-30"></div>
+				
 			</div>
 
 			<!-- Modern Grid Pattern -->
