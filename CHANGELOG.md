@@ -1,5 +1,17 @@
 # Changelog
 
+## [Version 2.0.0] - 2024-07-28
+
+### Behoben
+
+- **Theme-Toggle-Fehler bei Seitenwechsel:** Der Theme-Umschalter funktionierte nach clientseitiger Navigation (View Transitions) nicht mehr. Das Skript wurde so angepasst, dass es den `astro:page-load`-Event nutzt, um die Event-Listener nach jedem Seitenwechsel neu zu registrieren.
+- **Cookie-Banner-Fehlfunktion:** Der Cookie-Banner wurde inkonsistent angezeigt, war nicht klickbar und verschwand nicht nach einer Auswahl. Die Logik wurde, ähnlich wie beim Theme-Toggle, überarbeitet und an den `astro:page-load`-Event gebunden, um eine konsistente Funktionalität auf allen Seiten sicherzustellen.
+
+### Geändert
+
+- **SEO-Optimierung:** Umfassende Umsetzung einer SEO-Strategie.
+    - **Seitenspezifische Metadaten:** Einzigartige und strategische `<title>`- und `<meta name="description">`-Tags für alle Seiten (`Home`, `About`, `Kontakt`, `Webdesign`, `SEO`, `Hosting`).
+
 ## [Unreleased] - Technische Finalisierung & SEO
 
 ### Dark Mode

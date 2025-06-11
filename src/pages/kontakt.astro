@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Contact from '../components/Contact.astro';
-import { siteConfig } from '../data/site.config';
 
 const title = "Kontakt aufnehmen – MexxMedia";
 const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfragen.";
@@ -11,26 +9,6 @@ const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfrage
   title={title}
   description={description}
 >
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Kontakt aufnehmen – MexxMedia",
-    "description": "Kontaktieren Sie MexxMedia für Webdesign, SEO und Hosting. Wir sind per E-Mail, Telefon oder über unser Kontaktformular erreichbar.",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": new URL(Astro.url.pathname, Astro.site).href
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "MexxMedia GbR",
-      "url": siteConfig.url,
-      "logo": new URL(siteConfig.ogImage, siteConfig.url).href
-    }
-  })} />
-  <div class="py-24 md:py-32">
-    <Contact />
-  </div>
-
   <!-- Hero Section -->
   <section class="relative py-24 lg:py-32 overflow-hidden">
     <div class="absolute inset-0">

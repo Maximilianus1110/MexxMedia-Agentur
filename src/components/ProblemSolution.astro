@@ -1,135 +1,218 @@
 ---
-const problems = [
+interface Problem {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  solution: string;
+  solutionText: string;
+  illustration: string;
+}
+
+// Define Alpine.js data type
+declare global {
+  interface Window {
+    activeTab: string;
+  }
+}
+
+const problems: Problem[] = [
   {
-    id: 'outdated',
-    tab: 'Veraltete Website',
-    title: 'Ihre Website ist nicht mehr zeitgemäß?',
-    description: 'Eine veraltete Website schreckt potenzielle Kunden ab und schadet Ihrem Image. Langsame Ladezeiten, schlechte mobile Darstellung und ein unmodernes Design führen zu hohen Absprungraten.',
-    points: [ 'Schlechtes Nutzererlebnis', 'Nicht für Mobilgeräte optimiert', 'Verpasste Geschäftschancen' ]
+    id: "outdated",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>`,
+    title: "Veraltete Website",
+    description: "Ihre aktuelle Website wirkt wie aus der Zeit gefallen. Besucher verlassen die Seite sofort wieder, weil der erste Eindruck nicht überzeugt. Das kostet Sie täglich wertvolle Kunden und Umsatz.",
+    solution: "Modernes Redesign",
+    solutionText: "Wir entwickeln eine zeitgemäße Website, die Vertrauen schafft und Besucher zu Kunden macht.",
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                  </svg>`
   },
   {
-    id: 'invisible',
-    tab: 'Nicht auffindbar',
-    title: 'Werden Sie online nicht gefunden?',
-    description: 'Ohne eine starke Präsenz in Suchmaschinen wie Google existieren Sie für viele potenzielle Kunden nicht. Schlechte Rankings bedeuten weniger Traffic und somit weniger Anfragen.',
-    points: [ 'Niedrige Besucherzahlen', 'Konkurrenz ist sichtbarer', 'Kein organisches Wachstum' ]
+    id: "invisible",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 4v3m4-3h3m-3-4h3" />
+          </svg>`,
+    title: "Nicht auffindbar",
+    description: "Ihre Zielgruppe sucht aktiv nach Ihren Leistungen – findet aber nur Ihre Konkurrenz. Jeden Tag verlieren Sie potenzielle Kunden, weil Ihre Website in den Suchergebnissen nicht auftaucht.",
+    solution: "SEO Optimierung",
+    solutionText: "Mit unserer SEO-Strategie erreichen Sie Top-Positionen bei Google und werden von Ihrer Zielgruppe gefunden.",
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>`
   },
   {
-    id: 'no-leads',
-    tab: 'Keine Anfragen',
-    title: 'Generiert Ihre Website keine Kontakte?',
-    description: 'Ihre Website ist oft der erste Kontaktpunkt. Wenn sie Besucher nicht überzeugt und zu einer Handlung motiviert, verlieren Sie wertvolle Leads an Ihre Mitbewerber.',
-    points: [ 'Unklare Handlungsaufforderungen', 'Geringe Conversion-Rate', 'Mangelndes Vertrauen' ]
+    id: "no-leads",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+          </svg>`,
+    title: "Keine Anfragen",
+    description: "Ihre Website sieht gut aus, aber die Ergebnisse bleiben aus. Besucher werden nicht zu Leads, Interessenten nicht zu Kunden. Ihr Potenzial bleibt ungenutzt, während die Konkurrenz wächst.",
+    solution: "Conversion Optimierung",
+    solutionText: "Wir optimieren jeden Aspekt Ihrer Website für maximale Conversion-Raten und messbare Ergebnisse.",
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>`
   }
 ];
 
-const solutions = [
-  {
-    id: 'outdated',
-    title: 'Modernes & schnelles Webdesign',
-    description: 'Wir erstellen eine blitzschnelle, mobil-optimierte Website mit modernem Design, die Ihre Besucher begeistert und Ihr Unternehmen professionell repräsentiert.',
-    points: [ 'Individuelles, ansprechendes Design', 'Optimale Darstellung auf allen Geräten', 'Hervorragende Ladezeiten' ]
-  },
-  {
-    id: 'invisible',
-    title: 'Strategische SEO',
-    description: 'Mit gezielter Suchmaschinenoptimierung sorgen wir dafür, dass Ihre Zielgruppe Sie genau dann findet, wenn sie nach Ihren Dienstleistungen sucht.',
-    points: [ 'Top-Positionen bei Google', 'Mehr qualifizierter Traffic', 'Nachhaltige Sichtbarkeit' ]
-  },
-  {
-    id: 'no-leads',
-    title: 'Conversion-Optimierung',
-    description: 'Durch klare Nutzerführung, überzeugende Inhalte und strategisch platzierte Call-to-Actions verwandeln wir Ihre Website-Besucher in zahlende Kunden.',
-    points: [ 'Steigerung der Anfragen', 'Verbesserte Nutzerführung', 'Messbarer Erfolg' ]
-  }
-];
+// Make problems available to the script
+const problemsJson = JSON.stringify(problems);
 ---
 
-<section id="problem-solution" class="py-24 md:py-32">
-  <div class="container mx-auto px-4">
+<section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-black">
+  <!-- Background Effects -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 via-transparent to-primary-400/5"></div>
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(31,63,255,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(31,63,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [transform-style:preserve-3d] animate-grid-fade"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-neutral-950/30 dark:to-neutral-950"></div>
+    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(31,63,255,0.05)_0%,transparent_40%)]"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative">
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-neutral-800 dark:text-white mb-4">
-        Vom Problem zur Lösung
+    <div class="text-center mb-16" data-aos="fade-up">
+      <div class="inline-block px-4 py-2 rounded-lg text-sm font-medium bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400 mb-4">
+        Warnung: Diese Fehler kosten Sie Kunden
+      </div>
+      
+      <h2 class="font-clash text-4xl md:text-5xl lg:text-6xl text-neutral-900 dark:text-white mb-6">
+        Kennen Sie diese
+        <span class="relative inline-block">
+          <span class="relative z-10">Probleme?</span>
+          <div class="absolute -bottom-2 left-0 right-0 h-3 bg-red-600/10 dark:bg-red-400/10 -skew-x-12"></div>
+        </span>
       </h2>
-      <p class="text-lg text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto">
-        Kennen Sie das? Wir haben die Lösung.
+      
+      <p class="font-inter text-xl text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
+        Viele Unternehmen haben dieselben Probleme – erkennen Sie sich wieder?
       </p>
     </div>
 
-    <!-- Alpine.js Component Root -->
-    <div x-data={`{
-      problems: ${JSON.stringify(problems)},
-      solutions: ${JSON.stringify(solutions)},
+    <!-- Interactive Problems Section -->
+    <div class="relative" x-data="{ 
+        problems: ${problemsJson},
       activeTab: 'outdated',
-      get activeIndex() { return this.problems.findIndex(p => p.id === this.activeTab) },
-      next() {
-        const newIndex = (this.activeIndex + 1) % this.problems.length;
-        this.activeTab = this.problems[newIndex].id;
+        get activeIndex() { return this.problems.findIndex(p => p.id === this.activeTab) },
+        next() {
+            const newIndex = (this.activeIndex + 1) % this.problems.length;
+            this.activeTab = this.problems[newIndex].id;
       },
-      init() {
-        setInterval(() => { this.next() }, 5000);
-      }
-    }`.replace(/"/g, "'")} x-init="init()">
-
+        prev() {
+            const newIndex = (this.activeIndex - 1 + this.problems.length) % this.problems.length;
+            this.activeTab = this.problems[newIndex].id;
+        },
+        init() {
+            setInterval(() => {
+                this.next();
+            }, 3000);
+        }
+    }" x-init="init()">
       <!-- Tabs -->
       <div class="flex justify-center mb-12 relative">
-        <div class="flex items-center justify-center bg-neutral-100 dark:bg-neutral-800/50 rounded-full p-1.5">
-          <template x-for="problem in problems" :key="problem.id">
+        <div class="inline-flex p-1 rounded-full bg-white dark:bg-neutral-900 shadow-lg space-x-1">
+          {problems.map((problem) => (
             <button
               class="px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
-              :class="activeTab === problem.id ? 'bg-primary-600 text-white shadow-md' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700'"
-              @click="activeTab = problem.id"
-              x-text="problem.tab">
+              :class="activeTab === problem.id ? 'bg-[#1f3fff] text-white shadow-md' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'"
+              @click={`activeTab = '${problem.id}'`}
+            >
+              {problem.title}
             </button>
-          </template>
+          ))}
         </div>
       </div>
 
       <!-- Slides Container -->
       <div class="relative overflow-hidden">
-        <div class="flex transition-transform duration-500 ease-in-out" :style="\`transform: translateX(-\${activeIndex * 100}%)\`">
-          <template x-for="problem in problems" :key="problem.id">
+        <div 
+          class="flex transition-transform duration-500 ease-in-out"
+          :style="`transform: translateX(-${activeIndex * 100}%)`"
+        >
+          {problems.map((problem) => (
             <div class="w-full flex-shrink-0">
-              <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                
-                <!-- Problem Side -->
-                <div class="space-y-4">
-                  <h3 class="font-display text-2xl font-bold text-neutral-800 dark:text-white" x-text="problem.title"></h3>
-                  <p class="text-neutral-600 dark:text-neutral-300" x-text="problem.description"></p>
-                  <ul class="space-y-2">
-                    <template x-for="point in problem.points" :key="point">
-                      <li class="flex items-start">
-                        <svg class="w-5 h-5 mr-3 mt-1 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        <span x-text="point"></span>
-                      </li>
-                    </template>
-                  </ul>
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- Left Side - Illustration -->
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] rounded-lg bg-white dark:bg-neutral-900 p-8 flex items-center justify-center">
+                  <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-transparent rounded-lg"></div>
+                  <div class="relative text-primary-600 dark:text-primary-400 transform transition-transform duration-500 hover:scale-110">
+                    <Fragment set:html={problem.illustration} />
+                  </div>
                 </div>
 
-                <!-- Solution Side -->
-                <div class="bg-gradient-to-br from-primary-50 to-blue-100 dark:from-neutral-900 dark:to-primary-900/20 p-8 rounded-2xl space-y-4">
-                   <template x-for="solution in solutions.filter(s => s.id === problem.id)" :key="solution.id">
-                    <div>
-                      <h3 class="font-display text-2xl font-bold text-neutral-800 dark:text-white" x-text="solution.title"></h3>
-                      <p class="text-neutral-600 dark:text-neutral-300" x-text="solution.description"></p>
-                      <ul class="space-y-2">
-                        <template x-for="point in solution.points" :key="point">
-                           <li class="flex items-start">
-                            <svg class="w-5 h-5 mr-3 mt-1 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span x-text="point"></span>
-                          </li>
-                        </template>
-                      </ul>
-                    </div>
-                   </template>
-                </div>
+                <!-- Right Side - Content -->
+                <div class="space-y-8">
+                  <div>
+                    <h3 class="font-clash text-3xl text-neutral-900 dark:text-white mb-4">
+                      {problem.title}
+                    </h3>
+                    <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300">
+                      {problem.description}
+                    </p>
+                  </div>
 
+                  <!-- Solution Card -->
+                  <div class="p-6 rounded-lg bg-blue-50 dark:bg-[#1f3fff]/10 border border-blue-100 dark:border-[#1f3fff]/20">
+                    <h4 class="font-clash text-xl text-primary-600 dark:text-primary-400 mb-2">
+                      {problem.solution}
+                    </h4>
+                    <p class="font-inter text-neutral-700 dark:text-neutral-300">
+                      {problem.solutionText}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </template>
+          ))}
         </div>
+
+        <!-- Navigation Arrows -->
+        <button
+          class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-neutral-900 shadow-lg items-center justify-center text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:scale-110"
+          @click="prev()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button
+          class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-neutral-900 shadow-lg items-center justify-center text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:scale-110"
+          @click="next()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16" data-aos="fade-up">
+      <a 
+        href="#contact"
+        class="inline-flex items-center justify-center px-8 py-4 rounded-full
+               font-inter text-lg text-white bg-[#1f3fff]
+               transition-all duration-300 ease-out
+               hover:scale-105 hover:shadow-lg hover:shadow-[#1f3fff]/25
+               focus:outline-none focus:ring-2 focus:ring-[#1f3fff]/50"
+      >
+        <span>Jetzt Gespräch vereinbaren</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>

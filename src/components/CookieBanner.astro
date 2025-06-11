@@ -24,26 +24,36 @@
 </div>
 
 <script>
-const cookieBanner = document.getElementById('cookie-banner');
-const acceptButton = document.getElementById('accept-cookies');
-const declineButton = document.getElementById('decline-cookies');
+  const setupCookieBanner = () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptButton = document.getElementById('accept-cookies');
+    const declineButton = document.getElementById('decline-cookies');
 
-if (!cookieBanner || !acceptButton || !declineButton) {
-  console.error('Cookie banner elements not found');
-} else {
-  // Hide banner immediately if user has already made a choice
-  if (localStorage.getItem('cookieConsent')) {
-    cookieBanner.classList.add('hidden');
-  }
+    if (!cookieBanner || !acceptButton || !declineButton) {
+      return; // Exit if elements are not on the page
+    }
 
-  acceptButton.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    cookieBanner.classList.add('hidden');
-  });
+    // Show or hide banner based on consent
+    if (localStorage.getItem('cookieConsent')) {
+      cookieBanner.style.display = 'none';
+    } else {
+      cookieBanner.style.display = 'block';
+    }
 
-  declineButton.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    cookieBanner.classList.add('hidden');
-  });
-}
+    const acceptAction = () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      if (cookieBanner) cookieBanner.style.display = 'none';
+    };
+
+    const declineAction = () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      if (cookieBanner) cookieBanner.style.display = 'none';
+    };
+
+    acceptButton.addEventListener('click', acceptAction, { once: true });
+    declineButton.addEventListener('click', declineAction, { once: true });
+  };
+
+  // Run the setup function on initial page load and after every Astro navigation.
+  document.addEventListener('astro:page-load', setupCookieBanner);
 </script> 

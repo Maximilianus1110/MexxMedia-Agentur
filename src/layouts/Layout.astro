@@ -5,36 +5,22 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import { siteConfig } from '@/data/site.config';
 
 export interface Props {
 	title: string;
 	description?: string;
-	ogImage?: string;
 }
 
-const { 
-	title: pageTitle, 
-	description: pageDescription, 
-	ogImage: pageOgImage 
-} = Astro.props;
-
-// Use Astro.site if available, otherwise fall back to siteConfig.url
-const siteUrl = Astro.site ? Astro.site.toString() : siteConfig.url;
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
-const title = `${pageTitle} | ${siteConfig.title}`;
-const description = pageDescription || siteConfig.description;
-const ogImage = new URL(pageOgImage || siteConfig.ogImage, siteUrl).href;
+const { title, description = "MexxMedia - Ihre Webagentur für professionelle Online-Präsenz" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="de" class="scroll-smooth">
 	<head>
-		<meta charset="UTF-T-8" />
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="keywords" content={siteConfig.keywords.join(', ')} />
 		
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
@@ -42,21 +28,20 @@ const ogImage = new URL(pageOgImage || siteConfig.ogImage, siteUrl).href;
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalUrl.href} />
+		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content={new URL('og-image.png', Astro.url).href} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalUrl.href} />
+		<meta property="twitter:url" content={Astro.url.href} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={ogImage} />
-		<meta name="twitter:creator" content={siteConfig.twitter} />
+		<meta property="twitter:image" content={new URL('og-image.png', Astro.url).href} />
 
 		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalUrl.href} />
+		<link rel="canonical" href={Astro.url.href} />
 
 		<ViewTransitions />
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -98,7 +83,7 @@ const ogImage = new URL(pageOgImage || siteConfig.ogImage, siteUrl).href;
 		<div class="fixed inset-0 pointer-events-none">
 			<!-- Base layer with refined texture -->
 			<div class="absolute inset-0 opacity-20 mix-blend-overlay">
-				
+				<div class="absolute inset-0 bg-[url('/noise.png')] opacity-30"></div>
 			</div>
 
 			<!-- Modern Grid Pattern -->
