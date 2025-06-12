@@ -37,6 +37,16 @@
 </button>
 
 <script>
+  // This function reads the theme from localStorage and applies it.
+  const applyTheme = () => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
   const handleToggleClick = () => {
     document.documentElement.classList.toggle('dark');
     localStorage.setItem(
@@ -45,9 +55,10 @@
     );
   };
 
-  // This function attaches the event listener.
-  // We run it on 'astro:page-load' to re-attach the listener after page transitions.
+  // This function attaches the event listener and applies the initial theme.
+  // We run it on 'astro:page-load' to re-apply the theme and re-attach the listener.
   const setupThemeToggle = () => {
+    applyTheme(); // Apply the theme on every page load
     const themeToggleButton = document.getElementById('themeToggle');
     if (themeToggleButton) {
       themeToggleButton.addEventListener('click', handleToggleClick);

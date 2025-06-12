@@ -1,6 +1,8 @@
 # SEO-Strategie für MexxMedia
 
-Dieses Dokument beschreibt die umfassende SEO-Strategie, die für die MexxMedia-Website implementiert wurde. Ziel ist es, die Auffindbarkeit in Suchmaschinen zu maximieren, die technische Grundlage zu stärken und eine Basis für zukünftiges Wachstum zu schaffen.
+Dieses Dokument beschreibt die umfassende SEO-Strategie, die für die MexxMedia-Webseite implementiert wurde. Ziel ist es, die Auffindbarkeit in Suchmaschinen zu maximieren, die technische Grundlage zu stärken und eine Basis für zukünftiges Wachstum zu schaffen.
+
+*Zuletzt überprüft: 2024-07-29*
 
 ## 1. Grundlagen und Ziele
 
@@ -25,6 +27,7 @@ Für jede Seite wurden einzigartige und strategische Metadaten festgelegt. Die `
 | Seite | Title | Description |
 | :--- | :--- | :--- |
 | `/` | Webagentur MexxMedia – Webseiten, die wirken | Moderne Webseiten & Online-Lösungen für den Mittelstand. |
+| `/service` | Leistungen – MexxMedia | Von Webdesign über SEO bis zum Hosting – entdecken Sie unsere maßgeschneiderten Lösungen für Ihr Unternehmen. |
 | `/service/webdesign`| Webdesign für Unternehmen – MexxMedia | Individuelles Design, schnelle Ladezeiten & Mobile First. |
 | `/service/seo` | SEO & Content Marketing – MexxMedia | Suchmaschinenoptimierung für lokale Unternehmen. |
 | `/service/hosting` | Hosting & Wartung – MexxMedia | DSGVO-sicheres Hosting & technische Pflege. |
@@ -33,12 +36,12 @@ Für jede Seite wurden einzigartige und strategische Metadaten festgelegt. Die `
 
 ### b) Semantische HTML- und Heading-Struktur
 
-- **HTML5-Struktur:** Die Website nutzt durchgehend semantische HTML5-Tags wie `<header>`, `<footer>`, `<main>`, `<section>` und `<nav>`. Dies hilft Suchmaschinen, die Struktur und den Zweck verschiedener Inhaltsbereiche zu verstehen.
+- **HTML5-Struktur:** Die Webseite nutzt durchgehend semantische HTML5-Tags wie `<header>`, `<footer>`, `<main>`, `<section>` und `<nav>`. Dies hilft Suchmaschinen, die Struktur und den Zweck verschiedener Inhaltsbereiche zu verstehen.
 - **Logische Heading-Hierarchie:** Jede Seite hat genau eine `<h1>`-Überschrift, die den Hauptinhalt der Seite zusammenfasst. Untergeordnete Themen werden mit `<h2>`, `<h3>` usw. logisch strukturiert. Dies ist entscheidend für die Lesbarkeit für Nutzer und Crawler.
 
 ### c) Interne Verlinkung
 
-Eine saubere interne Verlinkungsstrategie wurde umgesetzt, um "Link Juice" (SEO-Wert) auf der Website zu verteilen und die Navigation zu verbessern.
+Eine saubere interne Verlinkungsstrategie wurde umgesetzt, um "Link Juice" (SEO-Wert) auf der Webseite zu verteilen und die Navigation zu verbessern.
 - **Navigation:** Links in Header und Footer wurden korrigiert und verweisen auf die korrekten Seiten.
 - **Call-to-Actions (CTAs):** Wichtige Buttons (z.B. "Projekt anfragen") leiten Nutzer gezielt zur `/kontakt`-Seite und signalisieren Suchmaschinen die Wichtigkeit dieser Seite.
 
@@ -46,7 +49,7 @@ Eine saubere interne Verlinkungsstrategie wurde umgesetzt, um "Link Juice" (SEO-
 
 ## 3. Umgesetzte Technische SEO-Maßnahmen
 
-Technische SEO stellt sicher, dass die Website von Suchmaschinen effizient gecrawlt und indexiert werden kann.
+Technische SEO stellt sicher, dass die Webseite von Suchmaschinen effizient gecrawlt und indexiert werden kann.
 
 ### a) Canonical URLs
 
@@ -68,8 +71,8 @@ Technische SEO stellt sicher, dass die Website von Suchmaschinen effizient gecra
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   ```
-- **Zweck:** Diese Tags steuern, wie Links zur Website aussehen, wenn sie auf Plattformen wie Facebook, LinkedIn oder Twitter geteilt werden. Ein ansprechendes Vorschaubild und ein guter Text können die Klickrate erheblich steigern.
-- **Hinweis:** Eine Datei namens `og-image.png` (empfohlenes Format: 1200x630 Pixel) muss im `public/`-Ordner abgelegt werden.
+- **Zweck:** Diese Tags steuern, wie Links zur Webseite aussehen, wenn sie auf Plattformen wie Facebook, LinkedIn oder Twitter geteilt werden. Ein ansprechendes Vorschaubild und ein guter Text können die Klickrate erheblich steigern.
+- **Hinweis:** Eine Datei namens `og-image.png` (empfohlenes Format: 1200x630 Pixel) muss im `public/`-Ordner abgelegt werden, wie in der `KRITIK.md` vermerkt.
 
 ### c) Performance und User Experience (UX)
 
@@ -104,13 +107,13 @@ Die Implementierung von strukturierten Daten ist einer der wichtigsten nächsten
 
 ### b) Bilder-SEO
 
-- **Alt-Texte:** Stellen Sie sicher, dass alle aussagekräftigen Bilder descriptive `alt`-Attribute haben. Dies ist wichtig für die Barrierefreiheit und die Bildersuche. Rein dekorative Bilder sollten ein leeres `alt=""`-Attribut haben.
+- **Alt-Texte:** Stellen Sie sicher, dass alle aussagekräftigen Bilder deskriptive `alt`-Attribute haben. Dies ist wichtig für die Barrierefreiheit und die Bildersuche. Rein dekorative Bilder sollten ein leeres `alt=""`-Attribut haben.
 - **Dateinamen:** Benennen Sie Bilddateien deskriptiv (z.B. `webdesign-agentur-nuernberg.jpg` statt `IMG_1234.jpg`).
 
-### c) Sitemap und robots.txt
+### c) Sitemap und `robots.txt`
 
-- **sitemap.xml:** Erstellen Sie eine `sitemap.xml` (Astro bietet hierfür eine Integration: `@astrojs/sitemap`). Reichen Sie diese Datei bei der Google Search Console ein, um sicherzustellen, dass Google alle Ihre Seiten findet.
-- **robots.txt:** Erstellen Sie eine `robots.txt`-Datei im `public/`-Ordner, um Crawlern Anweisungen zu geben. Eine einfache Version könnte so aussehen:
+- **`sitemap.xml`:** Erstellen Sie eine `sitemap.xml`. Astro bietet hierfür die offizielle Integration `@astrojs/sitemap`, die dies automatisch erledigt. Reichen Sie diese Datei bei der Google Search Console ein, um sicherzustellen, dass Google alle Ihre Seiten findet.
+- **`robots.txt`:** Erstellen Sie eine `robots.txt`-Datei im `public/`-Ordner, um Crawlern Anweisungen zu geben. Eine einfache Version, die auf die Sitemap verweist, könnte so aussehen:
   ```
   User-agent: *
   Allow: /
@@ -120,4 +123,4 @@ Die Implementierung von strukturierten Daten ist einer der wichtigsten nächsten
 
 ### d) Content-Strategie
 
-- **Blog / Ratgeber:** Erwägen Sie das Hinzufügen eines Blogs, um regelmäßig hochwertige Inhalte zu Themen wie "Worauf bei einer neuen Website achten?" oder "Lokales SEO für Handwerker" zu veröffentlichen. Dies etabliert Expertise und zieht organischen Traffic über Long-Tail-Keywords an. 
+- **Blog / Ratgeber:** Erwägen Sie das Hinzufügen eines Blogs, um regelmäßig hochwertige Inhalte zu Themen wie "Worauf bei einer neuen Webseite achten?" oder "Lokales SEO für Handwerker" zu veröffentlichen. Dies etabliert Expertise und zieht organischen Traffic über Long-Tail-Keywords an. 
