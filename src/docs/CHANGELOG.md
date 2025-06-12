@@ -9,6 +9,11 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ### Geplant
 - **Terminbuchungssystem**: Implementierung eines Tools zur Online-Terminbuchung mit Google Kalender-Integration und E-Mail-Benachrichtigungen.
 
+## [2.1.1] - 2024-07-29
+
+### Fixed
+- **Dark-Mode-Persistenz**: Der Dark-Mode-Zustand ging bei clientseitiger Navigation (Seitenwechsel) verloren. Der Fehler wurde behoben, indem das `ThemeToggle`-Skript nun bei jedem `astro:page-load`-Event den Theme-Status aus dem `localStorage` ausliest und erneut anwendet. Dies stellt ein konsistentes Theme über die gesamte User-Session sicher.
+
 ## [2.1.0] - 2024-07-29
 
 ### Added

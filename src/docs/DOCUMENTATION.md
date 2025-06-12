@@ -101,37 +101,59 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **Tastaturnavigation**: Alle interaktiven Elemente sind per Tastatur erreichbar und bedienbar.
 - **Screen-Reader-Freundlichkeit**: Die Seite ist für die Nutzung mit Screen Readern optimiert.
 
-## 8. Cookie-Management
+## 8. Dark/Light Mode
+
+Die Webseite verfügt über einen persistenten Dark/Light-Mode, der auch bei clientseitiger Navigation über Astro View Transitions erhalten bleibt.
+
+### 8.1 Initialisierung (FOUC-Prävention)
+
+Um ein Flackern des falschen Themes beim ersten Laden (FOUC) zu verhindern, ist ein blockierendes Inline-Skript im `<head>` der `Layout.astro` platziert. Dieses Skript prüft in der folgenden Reihenfolge:
+1.  Ob ein Theme (`'light'` oder `'dark'`) im `localStorage` des Benutzers gespeichert ist.
+2.  Falls nicht, ob der Benutzer auf Systemebene ein dunkles Farbschema bevorzugt (`prefers-color-scheme: dark`).
+3.  Standardmäßig wird 'light' verwendet.
+
+Das Skript fügt die Klasse `dark` direkt zum `<html>`-Element hinzu oder entfernt sie, noch bevor die Seite vollständig gerendert wird.
+
+### 8.2 Zustandspersistenz bei Navigation
+
+Der `ThemeToggle.astro`-Komponentenskript stellt sicher, dass der gewählte Zustand bei Seitenwechseln erhalten bleibt.
+- **`astro:page-load` Event**: Das Skript nutzt den `astro:page-load`-Event, der nach jeder, auch clientseitiger, Navigation ausgelöst wird.
+- **`applyTheme()` Funktion**: Bei jedem Event-Trigger wird eine Funktion ausgeführt, die den Theme-Wert aus dem `localStorage` erneut ausliest und die `dark`-Klasse auf dem `<html>`-Element entsprechend setzt.
+- **Event-Listener**: Gleichzeitig wird der `click`-Event-Listener für den Toggle-Button neu registriert, um die Funktionalität sicherzustellen.
+
+Diese Kombination aus einem initialen, blockierenden Skript und der Re-Hydrierung des Zustands bei jedem Seitenwechsel sorgt für ein nahtloses und konsistentes Benutzererlebnis.
+
+## 9. Cookie-Management
 
 - Implementierung eines Opt-in/Opt-out-Systems für Cookies über den `CookieBanner.astro`.
 - Die Benutzereinwilligung wird im `localStorage` des Browsers gespeichert.
 - Die Umsetzung ist DSGVO-konform.
 
-## 9. Wartung & Content-Management
+## 10. Wartung & Content-Management
 
-### 9.1 Inhaltsaktualisierungen
+### 10.1 Inhaltsaktualisierungen
 - **Blog/News**: Können über Markdown-Dateien im `src/pages/blog/` Verzeichnis hinzugefügt werden (Struktur muss ggf. erstellt werden).
 - **Service-Beschreibungen**: Werden direkt in den jeweiligen `.astro`-Dateien in `src/pages/service/` gepflegt.
 - **Team-Informationen**: Werden in der `About.astro`-Komponente oder einer zentralen Datendatei (z.B. in `src/data/`) verwaltet.
 
-### 9.2 Technische Wartung
+### 10.2 Technische Wartung
 - **Abhängigkeiten**: Regelmäßige Updates der npm-Pakete mit `npm update`.
 - **Sicherheit**: Beobachtung von Sicherheitsschwachstellen in den Abhängigkeiten.
 - **Performance-Monitoring**: Regelmäßige Überprüfung der Ladezeiten und Core Web Vitals.
 
-## 10. Entwicklungsrichtlinien
+## 11. Entwicklungsrichtlinien
 
-### 10.1 Code-Standards
+### 11.1 Code-Standards
 - **TypeScript**: Verwendung des `strict`-Modus in `tsconfig.json`.
 - **Linting**: ESLint ist für die Code-Qualität konfiguriert.
 - **Formatierung**: Prettier wird für eine einheitliche Code-Formatierung verwendet.
 
-### 10.2 Git-Workflow
+### 11.2 Git-Workflow
 - **Branching-Modell**: Entwicklung neuer Features in separaten `feature/`-Branches.
 - **Pull Requests**: Code-Änderungen werden über Pull Requests in den `main`-Branch gemerged. Code-Reviews sind erwünscht.
 - **Commit-Nachrichten**: Es wird die Verwendung von Conventional Commits empfohlen.
 
-## 11. Deployment
+## 12. Deployment
 
 - **Hosting**: Die Webseite wird auf Vercel gehostet.
 - **CI/CD**: Jeder Push auf den `main`-Branch löst ein automatisches Deployment aus.
@@ -139,25 +161,25 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **SSL/TLS**: Die Webseite ist durch ein von Vercel bereitgestelltes SSL-Zertifikat gesichert.
 - **CDN**: Vercels globales CDN sorgt für schnelle Ladezeiten weltweit.
 
-## 12. Terminbuchungssystem (Geplant)
+## 13. Terminbuchungssystem (Geplant)
 
 Ein neues Feature zur Online-Terminbuchung ist in Planung und wird die folgende Funktionalität umfassen:
 
-### 12.1 Frontend
+### 13.1 Frontend
 - Eine dedizierte Seite `/termin-buchen` wird erstellt.
 - Ein Kalender-Interface ermöglicht die Auswahl von verfügbaren Daten und Uhrzeiten.
 - Ein Formular zur Eingabe der Kontaktdaten (Name, E-Mail, Anliegen) des Kunden.
 - Das Design wird sich nahtlos in das bestehende Design der Webseite einfügen.
 
-### 12.2 Backend & Integration
+### 13.2 Backend & Integration
 - **Google Kalender**: Gebuchte Termine werden automatisch in einem definierten Google Kalender eingetragen. Hierfür wird die Google Calendar API verwendet.
 - **Authentifizierung**: Die Verbindung zur Google Calendar API wird serverseitig über sichere API-Keys und ggf. OAuth2 abgewickelt (z.B. über Astro API-Routen).
 
-### 12.3 Benachrichtigungen
+### 13.3 Benachrichtigungen
 - **Bestätigungsmail an den Kunden**: Nach erfolgreicher Buchung erhält der Kunde eine automatische E-Mail-Bestätigung mit den Termindetails.
 - **Benachrichtigung an MexxMedia**: Eine E-Mail mit den Termindetails und den Kundendaten wird an `info@mexxmedia.de` gesendet. Diese E-Mail enthält auch einen `.ics`-Kalendereintrag.
 
-### 12.4 Zusätzliche geplante Features
+### 13.4 Zusätzliche geplante Features
 - **Automatische Erinnerungen**: Kunden erhalten 24 Stunden vor dem Termin eine automatische Erinnerungs-E-Mail.
 - **Stornierungs-Link**: Die Bestätigungs-E-Mail enthält einen Link, über den der Kunde den Termin einfach stornieren kann.
 - **Pufferzeiten**: Automatische Blockierung von Zeitfenstern vor und nach einem gebuchten Termin, um Überbuchungen zu vermeiden. 
