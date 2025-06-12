@@ -93,6 +93,12 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **Lazy Loading**: Bilder und Iframe-Inhalte werden standardmäßig per Lazy Loading geladen.
 - **Preloading**: Kritische Assets können bei Bedarf vorab geladen werden.
 
+### 6.3 Erweiterte SEO-Maßnahmen
+- **`sitemap.xml`**: Eine Sitemap wird automatisch durch die `@astrojs/sitemap`-Integration generiert. Sie enthält alle Haupt- und Service-Seiten und hilft Suchmaschinen bei der Indexierung.
+- **`robots.txt`**: Eine `robots.txt`-Datei im `/public`-Verzeichnis gibt Crawlern die Anweisung, die gesamte Seite zu indexieren und verweist auf den Speicherort der Sitemap.
+- **Strukturierte Daten (JSON-LD)**: Das `Layout.astro` generiert dynamisch strukturierte Daten (Schema.org) für jede Seite. Dies verbessert die Darstellung in den Suchergebnissen (Rich Snippets). Folgende Typen werden verwendet: `Organization` (global), `LocalBusiness` (Startseite), `Service` (Dienstleistungsseiten) und `ContactPage` (Kontaktseite).
+- **Social Previews**: Das Layout enthält zudem `og:*`- und `twitter:*`-Meta-Tags, um eine optimale Vorschau beim Teilen von Links auf sozialen Netzwerken zu gewährleisten.
+
 ## 7. Barrierefreiheit (Accessibility)
 
 - **ARIA-Labels**: Wichtige interaktive Elemente sind mit ARIA-Labels versehen.
@@ -131,12 +137,15 @@ Diese Kombination aus einem initialen, blockierenden Skript und der Re-Hydrierun
 
 ## 10. Wartung & Content-Management
 
-### 10.1 Inhaltsaktualisierungen
+### 10.1 Zentrale Datenverwaltung
+- **`src/data/site.ts`**: Globale und wiederkehrende Informationen (Firmenname, Kontaktdaten, Social-Media-Links, Adresse) sind in dieser zentralen Datei gespeichert. Komponenten wie der `Footer` und die `Kontaktseite` importieren ihre Daten von hier. Dies vereinfacht die Wartung und stellt Konsistenz über die gesamte Webseite sicher.
+
+### 10.2 Inhaltsaktualisierungen
 - **Blog/News**: Können über Markdown-Dateien im `src/pages/blog/` Verzeichnis hinzugefügt werden (Struktur muss ggf. erstellt werden).
 - **Service-Beschreibungen**: Werden direkt in den jeweiligen `.astro`-Dateien in `src/pages/service/` gepflegt.
 - **Team-Informationen**: Werden in der `About.astro`-Komponente oder einer zentralen Datendatei (z.B. in `src/data/`) verwaltet.
 
-### 10.2 Technische Wartung
+### 10.3 Technische Wartung
 - **Abhängigkeiten**: Regelmäßige Updates der npm-Pakete mit `npm update`.
 - **Sicherheit**: Beobachtung von Sicherheitsschwachstellen in den Abhängigkeiten.
 - **Performance-Monitoring**: Regelmäßige Überprüfung der Ladezeiten und Core Web Vitals.

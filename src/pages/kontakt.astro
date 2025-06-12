@@ -1,8 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
 
 const title = "Kontakt aufnehmen – MexxMedia";
 const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfragen.";
+
+const emailSocial = { name: 'E-Mail', url: `mailto:${SITE.contact.email}`, handle: SITE.contact.email };
+const allSocials = [emailSocial, ...SITE.socials];
 ---
 
 <Layout 
@@ -171,7 +175,7 @@ const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfrage
           <div class="space-y-6">
             <!-- E-Mail -->
             <a 
-              href="mailto:info@mexxmedia.de"
+              href={`mailto:${SITE.contact.email}`}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-6 p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary-600 dark:hover:border-primary-400 transition-colors group"
@@ -186,14 +190,14 @@ const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfrage
                   E-Mail
                 </div>
                 <div class="font-medium text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  info@mexxmedia.de
+                  {SITE.contact.email}
                 </div>
               </div>
             </a>
 
             <!-- WhatsApp -->
             <a 
-              href="https://wa.me/4915772150009"
+              href={SITE.socials.find(s => s.name === 'WhatsApp')?.url}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-6 p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary-600 dark:hover:border-primary-400 transition-colors group"
@@ -208,14 +212,14 @@ const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfrage
                   WhatsApp
                 </div>
                 <div class="font-medium text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  +49 157 7215 0009
+                  {SITE.contact.phone}
                 </div>
               </div>
             </a>
 
             <!-- Instagram -->
             <a 
-              href="https://instagram.com/mexxmedia"
+              href={SITE.socials.find(s => s.name === 'Instagram')?.url}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-6 p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary-600 dark:hover:border-primary-400 transition-colors group"
@@ -230,7 +234,7 @@ const description = "Persönlich, schnell & ehrlich. Jetzt unverbindlich anfrage
                   Instagram
                 </div>
                 <div class="font-medium text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  @mexxmedia
+                  @{SITE.name.toLowerCase()}
                 </div>
               </div>
             </a>

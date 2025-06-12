@@ -5,13 +5,74 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import { SITE } from '../data/site';
 
 export interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = "MexxMedia - Ihre Webagentur für professionelle Online-Präsenz" } = Astro.props;
+const { title, description = SITE.description } = Astro.props;
+
+const socialImage = new URL('og-image.png', Astro.url).href;
+const socialImageAlt = "MexxMedia – Ihr digitaler Partner auf Augenhöhe";
+
+// Function to generate JSON-LD schema based on the page
+const getJsonLdSchema = () => {
+  const
+ 
+pathname = Astro.url.pathname;
+  const common = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    logo: new URL('logo.svg', Astro.url).href,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: SITE.contact.phone,
+      contactType: 'Customer Service',
+      email: SITE.contact.email,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: SITE.contact.address.street,
+      addressLocality: SITE.contact.address.city,
+      postalCode: SITE.contact.address.zip,
+      addressCountry: SITE.contact.address.country,
+    },
+  };
+
+  if (pathname === '/') {
+    return {
+      ...common,
+      '@type': 'LocalBusiness',
+      description: SITE.description,
+      image: socialImage,
+    };
+  }
+
+  if (pathname.startsWith('/service/')) {
+    return {
+      ...common,
+      '@type': 'Service',
+      serviceType: title.split('–')[0].trim(),
+      description: description,
+      provider: {
+        '@type': 'Organization',
+        name: SITE.name,
+      },
+    };
+  }
+  
+  if (pathname === '/kontakt') {
+    const contactSchema = { ...common };
+    contactSchema["@type"] = "ContactPage";
+    return contactSchema;
+  }
+
+  return common;
+};
 ---
 
 <!doctype html>
@@ -31,17 +92,22 @@ const { title, description = "MexxMedia - Ihre Webagentur für professionelle On
 		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL('og-image.png', Astro.url).href} />
+		<meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={socialImageAlt} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url.href} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL('og-image.png', Astro.url).href} />
+		<meta property="twitter:image" content={socialImage} />
+    <meta property="twitter:image:alt" content={socialImageAlt} />
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href={Astro.url.href} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(getJsonLdSchema())} />
 
 		<ViewTransitions />
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">

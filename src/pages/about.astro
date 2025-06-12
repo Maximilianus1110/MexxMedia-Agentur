@@ -162,8 +162,10 @@ const description = "Wer wir sind, wie wir arbeiten, und warum das wirkt.";
             <div class="aspect-[3/4] mb-8 overflow-hidden rounded-3xl bg-neutral-100 dark:bg-neutral-900">
               <img 
                 src={member.image} 
-                alt={member.name}
+                alt={`Foto von ${member.name}, zuständig für ${member.role} bei MexxMedia`}
                 class="w-full h-full object-cover"
+                width="600"
+                height="800"
               />
             </div>
             <div class="relative">
