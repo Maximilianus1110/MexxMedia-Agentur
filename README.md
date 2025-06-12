@@ -1,127 +1,25 @@
-# MexxMedia Website
+# MexxMedia Webseite
 
-Eine moderne, responsive Website für MexxMedia, entwickelt mit Astro und TailwindCSS.
+Eine moderne und responsive Webseite für die Medienagentur MexxMedia, erstellt mit Astro und Tailwind CSS.
 
-## Features
+## 🚀 Projektübersicht
 
-- 🎨 Premium Design mit warmen Erdtönen
-- 🌓 Eleganter Dark Mode
-- 📱 Vollständig responsiveAuf der Webseite sollen Kunden Automatisch Temrine selber buchen können wenn sie das möchten. Das termine buchungs tool soll gesamteinheitlich zum restlichen Stiel der Webseite passen. Du sollt die Logik sowie die Oberfläche dazu Implementieren. Wird eine Termin gebucht wird das automatisch in meinen Google Kalender Eingetragen und eine Email mit den Relevanten Termin Informationen sowie ein Kalendaereintrag sollen an "info@mexxmedia.de" gesendet werden. 
+Dieses Repository enthält den Quellcode für die offizielle Webseite von MexxMedia.
 
-Nenne mir noch 3 weitere Dinge die zu diesem Tool gehören und Implementiere sie Direkt. 
+- **Framework**: Astro
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-Desweiteren sollst du mir noch mindestens 7 Verbesserungsvorschläge für die gesamte Webseite geben. 
-- ⚡ Optimierte Performance
-- 🎭 Moderne Animationen und Übergänge
-- 🔍 SEO-optimiert
+## 📚 Dokumentation
 
-## Technologien
+Die vollständige technische Dokumentation, das Changelog, die SEO-Strategie und weitere projektrelevante Informationen befinden sich im Verzeichnis [`/src/docs`](./src/docs).
 
-- [Astro](https://astro.build)
-- [TailwindCSS](https://tailwindcss.com)
-- [AOS](https://michalsnik.github.io/aos/)
+Für einen schnellen Einstieg sind hier die wichtigsten Entwicklungsbefehle:
 
-## Installation
-
-1. Repository klonen:
-```bash
-git clone https://github.com/yourusername/mexxmedia.git
-```
-
-2. In das Projektverzeichnis wechseln:
-```bash
-cd mexxmedia
-```
-
-3. Abhängigkeiten installieren:
-```bash
-npm install
-```
-
-4. Entwicklungsserver starten:
-```bash
-npm run dev
-```
-
-## Entwicklung
-
-- `npm run dev` - Startet den Entwicklungsserver
-- `npm run build` - Erstellt die Produktionsversion
-- `npm run preview` - Zeigt die Produktionsversion lokal an
-
-## Struktur
-
-```
-mexxmedia/
-├── public/          # Statische Assets
-├── src/
-│   ├── components/  # UI Komponenten
-│   ├── layouts/     # Seitenlayouts
-│   └── pages/       # Seitenrouten
-├── astro.config.mjs # Astro Konfiguration
-└── tailwind.config.mjs # Tailwind Konfiguration
-```
-
-## Design System
-
-### Farben
-- Primary: `#A48155` (Warmes Braun)
-- Secondary: `#8B6B47` (Tiefes Braun)
-- Accent: `#F4E8D9` (Warmes Beige)
-- Dark Mode Highlight: `#C4A47D` (Gold)
-- Dark Mode Background: `#0A0A0B`
-
-### Typografie
-- Überschriften: Playfair Display
-- Text: Inter
+- `npm run dev` - Startet den lokalen Entwicklungsserver.
+- `npm run build` - Erstellt die Produktionsversion der Webseite.
+- `npm run preview` - Startet einen lokalen Server zur Vorschau der Produktionsversion.
 
 ## Lizenz
 
-Alle Rechte vorbehalten © MexxMedia
-
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Alle Rechte vorbehalten © MexxMedia. 
