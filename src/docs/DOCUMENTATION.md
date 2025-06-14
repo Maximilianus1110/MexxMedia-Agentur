@@ -64,6 +64,41 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **`SectionSeparator.astro`**: Ein visueller Trenner für Sektionen.
 - **`ParticlesEffect.astro`**: Komponente für einen Partikel-Effekt im Hintergrund.
 
+### 4.3 Interaktive Sektionen
+
+#### 4.3.1 Beispiel-Galerie (`/service/webdesign.astro`)
+Die Beispiel-Galerie in der Webdesign-Sektion verwendet einen modernen Scroll-basierten Ansatz mit GSAP ScrollTrigger. Die Besonderheit liegt in der realistischen Darstellung von Website-Layouts:
+
+1. **Layout & Struktur**
+   - 70vh Höhe pro Karte für optimale Sichtbarkeit
+   - 15vh Top-Offset für besseren Kontext
+   - Maximale Breite von 1200px und scale-90 für realistisches Web-Layout
+   - Echter Website-Aufbau mit Header, Navigation und Hero-Bereich
+
+2. **Komponenten**
+   - Branchen-spezifische Navigation und Kontakt-Elemente
+   - Realistische Header-Struktur mit Logo und Menü
+   - Responsive Grid-Layouts für Content
+   - Authentische Web-Typografie und Abstände
+
+3. **Technische Umsetzung**
+   - GSAP ScrollTrigger für smooth Scroll-Animationen
+   - TypeScript Interfaces für verschiedene Website-Typen
+   - Sticky Positioning mit vertikalem Offset
+   - Optimierte Performance durch CSS-Transforms
+
+4. **Vorteile des Ansatzes**
+   - Realistischere Darstellung durch echte Website-Strukturen
+   - Bessere Zugänglichkeit durch semantisches HTML
+   - Echtzeit-Anpassung an Dark/Light Mode
+   - Demonstriert Web-Design-Expertise direkt im Code
+
+5. **Wartung & Erweiterung**
+   - Modulare Komponenten-Struktur
+   - Typsichere Datenstrukturen
+   - Einfache Anpassung von Styles und Content
+   - Optimierte Performance durch Code statt Bilder
+
 ## 5. Styling & Design System
 
 ### 5.1 Farbpalette

@@ -2,6 +2,65 @@
 import Layout from '../../layouts/Layout.astro';
 import ProcessTimeline from '../../components/ProcessTimeline.astro';
 
+interface Stat {
+  number: string;
+  label: string;
+}
+
+interface Treatment {
+  name: string;
+  description: string;
+}
+
+interface Property {
+  title: string;
+  price: string;
+  details: string;
+}
+
+interface Room {
+  type: string;
+  price: string;
+  size: string;
+}
+
+interface Doctor {
+  name: string;
+  specialty: string;
+  qualification: string;
+}
+
+interface BaseExample {
+  id: string;
+  title: string;
+  cta: string;
+  style: string;
+  subtitle: string;
+}
+
+interface DentalExample extends BaseExample {
+  features: string[];
+  treatments: Treatment[];
+  stats: Stat[];
+}
+
+interface RealEstateExample extends BaseExample {
+  features: string[];
+  properties: Property[];
+}
+
+interface HotelExample extends BaseExample {
+  amenities: string[];
+  rooms: Room[];
+}
+
+interface ClinicExample extends BaseExample {
+  specialties: string[];
+  doctors: Doctor[];
+}
+
+type Example = DentalExample | RealEstateExample | HotelExample | ClinicExample;
+
 const painPoints = [
   {
     stat: "94%",
@@ -118,6 +177,146 @@ const process = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>`
+  }
+];
+
+// Type Guards
+function isDentalExample(example: Example): example is DentalExample {
+  return example.id === "dental";
+}
+
+function isRealEstateExample(example: Example): example is RealEstateExample {
+  return example.id === "realestate";
+}
+
+function isHotelExample(example: Example): example is HotelExample {
+  return example.id === "hotel";
+}
+
+function isClinicExample(example: Example): example is ClinicExample {
+  return example.id === "clinic";
+}
+
+const examples: Example[] = [
+  {
+    id: "dental",
+    title: "Ihr Lächeln in besten Händen",
+    subtitle: "Modernste Zahnmedizin im Herzen von München",
+    cta: "Termin vereinbaren",
+    style: "bg-[url('/examples/dental-practice.jpg')] bg-cover bg-[center_top] before:absolute before:inset-0 before:bg-sky-900/60 before:backdrop-blur-[2px]",
+    features: [
+      "Modernste 3D-Technologie",
+      "Schmerzfreie Behandlung",
+      "Ästhetische Zahnmedizin"
+    ],
+    treatments: [
+      {
+        name: "Implantologie",
+        description: "Hochwertige Zahnimplantate mit lebenslanger Garantie"
+      },
+      {
+        name: "Invisalign®",
+        description: "Unsichtbare Zahnkorrektur für ein perfektes Lächeln"
+      },
+      {
+        name: "Bleaching",
+        description: "Professionelle Zahnaufhellung in nur einer Sitzung"
+      }
+    ],
+    stats: [
+      { number: "15+", label: "Jahre Erfahrung" },
+      { number: "99%", label: "Zufriedene Patienten" },
+      { number: "5.0", label: "⭐ Google Bewertung" }
+    ]
+  },
+  {
+    id: "realestate",
+    title: "Exklusive Immobilien München",
+    subtitle: "Ihre Premium-Adresse für außergewöhnliche Objekte",
+    cta: "Exposé anfordern",
+    style: "bg-[url('/examples/luxury-interior.jpg')] bg-cover bg-center before:absolute before:inset-0 before:bg-neutral-900/70 before:backdrop-blur-[2px] after:absolute after:inset-0 after:bg-[url('/examples/pattern-dark.svg')] after:opacity-10 after:mix-blend-soft-light",
+    features: [
+      "Luxus-Immobilien",
+      "Diskrete Vermittlung",
+      "Persönliche Beratung"
+    ],
+    properties: [
+      {
+        title: "Villa am Starnberger See",
+        price: "Auf Anfrage",
+        details: "500m² • 12 Zimmer • Privatstrand"
+      },
+      {
+        title: "Penthouse Maximilianstraße",
+        price: "4.900.000 €",
+        details: "280m² • 5 Zimmer • Dachterrasse"
+      },
+      {
+        title: "Historisches Stadtpalais",
+        price: "8.500.000 €",
+        details: "750m² • 20 Zimmer • Denkmalgeschützt"
+      }
+    ]
+  },
+  {
+    id: "hotel",
+    title: "The Residence Munich",
+    subtitle: "Luxuriöses Boutique-Hotel in historischem Ambiente",
+    cta: "Jetzt buchen",
+    style: "bg-[url('/examples/hotel-suite.jpg')] bg-cover bg-center before:absolute before:inset-0 before:bg-gradient-to-b before:from-amber-900/70 before:to-black/70 before:backdrop-blur-[2px]",
+    amenities: [
+      "24/7 Concierge",
+      "Gourmet Restaurant",
+      "Wellness & Spa",
+      "Rooftop Bar"
+    ],
+    rooms: [
+      {
+        type: "Deluxe Suite",
+        price: "ab 450 € / Nacht",
+        size: "45m²"
+      },
+      {
+        type: "Executive Suite",
+        price: "ab 650 € / Nacht",
+        size: "65m²"
+      },
+      {
+        type: "Presidential Suite",
+        price: "ab 1.200 € / Nacht",
+        size: "120m²"
+      }
+    ]
+  },
+  {
+    id: "clinic",
+    title: "Premium Care Munich",
+    subtitle: "Ihre private Fachklinik für moderne Medizin",
+    cta: "Beratung vereinbaren",
+    style: "bg-[url('/examples/modern-clinic.jpg')] bg-cover bg-center before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-900/70 before:to-emerald-950/70 before:backdrop-blur-[2px] after:absolute after:inset-0 after:bg-[url('/examples/pattern-light.svg')] after:opacity-5",
+    specialties: [
+      "Orthopädie",
+      "Kardiologie",
+      "Neurologie",
+      "Präventivmedizin"
+    ],
+    doctors: [
+      {
+        name: "Prof. Dr. med. Schmidt",
+        specialty: "Orthopädie",
+        qualification: "Facharzt • 20 Jahre Erfahrung"
+      },
+      {
+        name: "Dr. med. Weber",
+        specialty: "Kardiologie",
+        qualification: "Fachärztin • Harvard Medical School"
+      },
+      {
+        name: "Prof. Dr. med. Meyer",
+        specialty: "Neurologie",
+        qualification: "Chefarzt • Universitätsklinik"
+      }
+    ]
   }
 ];
 
@@ -268,8 +467,297 @@ const description = "Individuelles Design, schnelle Ladezeiten & Mobile First.";
           </p>
         </div>
 
-        <div class="max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-          <div class="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-xl"></div>
+        <!-- Scroll Container -->
+        <div class="relative h-[280vh]" id="examples-container">
+          <!-- Sticky Container -->
+          <div class="sticky top-[15vh] h-[70vh] flex items-center justify-center overflow-hidden">
+            <!-- Example Cards -->
+            {examples.map((example, index) => (
+              <div 
+                id={`example-${example.id}`}
+                class={`absolute inset-0 w-full h-full opacity-0 ${example.style} rounded-2xl overflow-hidden transform scale-[0.98]`}
+                style={`z-index: ${index + 1};`}
+              >
+                <!-- Website Preview -->
+                <div class="relative w-full h-full flex flex-col">
+                  <!-- Navigation Bar -->
+                  <div class="relative z-20 w-full px-8 py-4 bg-white/10 backdrop-blur-md border-b border-white/20">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-8">
+                        <div class="text-white font-clash text-xl">Logo</div>
+                        <nav class="hidden md:flex items-center space-x-6">
+                          {isDentalExample(example) && (
+                            <>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Leistungen</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Praxis</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Team</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Für Patienten</a>
+                            </>
+                          )}
+                          {isRealEstateExample(example) && (
+                            <>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Immobilien</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Verkaufen</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Kaufen</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Über uns</a>
+                            </>
+                          )}
+                          {isHotelExample(example) && (
+                            <>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Zimmer & Suiten</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Restaurant</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Spa</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Events</a>
+                            </>
+                          )}
+                          {isClinicExample(example) && (
+                            <>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Fachbereiche</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Ärzte</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Sprechzeiten</a>
+                              <a href="#" class="text-white/90 hover:text-white text-sm">Kontakt</a>
+                            </>
+                          )}
+                        </nav>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        {isDentalExample(example) && (
+                          <a href="tel:+49123456789" class="text-white/90 hover:text-white text-sm hidden md:block">
+                            Notfall: +49 (0) 123 456789
+                          </a>
+                        )}
+                        {isRealEstateExample(example) && (
+                          <a href="tel:+49123456789" class="text-white/90 hover:text-white text-sm hidden md:block">
+                            +49 (0) 123 456789
+                          </a>
+                        )}
+                        {isHotelExample(example) && (
+                          <div class="text-white/90 text-sm hidden md:flex items-center gap-6">
+                            <span>München</span>
+                            <span>DE | EN</span>
+                          </div>
+                        )}
+                        {isClinicExample(example) && (
+                          <a href="tel:+49123456789" class="text-white/90 hover:text-white text-sm hidden md:block">
+                            Terminvereinbarung: +49 (0) 123 456789
+                          </a>
+                        )}
+                        <button class="px-4 py-2 rounded-full bg-white text-neutral-900 text-sm font-medium hover:bg-white/90">
+                          {example.cta}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hero Content -->
+                  <div class="relative z-10 flex-1 flex items-center">
+                    <div class="w-full max-w-[1400px] mx-auto px-8">
+                      {isDentalExample(example) && (
+                        <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                          <div class="relative z-10">
+                            <h1 class="font-clash text-4xl md:text-5xl text-white mb-4">{example.title}</h1>
+                            <p class="text-lg text-white/90 mb-6">{example.subtitle}</p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                              {example.features.map((feature: string) => (
+                                <span class="px-3 py-1.5 rounded-full bg-white/10 text-white text-sm">{feature}</span>
+                              ))}
+                            </div>
+                            <div class="space-y-4 mb-8">
+                              {example.treatments.map((treatment) => (
+                                <div class="bg-white/10 backdrop-blur rounded-xl p-4">
+                                  <div class="text-white font-medium mb-1">{treatment.name}</div>
+                                  <div class="text-white/80 text-sm">{treatment.description}</div>
+                                </div>
+                              ))}
+                            </div>
+                            <div class="flex gap-6 mb-8">
+                              {example.stats.map((stat: Stat) => (
+                                <div>
+                                  <div class="text-2xl font-clash text-white">{stat.number}</div>
+                                  <div class="text-sm text-white/80">{stat.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                            <a 
+                              href="/kontakt" 
+                              class="inline-flex px-6 py-3 rounded-full bg-white text-neutral-900 font-medium text-base hover:bg-white/90 transition-colors"
+                            >
+                              {example.cta}
+                            </a>
+                          </div>
+                          <div class="relative">
+                            <div class="absolute -inset-4 bg-white/5 rounded-3xl backdrop-blur-lg"></div>
+                            <div class="relative grid gap-4">
+                              <div class="aspect-[16/9] bg-white/10 rounded-xl overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+                              </div>
+                              <div class="grid grid-cols-2 gap-4">
+                                <div class="aspect-square bg-white/10 rounded-xl overflow-hidden">
+                                  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+                                </div>
+                                <div class="aspect-square bg-white/10 rounded-xl overflow-hidden">
+                                  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {isRealEstateExample(example) && (
+                        <div class="relative">
+                          <div class="absolute inset-0 bg-black/40 backdrop-blur rounded-3xl"></div>
+                          <div class="relative grid md:grid-cols-12 gap-8 p-8">
+                            <div class="md:col-span-5">
+                              <h1 class="font-clash text-4xl md:text-5xl text-white mb-4">{example.title}</h1>
+                              <p class="text-lg text-white/90 mb-6">{example.subtitle}</p>
+                              <div class="flex flex-wrap gap-3 mb-8">
+                                {example.features.map((feature: string) => (
+                                  <span class="px-3 py-1.5 rounded-full bg-white/10 text-white text-sm">{feature}</span>
+                                ))}
+                              </div>
+                              <a 
+                                href="/kontakt" 
+                                class="inline-flex px-6 py-3 rounded-full bg-white text-neutral-900 font-medium text-base hover:bg-white/90 transition-colors"
+                              >
+                                {example.cta}
+                              </a>
+                            </div>
+                            <div class="md:col-span-7">
+                              <div class="space-y-4">
+                                {example.properties.map((property) => (
+                                  <div class="bg-white/10 backdrop-blur rounded-xl p-4 hover:bg-white/20 transition-colors cursor-pointer group">
+                                    <div class="flex justify-between items-start mb-2">
+                                      <div class="text-white font-medium group-hover:text-amber-300 transition-colors">
+                                        {property.title}
+                                      </div>
+                                      <div class="text-white/90 text-sm">{property.price}</div>
+                                    </div>
+                                    <div class="text-white/80 text-sm">{property.details}</div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {isHotelExample(example) && (
+                        <div class="relative max-w-6xl mx-auto text-center">
+                          <div class="relative z-10 max-w-3xl mx-auto mb-12">
+                            <h1 class="font-clash text-4xl md:text-5xl text-white mb-4">{example.title}</h1>
+                            <p class="text-lg text-white/90 mb-8">{example.subtitle}</p>
+                            <a 
+                              href="/kontakt" 
+                              class="inline-flex px-6 py-3 rounded-full bg-white text-neutral-900 font-medium text-base hover:bg-white/90 transition-colors"
+                            >
+                              {example.cta}
+                            </a>
+                          </div>
+                          <div class="relative">
+                            <div class="absolute -inset-8 bg-black/40 backdrop-blur-sm rounded-[2rem]"></div>
+                            <div class="relative grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8">
+                              {example.amenities.map((amenity: string) => (
+                                <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center hover:bg-white/20 transition-colors">
+                                  <div class="text-white text-sm mb-2">{amenity}</div>
+                                  <div class="w-12 h-12 mx-auto bg-white/10 rounded-full"></div>
+                                </div>
+                              ))}
+                            </div>
+                            <div class="relative mt-8 grid grid-cols-12 gap-4">
+                              {example.rooms.map((room) => (
+                                <div class="col-span-4 bg-white/10 backdrop-blur rounded-xl p-4 hover:bg-white/20 transition-colors">
+                                  <div class="aspect-[4/3] bg-white/10 rounded-lg mb-4"></div>
+                                  <div class="text-white font-medium mb-1">{room.type}</div>
+                                  <div class="text-white/90 text-sm mb-1">{room.price}</div>
+                                  <div class="text-white/80 text-sm">{room.size}</div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {isClinicExample(example) && (
+                        <div class="relative grid md:grid-cols-12 gap-8">
+                          <div class="md:col-span-5">
+                            <div class="sticky top-24">
+                              <h1 class="font-clash text-4xl md:text-5xl text-white mb-4">{example.title}</h1>
+                              <p class="text-lg text-white/90 mb-6">{example.subtitle}</p>
+                              <div class="grid grid-cols-2 gap-3 mb-8">
+                                {example.specialties.map((specialty: string) => (
+                                  <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-center">
+                                    <div class="text-white text-sm">{specialty}</div>
+                                  </div>
+                                ))}
+                              </div>
+                              <a 
+                                href="/kontakt" 
+                                class="inline-flex px-6 py-3 rounded-full bg-white text-neutral-900 font-medium text-base hover:bg-white/90 transition-colors"
+                              >
+                                {example.cta}
+                              </a>
+                            </div>
+                          </div>
+                          <div class="md:col-span-7">
+                            <div class="space-y-6">
+                              {example.doctors.map((doctor) => (
+                                <div class="group relative">
+                                  <div class="absolute -inset-4 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                  <div class="relative bg-white/10 backdrop-blur rounded-xl p-6">
+                                    <div class="flex items-start gap-6">
+                                      <div class="w-20 h-20 bg-white/10 rounded-full flex-shrink-0"></div>
+                                      <div>
+                                        <div class="text-white font-medium mb-1 group-hover:text-emerald-300 transition-colors">
+                                          {doctor.name}
+                                        </div>
+                                        <div class="text-white/90 text-sm">{doctor.specialty}</div>
+                                        <div class="text-white/80 text-xs mt-1">{doctor.qualification}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <!-- Final CTA Card -->
+            <div 
+              id="example-cta"
+              class="absolute inset-0 w-full h-full opacity-0 bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl overflow-hidden transform scale-90"
+              style="z-index: 5;"
+            >
+              <div class="relative w-full h-full flex items-center justify-center p-8">
+                <div class="relative z-10 text-center max-w-3xl">
+                  <h3 class="font-clash text-3xl md:text-4xl text-white mb-4">
+                    Bereit für Ihre neue Website?
+                  </h3>
+                  <p class="font-inter text-lg text-white/90 mb-8">
+                    Lassen Sie uns gemeinsam Ihr Projekt besprechen und Ihre Vision Realität werden.
+                  </p>
+                  <a 
+                    href="/kontakt"
+                    class="inline-flex items-center justify-center px-6 py-3 rounded-full
+                           font-inter text-base bg-white text-neutral-900
+                           transition-all duration-300 ease-out
+                           hover:scale-105 hover:shadow-lg hover:shadow-black/25"
+                  >
+                    Jetzt Kontakt aufnehmen
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -301,3 +789,82 @@ const description = "Individuelles Design, schnelle Ladezeiten & Mobile First.";
     </section>
   </main>
 </Layout> 
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for the page to load
+  window.addEventListener("load", () => {
+    const container = document.querySelector("#examples-container");
+    if (!container) return;
+
+    // Get all example cards including the CTA
+    const cards = [...document.querySelectorAll("[id^='example-']")];
+    
+    // Set initial state
+    gsap.set(cards[0], { opacity: 1 }); // First card visible immediately
+    gsap.set(cards.slice(1), { opacity: 0 }); // Other cards hidden
+
+    // Create the scroll trigger
+    ScrollTrigger.create({
+      trigger: container,
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".sticky",
+      anticipatePin: 1,
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const totalCards = cards.length;
+        const cardDuration = 1 / totalCards;
+
+        cards.forEach((card, index) => {
+          const cardStart = index * cardDuration;
+          const cardEnd = (index + 1) * cardDuration;
+          const cardProgress = (progress - cardStart) / cardDuration;
+
+          if (progress >= cardStart && progress <= cardEnd) {
+            gsap.to(card, { 
+              opacity: 1,
+              duration: 0.5
+            });
+          } else {
+            gsap.to(card, { 
+              opacity: 0,
+              duration: 0.5
+            });
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Ensure smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  #examples-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  #examples-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+</style> 

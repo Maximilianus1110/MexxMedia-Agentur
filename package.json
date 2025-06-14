@@ -15,9 +15,11 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/inter": "^5.0.16",
     "@fontsource/playfair-display": "^5.0.18",
+    "@types/gsap": "^3.0.0",
     "alpinejs": "^3.14.9",
     "aos": "^2.3.4",
-    "astro": "^4.4.0"
+    "astro": "^4.4.0",
+    "gsap": "^3.13.0"
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",

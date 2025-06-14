@@ -6,6 +6,13 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 ## [2.2.1] - 2024-07-30
 
+### Added
+- **Interaktive Beispiel-Galerie**: Neue scroll-basierte Galerie auf der Webdesign-Seite
+  - GSAP ScrollTrigger Integration für smooth Scroll-Animationen
+  - Responsive Vollbild-Beispielkarten mit Überblendeffekten
+  - Optimierte Performance durch Lazy Loading und CSS-Animationen
+  - Finale Call-to-Action Karte für Conversion-Optimierung
+
 ### Fixed
 - **AlpineJS-Fehler in `ProblemSolution.astro`**: Ein Initialisierungsfehler in der `ProblemSolution`-Komponente wurde behoben. Die Komponentendaten (`problemsJson`) wurden fehlerhaft als String in das `x-data`-Objekt eingefügt, was zu einem AlpineJS-Parser-Fehler führte (`Unexpected token '{'`). Der Fix stellt sicher, dass die JSON-Daten korrekt als JavaScript-Objekt übergeben werden, indem das `x-data`-Attribut mit einem Template-Literal (`` ` ``) umschlossen wird, was eine saubere und syntaktisch korrekte Initialisierung des Alpine-Status ermöglicht.
 
@@ -97,4 +104,21 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Grundlegende Seiten**: Erstellung der initialen Seiten: Startseite, Über uns, Service-Übersicht, Kontakt, Impressum und Datenschutz.
 - **Design-System**: Definition des initialen Design-Systems mit warmen Erdtönen und der Typografie (Playfair Display, Inter).
 - **Grundkomponenten**: Erstellung der ersten grundlegenden UI-Komponenten.
-- **Responsives Layout**: Sicherstellung der grundlegenden Funktionalität auf verschiedenen Bildschirmgrößen. 
+- **Responsives Layout**: Sicherstellung der grundlegenden Funktionalität auf verschiedenen Bildschirmgrößen.
+
+## Version 2.2.1
+
+### Added
+- Neue scroll-basierte Beispiel-Galerie in der Webdesign-Sektion
+  - 4 interaktive Website-Vorschauen mit realistischem Layout
+  - 70vh Höhe pro Karte mit 15vh Offset
+  - Branchen-spezifische Header und Navigation
+  - Echte Website-Strukturen statt Platzhalter
+  - GSAP ScrollTrigger für smooth Scroll-Animationen
+  - TypeScript Interfaces für bessere Code-Qualität
+  - Optimierte Performance durch Code statt Bilder
+
+### Fixed
+- AlpineJS String-Interpolation in ProblemSolution.astro
+- Verbesserte Responsive-Darstellung der Beispiel-Galerie
+- Optimierte Schriftgrößen und Abstände für realistischeres Web-Design 
