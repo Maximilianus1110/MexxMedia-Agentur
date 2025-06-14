@@ -58,6 +58,16 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **`Hero.astro`**: Die Hero-Sektion für die Startseite.
 - **`Services.astro`**: Eine Sektion zur Auflistung der Dienstleistungen.
 - **`ServiceCard.astro`**: Eine Karte zur Darstellung einer einzelnen Dienstleistung.
+  - **Funktionalität**: Zeigt Titel, Beschreibung, Icon und Features einer Dienstleistung an.
+  - **Erweiterungen**: Unterstützt einen aufklappbaren Bereich für zusätzliche Features.
+  - **Interaktivität**: Verwendet Alpine.js für den Expand/Collapse-Mechanismus.
+  - **Props**:
+    - `title`: Der Titel der Dienstleistung
+    - `description`: Die Beschreibung der Dienstleistung
+    - `features`: Array der Hauptfeatures
+    - `additionalFeatures`: Optionales Array zusätzlicher Features
+    - `icon`: SVG-Icon als String
+    - `href`: Link zur Detailseite
 - **`Stats.astro`**: Animierte Statistiken zur visuellen Darstellung von Kennzahlen.
 - **`ProcessTimeline.astro`**: Eine Zeitleiste zur Darstellung von Arbeitsprozessen.
 - **`Pricing.astro`**: Eine Komponente zur Darstellung von Preisplänen.

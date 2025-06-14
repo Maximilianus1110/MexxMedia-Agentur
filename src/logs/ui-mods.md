@@ -30,4 +30,14 @@ In dieser Datei werden alle Änderungen an der Benutzeroberfläche (UI) dokument
 - Hover-Effekt auf CTA-Button:
   - Leichte Anhebung (-translate-y-1)
   - Schatten-Effekt (shadow-lg)
-  - Farbübergang bei Hover 
+  - Farbübergang bei Hover
+
+## 2024-03-XX - ServiceCard Erweiterung
+- **Komponente**: ServiceCard.astro
+- **Änderung**: Implementierung eines aufklappbaren Bereichs für zusätzliche Features
+- **Details**:
+  - Hinzufügung eines "Mehr anzeigen" Buttons
+  - Alpine.js Integration für Expand/Collapse Funktionalität
+  - Smooth Transitions für bessere UX
+  - Anpassung des Designs an Light/Dark Mode
+- **Zweck**: Bessere Übersichtlichkeit durch initiales Anzeigen der wichtigsten Features, während zusätzliche Features bei Bedarf eingeblendet werden können. 
