@@ -26,11 +26,27 @@ const problems: Problem[] = [
     description: "Ihre aktuelle Website wirkt wie aus der Zeit gefallen. Besucher verlassen die Seite sofort wieder, weil der erste Eindruck nicht überzeugt. Das kostet Sie täglich wertvolle Kunden und Umsatz.",
     solution: "Modernes Redesign",
     solutionText: "Wir entwickeln eine zeitgemäße Website, die Vertrauen schafft und Besucher zu Kunden macht.",
-    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                  </svg>`
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-20" viewBox="0 0 400 300" fill="none" stroke="currentColor">
+      <!-- Browser Window -->
+      <rect x="20" y="20" width="360" height="260" rx="8" stroke-width="2"/>
+      <path d="M20 60 H380" stroke-width="2"/>
+      <!-- Browser Controls -->
+      <circle cx="50" cy="40" r="6" fill="currentColor"/>
+      <circle cx="75" cy="40" r="6" fill="currentColor"/>
+      <circle cx="100" cy="40" r="6" fill="currentColor"/>
+      <!-- Comic Sans Text -->
+      <text x="40" y="100" font-family="Comic Sans MS" font-size="20" fill="currentColor">Welcome to my website!</text>
+      <!-- Marquee Element -->
+      <rect x="40" y="120" width="320" height="30" rx="4" stroke-width="1.5"/>
+      <text x="50" y="140" font-size="14" fill="currentColor">⭐ Scrolling text... Under construction... ⭐</text>
+      <!-- Old School Elements -->
+      <rect x="40" y="160" width="100" height="80" rx="2" stroke-width="1.5"/>
+      <rect x="150" y="160" width="100" height="80" rx="2" stroke-width="1.5"/>
+      <rect x="260" y="160" width="100" height="80" rx="2" stroke-width="1.5"/>
+      <!-- Hit Counter -->
+      <rect x="40" y="250" width="140" height="20" rx="2" stroke-width="1.5"/>
+      <text x="50" y="265" font-size="14" fill="currentColor">Visitors: 12345</text>
+    </svg>`
   },
   {
     id: "invisible",
@@ -41,12 +57,24 @@ const problems: Problem[] = [
     description: "Ihre Zielgruppe sucht aktiv nach Ihren Leistungen – findet aber nur Ihre Konkurrenz. Jeden Tag verlieren Sie potenzielle Kunden, weil Ihre Website in den Suchergebnissen nicht auftaucht.",
     solution: "SEO Optimierung",
     solutionText: "Mit unserer SEO-Strategie erreichen Sie Top-Positionen bei Google und werden von Ihrer Zielgruppe gefunden.",
-    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                  </svg>`
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-20" viewBox="0 0 400 300" fill="none" stroke="currentColor">
+      <!-- Search Bar -->
+      <rect x="20" y="40" width="360" height="50" rx="25" stroke-width="2.5"/>
+      <circle cx="55" cy="65" r="18" stroke-width="2.5"/>
+      <line x1="67" y1="77" x2="90" y2="100" stroke-width="2.5"/>
+      <!-- Search Results -->
+      <rect x="20" y="110" width="360" height="50" rx="4" stroke-width="2"/>
+      <text x="35" y="142" font-size="18" fill="currentColor">Competitor Website 1</text>
+      <rect x="20" y="170" width="360" height="50" rx="4" stroke-width="2"/>
+      <text x="35" y="202" font-size="18" fill="currentColor">Competitor Website 2</text>
+      <!-- Your Site (Faded) -->
+      <rect x="20" y="230" width="360" height="50" rx="4" stroke-width="1" opacity="0.3"/>
+      <text x="35" y="262" font-size="18" fill="currentColor" opacity="0.3">Your Website</text>
+      <!-- Magnifying Glass -->
+      <circle cx="320" cy="180" r="40" stroke-width="2.5" fill="none"/>
+      <line x1="345" y1="205" x2="370" y2="230" stroke-width="3"/>
+      <path d="M320 165 v30 M305 180 h30" stroke-width="2.5"/>
+    </svg>`
   },
   {
     id: "no-leads",
@@ -57,11 +85,29 @@ const problems: Problem[] = [
     description: "Ihre Website sieht gut aus, aber die Ergebnisse bleiben aus. Besucher werden nicht zu Leads, Interessenten nicht zu Kunden. Ihr Potenzial bleibt ungenutzt, während die Konkurrenz wächst.",
     solution: "Conversion Optimierung",
     solutionText: "Wir optimieren jeden Aspekt Ihrer Website für maximale Conversion-Raten und messbare Ergebnisse.",
-    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="17 8 12 3 7 8"></polyline>
-                    <line x1="12" y1="3" x2="12" y2="15"></line>
-                  </svg>`
+    illustration: `<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-20" viewBox="0 0 400 300" fill="none" stroke="currentColor">
+      <!-- Empty Inbox -->
+      <rect x="20" y="20" width="360" height="260" rx="8" stroke-width="2"/>
+      <!-- Inbox Header -->
+      <path d="M20 70 H380" stroke-width="2"/>
+      <text x="40" y="50" font-size="20" fill="currentColor">Inbox (0)</text>
+      <!-- Empty State Illustration -->
+      <circle cx="200" cy="150" r="60" stroke-width="2" stroke-dasharray="6"/>
+      <path d="M170 150 h60" stroke-width="2"/>
+      <path d="M200 120 v60" stroke-width="2"/>
+      <!-- Waiting Person -->
+      <circle cx="200" cy="240" r="20" stroke-width="2"/>
+      <path d="M200 260 v20" stroke-width="2"/>
+      <path d="M180 270 h40" stroke-width="2"/>
+      <path d="M175 240 h50" stroke-width="2"/>
+      <!-- Clock Elements -->
+      <circle cx="320" cy="100" r="30" stroke-width="2"/>
+      <path d="M320 80 v20 h15" stroke-width="2"/>
+      <!-- Waiting Dots -->
+      <circle cx="140" cy="200" r="5" fill="currentColor"/>
+      <circle cx="200" cy="200" r="5" fill="currentColor"/>
+      <circle cx="260" cy="200" r="5" fill="currentColor"/>
+    </svg>`
   }
 ];
 
@@ -118,7 +164,7 @@ const problemsJson = JSON.stringify(problems);
         init() {
             setInterval(() => {
                 this.next();
-            }, 12000);
+            }, 15000);
         }
     }`}
       x-init="init()"
@@ -148,10 +194,10 @@ const problemsJson = JSON.stringify(problems);
             <div class="w-full flex-shrink-0">
               <div class="grid md:grid-cols-2 gap-8 items-center">
                 <!-- Left Side - Illustration -->
-                <div class="relative aspect-square md:aspect-auto md:h-[400px] rounded-lg bg-white dark:bg-neutral-900 p-8 flex items-center justify-center">
+                <div class="relative aspect-square md:aspect-auto md:h-[420px] rounded-lg bg-white dark:bg-neutral-900 p-6 flex items-center justify-center">
                   <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-transparent rounded-lg"></div>
-                  <div class="relative text-primary-600 dark:text-primary-400 transform transition-transform duration-500 hover:scale-110">
-                    <div x-html="problem.illustration"></div>
+                  <div class="relative w-full h-full text-primary-600 dark:text-primary-400 transform transition-transform duration-500 hover:scale-110">
+                    <div x-html="problem.illustration" class="w-full h-full"></div>
                   </div>
                 </div>
 
