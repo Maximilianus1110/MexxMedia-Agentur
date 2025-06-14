@@ -49,7 +49,10 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 ### 4.2 UI-Komponenten (`src/components/`)
 - **`ThemeToggle.astro`**: Schalter zur Aktivierung des Dark/Light-Modes.
 - **`CookieBanner.astro`**: DSGVO-konformer Cookie-Banner zur Einholung der Zustimmung des Nutzers.
-- **`ProblemSolution.astro`**: Eine Sektion zur Darstellung von Problemstellungen und deren Lösungen.
+- **`ProblemSolution.astro`**: Eine interaktive Sektion zur Darstellung von Problemstellungen und deren Lösungen.
+  - **Funktionalität**: Die Komponente ist ein Karussell, das automatisch durch verschiedene "Probleme" und deren "Lösungen" rotiert. Benutzer können auch manuell durch die Tabs navigieren.
+  - **Technologie**: Die Interaktivität wird vollständig mit [AlpineJS](https://alpinejs.dev/) umgesetzt.
+  - **Datenübergabe**: Die Daten für die Probleme (Titel, Beschreibung, etc.) werden im Astro-Frontmatter definiert und als JSON-Objekt an die Alpine-Komponente übergeben. Um typische Fehler bei der Übergabe von serverseitigen Daten an `x-data` zu vermeiden, wird das `x-data`-Attribut als JavaScript-Template-Literal (`x-data={`...`}`) definiert. Dies ermöglicht die direkte und syntaktisch korrekte Einbettung des JSON-Objekts in den Initialisierungs-Code von AlpineJS.
 - **`Contact.astro`**: Eine wiederverwendbare Kontakt-Sektion, die auf mehreren Seiten eingebunden werden kann.
 - **`About.astro`**: Komponente für die "Über Uns"-Sektion.
 - **`Hero.astro`**: Die Hero-Sektion für die Startseite.
@@ -60,6 +63,21 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **`Pricing.astro`**: Eine Komponente zur Darstellung von Preisplänen.
 - **`SectionSeparator.astro`**: Ein visueller Trenner für Sektionen.
 - **`ParticlesEffect.astro`**: Komponente für einen Partikel-Effekt im Hintergrund.
+
+### 4.2 Pricing-Komponente
+Die Pricing-Komponente besteht aus mehreren Elementen:
+
+#### Preispläne
+- Drei gestaffelte Pakete mit unterschiedlichem Leistungsumfang
+- Responsive Grid-Layout
+- Hover-Effekte und Animationen
+
+#### Beratungs-Block
+- Positioniert zwischen Preisplänen und FAQ
+- Neutrales Design ohne Preissignale
+- Dark/Light Mode Unterstützung
+- Chat-Icon für verbesserte UX
+- Direkter Link zum Kontaktformular
 
 ## 5. Styling & Design System
 
