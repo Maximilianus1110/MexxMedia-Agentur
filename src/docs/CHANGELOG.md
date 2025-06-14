@@ -20,6 +20,11 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
   - Dedizierte FAQ-Seite unter `/faq` mit SEO-Optimierung
   - Integration auf der Startseite
   - Schema.org FAQPage JSON-LD Markup für bessere Suchmaschinenindexierung
+- Beratungs-Block in der Pricing-Sektion
+  - Freundlicher Hinweis für unentschlossene Besucher
+  - Neutrales Design mit Dark Mode Unterstützung
+  - Call-to-Action zur kostenlosen Beratung
+  - Chat-Icon für verbesserte UX
 
 ### Verbessert
 - FAQ-Bereich konsolidiert
