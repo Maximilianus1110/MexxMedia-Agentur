@@ -4,6 +4,11 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+## [2.2.1] - 2024-07-30
+
+### Fixed
+- **AlpineJS-Fehler in `ProblemSolution.astro`**: Ein Initialisierungsfehler in der `ProblemSolution`-Komponente wurde behoben. Die Komponentendaten (`problemsJson`) wurden fehlerhaft als String in das `x-data`-Objekt eingefügt, was zu einem AlpineJS-Parser-Fehler führte (`Unexpected token '{'`). Der Fix stellt sicher, dass die JSON-Daten korrekt als JavaScript-Objekt übergeben werden, indem das `x-data`-Attribut mit einem Template-Literal (`` ` ``) umschlossen wird, was eine saubere und syntaktisch korrekte Initialisierung des Alpine-Status ermöglicht.
+
 ## [Unreleased]
 
 ### Geplant

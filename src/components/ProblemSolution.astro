@@ -101,14 +101,16 @@ const problemsJson = JSON.stringify(problems);
     </div>
 
     <!-- Interactive Problems Section -->
-    <div class="relative" x-data="{ 
+    <div
+      class="relative"
+      x-data={`{
         problems: ${problemsJson},
-      activeTab: 'outdated',
+        activeTab: 'outdated',
         get activeIndex() { return this.problems.findIndex(p => p.id === this.activeTab) },
         next() {
             const newIndex = (this.activeIndex + 1) % this.problems.length;
             this.activeTab = this.problems[newIndex].id;
-      },
+        },
         prev() {
             const newIndex = (this.activeIndex - 1 + this.problems.length) % this.problems.length;
             this.activeTab = this.problems[newIndex].id;
@@ -118,19 +120,21 @@ const problemsJson = JSON.stringify(problems);
                 this.next();
             }, 3000);
         }
-    }" x-init="init()">
+    }`}
+      x-init="init()"
+    >
       <!-- Tabs -->
       <div class="flex justify-center mb-12 relative">
         <div class="inline-flex p-1 rounded-full bg-white dark:bg-neutral-900 shadow-lg space-x-1">
-          {problems.map((problem) => (
+          <template x-for="problem in problems" :key="problem.id">
             <button
               class="px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
               :class="activeTab === problem.id ? 'bg-[#1f3fff] text-white shadow-md' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'"
-              @click={`activeTab = '${problem.id}'`}
+              @click="activeTab = problem.id"
+              x-text="problem.title"
             >
-              {problem.title}
             </button>
-          ))}
+          </template>
         </div>
       </div>
 
@@ -140,41 +144,37 @@ const problemsJson = JSON.stringify(problems);
           class="flex transition-transform duration-500 ease-in-out"
           :style="`transform: translateX(-${activeIndex * 100}%)`"
         >
-          {problems.map((problem) => (
+          <template x-for="problem in problems" :key="problem.id">
             <div class="w-full flex-shrink-0">
               <div class="grid md:grid-cols-2 gap-8 items-center">
                 <!-- Left Side - Illustration -->
                 <div class="relative aspect-square md:aspect-auto md:h-[400px] rounded-lg bg-white dark:bg-neutral-900 p-8 flex items-center justify-center">
                   <div class="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-transparent rounded-lg"></div>
                   <div class="relative text-primary-600 dark:text-primary-400 transform transition-transform duration-500 hover:scale-110">
-                    <Fragment set:html={problem.illustration} />
+                    <div x-html="problem.illustration"></div>
                   </div>
                 </div>
 
                 <!-- Right Side - Content -->
                 <div class="space-y-8">
                   <div>
-                    <h3 class="font-clash text-3xl text-neutral-900 dark:text-white mb-4">
-                      {problem.title}
+                    <h3 class="font-clash text-3xl text-neutral-900 dark:text-white mb-4" x-text="problem.title">
                     </h3>
-                    <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300">
-                      {problem.description}
+                    <p class="font-inter text-lg text-neutral-700 dark:text-neutral-300" x-text="problem.description">
                     </p>
                   </div>
 
                   <!-- Solution Card -->
                   <div class="p-6 rounded-lg bg-blue-50 dark:bg-[#1f3fff]/10 border border-blue-100 dark:border-[#1f3fff]/20">
-                    <h4 class="font-clash text-xl text-primary-600 dark:text-primary-400 mb-2">
-                      {problem.solution}
+                    <h4 class="font-clash text-xl text-primary-600 dark:text-primary-400 mb-2" x-text="problem.solution">
                     </h4>
-                    <p class="font-inter text-neutral-700 dark:text-neutral-300">
-                      {problem.solutionText}
+                    <p class="font-inter text-neutral-700 dark:text-neutral-300" x-text="problem.solutionText">
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
+          </template>
         </div>
 
         <!-- Navigation Arrows -->
