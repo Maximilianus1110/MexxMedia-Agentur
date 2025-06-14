@@ -58,6 +58,16 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **`Hero.astro`**: Die Hero-Sektion für die Startseite.
 - **`Services.astro`**: Eine Sektion zur Auflistung der Dienstleistungen.
 - **`ServiceCard.astro`**: Eine Karte zur Darstellung einer einzelnen Dienstleistung.
+  - **Funktionalität**: Zeigt Titel, Beschreibung, Icon und Features einer Dienstleistung an.
+  - **Erweiterungen**: Unterstützt einen aufklappbaren Bereich für zusätzliche Features.
+  - **Interaktivität**: Verwendet Alpine.js für den Expand/Collapse-Mechanismus.
+  - **Props**:
+    - `title`: Der Titel der Dienstleistung
+    - `description`: Die Beschreibung der Dienstleistung
+    - `features`: Array der Hauptfeatures
+    - `additionalFeatures`: Optionales Array zusätzlicher Features
+    - `icon`: SVG-Icon als String
+    - `href`: Link zur Detailseite
 - **`Stats.astro`**: Animierte Statistiken zur visuellen Darstellung von Kennzahlen.
 - **`ProcessTimeline.astro`**: Eine Zeitleiste zur Darstellung von Arbeitsprozessen.
 - **`Pricing.astro`**: Eine Komponente zur Darstellung von Preisplänen.
@@ -209,4 +219,27 @@ Ein neues Feature zur Online-Terminbuchung ist in Planung und wird die folgende 
 ### 13.4 Zusätzliche geplante Features
 - **Automatische Erinnerungen**: Kunden erhalten 24 Stunden vor dem Termin eine automatische Erinnerungs-E-Mail.
 - **Stornierungs-Link**: Die Bestätigungs-E-Mail enthält einen Link, über den der Kunde den Termin einfach stornieren kann.
-- **Pufferzeiten**: Automatische Blockierung von Zeitfenstern vor und nach einem gebuchten Termin, um Überbuchungen zu vermeiden. 
+- **Pufferzeiten**: Automatische Blockierung von Zeitfenstern vor und nach einem gebuchten Termin, um Überbuchungen zu vermeiden.
+
+## Komponenten
+
+### About (`components/About.astro`)
+- Zeigt das Team und Unternehmenswerte auf der Startseite
+- Enthält eine kompakte Stats-Sektion mit animierten Zahlen:
+  - Kleinere Darstellung für bessere Integration
+  - Einfaches, schlichtes Design
+  - Animation beim Sichtbarwerden
+
+### Über uns (`pages/about.astro`)
+- Ausführliche Teamvorstellung und Unternehmensphilosophie
+- Enthält eine erweiterte Stats-Sektion mit:
+  - Interaktive Karten mit Icons
+  - Hover-Effekte und Farbübergänge
+  - Größere Darstellung der Zahlen
+  - Animation beim Sichtbarwerden
+
+### Gemeinsame Funktionen
+- Beide Stats-Sektionen verwenden:
+  - IntersectionObserver für Scroll-basierte Animation
+  - Konsistente Zahlen und Beschreibungen
+  - Anpassung an Dark/Light Mode 
