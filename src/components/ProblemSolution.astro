@@ -108,17 +108,17 @@ const problemsJson = JSON.stringify(problems);
         activeTab: 'outdated',
         get activeIndex() { return this.problems.findIndex(p => p.id === this.activeTab) },
         next() {
-            const newIndex = (this.activeIndex + 1) % this.problems.length;
+            const newIndex = (this.activeIndex - 1 + this.problems.length) % this.problems.length;
             this.activeTab = this.problems[newIndex].id;
         },
-        prev() {
-            const newIndex = (this.activeIndex - 1 + this.problems.length) % this.problems.length;
+        prev() {     
+            const newIndex = (this.activeIndex + 1) % this.problems.length;
             this.activeTab = this.problems[newIndex].id;
         },
         init() {
             setInterval(() => {
                 this.next();
-            }, 3000);
+            }, 8000);
         }
     }`}
       x-init="init()"
@@ -180,7 +180,7 @@ const problemsJson = JSON.stringify(problems);
         <!-- Navigation Arrows -->
         <button
           class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-neutral-900 shadow-lg items-center justify-center text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:scale-110"
-          @click="prev()"
+          @click="next()"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -189,7 +189,7 @@ const problemsJson = JSON.stringify(problems);
         
         <button
           class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-neutral-900 shadow-lg items-center justify-center text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:scale-110"
-          @click="next()"
+          @click="prev()"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
