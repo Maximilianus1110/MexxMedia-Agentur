@@ -64,6 +64,21 @@ Das Projekt nutzt eine komponentenbasierte Architektur. Die Komponenten sind in 
 - **`SectionSeparator.astro`**: Ein visueller Trenner für Sektionen.
 - **`ParticlesEffect.astro`**: Komponente für einen Partikel-Effekt im Hintergrund.
 
+### 4.2 Pricing-Komponente
+Die Pricing-Komponente besteht aus mehreren Elementen:
+
+#### Preispläne
+- Drei gestaffelte Pakete mit unterschiedlichem Leistungsumfang
+- Responsive Grid-Layout
+- Hover-Effekte und Animationen
+
+#### Beratungs-Block
+- Positioniert zwischen Preisplänen und FAQ
+- Neutrales Design ohne Preissignale
+- Dark/Light Mode Unterstützung
+- Chat-Icon für verbesserte UX
+- Direkter Link zum Kontaktformular
+
 ## 5. Styling & Design System
 
 ### 5.1 Farbpalette
