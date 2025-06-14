@@ -7,6 +7,7 @@ export const SITE = {
   contact: {
     email: 'info@mexxmedia.de',
     phone: '+49 179 2224063',
+    instagram: 'mexxmedia.de',
     address: {
       street: 'Beispielstraße 21',
       city: 'Nürnberg',
@@ -17,8 +18,8 @@ export const SITE = {
   
   // Soziale Medien
   socials: [
-    { name: 'Instagram', url: 'https://www.instagram.com/mexxmedia' },
-    { name: 'WhatsApp', url: 'https://wa.me/4915772150009' },
+    { name: 'Instagram', url: 'https://www.instagram.com/mexxmedia.de' },
+    { name: 'WhatsApp', url: 'https://wa.me/491792224063' },
     // Fügen Sie hier weitere soziale Netzwerke hinzu
     // { name: 'LinkedIn', url: 'https://www.linkedin.com/in/yourprofile' },
   ],
