@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Häufig gestellte Fragen (FAQ) | MexxMedia";
+const description = "Finden Sie Antworten auf häufig gestellte Fragen zu unseren Webentwicklungs-, Design- und Wartungsdienstleistungen. Professionelle Beratung für Ihre digitalen Projekte.";
+
+// FAQ Data Structure
+const faqData = [
+  {
+    category: "Webentwicklung",
+    items: [
+      {
+        question: "Wie lange dauert die Entwicklung einer Website?",
+        answer: "Die Entwicklungszeit variiert je nach Projektumfang. Ein einfacher Webauftritt kann in 2-4 Wochen realisiert werden, während komplexere Projekte 2-3 Monate benötigen können. Wir erstellen zu Beginn einen detaillierten Zeitplan."
+      },
+      {
+        question: "Welche Technologien verwendet ihr für die Webentwicklung?",
+        answer: "Wir setzen auf moderne, zukunftssichere Technologien wie Astro, React und Tailwind CSS. Für Content Management nutzen wir benutzerfreundliche Systeme, die optimal auf Ihre Bedürfnisse abgestimmt sind."
+      }
+    ]
+  },
+  {
+    category: "Design & Branding",
+    items: [
+      {
+        question: "Erstellt ihr auch das Design für meine Website?",
+        answer: "Ja, wir bieten Full-Service von der Konzeption bis zur Umsetzung. Unser Designteam entwickelt ein maßgeschneidertes, modernes Design, das Ihre Markenidentität optimal repräsentiert."
+      },
+      {
+        question: "Kann ich bestehende Designs oder Logos integrieren lassen?",
+        answer: "Selbstverständlich. Wir integrieren Ihr bestehendes Branding und passen es bei Bedarf für die digitale Nutzung an. Dabei achten wir auf eine konsistente Markendarstellung."
+      }
+    ]
+  },
+  {
+    category: "Kosten & Wartung",
+    items: [
+      {
+        question: "Was kostet eine professionelle Website?",
+        answer: "Die Kosten richten sich nach Ihren individuellen Anforderungen. Basis-Websites beginnen bei 2.500€, komplexere Projekte werden nach Aufwand kalkuliert. Wir erstellen Ihnen gerne ein detailliertes Angebot."
+      },
+      {
+        question: "Gibt es laufende Kosten nach der Fertigstellung?",
+        answer: "Ja, für Hosting, Domain und SSL-Zertifikat fallen jährliche Kosten an. Optional bieten wir Wartungspakete für regelmäßige Updates, Sicherheit und Content-Pflege an."
+      }
+    ]
+  }
+];
+
+// Prepare FAQ data for JSON-LD
+const faqSchemaData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.flatMap(category => 
+    category.items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  )
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchemaData)} />
+  </Fragment>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative py-24 lg:py-32 overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-600/[0.03] to-transparent"></div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 aspect-square bg-gradient-conic from-primary-600/[0.05] to-transparent rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary-600/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 text-sm font-medium mb-8">
+            <span class="flex w-2 h-2 rounded-full bg-primary-600 dark:bg-primary-400 mr-2"></span>
+            FAQ
+          </div>
+          <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-neutral-900 dark:text-white mb-8">
+            Häufig gestellte <span class="text-primary-600 dark:text-primary-400">Fragen</span>
+          </h1>
+          <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-8">
+            Hier finden Sie Antworten auf die wichtigsten Fragen zu unseren Dienstleistungen. Nicht fündig geworden? Kontaktieren Sie uns gerne direkt.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center items-center text-sm text-neutral-600 dark:text-neutral-400">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Übersichtlich strukturiert</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+              </svg>
+              <span>Direkte Antworten</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Regelmäßig aktualisiert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-16">
+          {faqData.map((category) => (
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-10">
+              <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+                {category.category}
+              </h2>
+              <dl class="space-y-6">
+                {category.items.map((item) => (
+                  <div class="relative">
+                    <details class="group">
+                      <summary class="list-none cursor-pointer">
+                        <div class="flex items-center justify-between">
+                          <dt class="text-lg font-medium text-gray-900 dark:text-white pr-10">
+                            {item.question}
+                          </dt>
+                          <span class="ml-6 flex-shrink-0">
+                            <svg 
+                              class="h-6 w-6 text-gray-400 group-open:rotate-180 transition-transform duration-200" 
+                              xmlns="http://www.w3.org/2000/svg" 
+                              fill="none" 
+                              viewBox="0 0 24 24" 
+                              stroke="currentColor"
+                            >
+                              <path 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </summary>
+                      <dd class="mt-4 text-base text-gray-600 dark:text-gray-300 pl-0">
+                        {item.answer}
+                      </dd>
+                    </details>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="mt-20 text-center">
+          <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Noch Fragen?
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+              Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch.
+            </p>
+            <a 
+              href="/kontakt" 
+              class="inline-flex items-center px-8 py-4 rounded-full font-medium text-white bg-primary-600 hover:bg-primary-700 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary-600/25 focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+            >
+              Jetzt Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary {
+    margin-bottom: 1rem;
+  }
+
+  details dd {
+    animation: slideDown 0.2s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    h2 {
+      font-size: 1.875rem;
+    }
+    
+    dt {
+      font-size: 1rem;
+    }
+  }
+</style> 

@@ -9,6 +9,34 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ### Geplant
 - **Terminbuchungssystem**: Implementierung eines Tools zur Online-Terminbuchung mit Google Kalender-Integration und E-Mail-Benachrichtigungen.
 
+### Hinzugefügt
+- FAQ-Sektion implementiert
+  - Neue FAQ-Komponente mit responsivem Design und Dark Mode Unterstützung
+  - Dedizierte FAQ-Seite unter `/faq` mit SEO-Optimierung
+  - Integration auf der Startseite
+  - Schema.org FAQPage JSON-LD Markup für bessere Suchmaschinenindexierung
+
+### Verbessert
+- FAQ-Bereich konsolidiert
+  - FAQ-Logik direkt in FAQ-Seite integriert
+  - Separate Komponente entfernt für bessere Wartbarkeit
+  - Vereinfachte "Noch Fragen?" Sektion auf der Hauptseite
+  - Verbesserte Code-Organisation und Struktur
+
+## [2.2.0] - 2024-07-29
+
+### Added
+- **Strukturierte Daten (Schema.org)**: Dynamische Erstellung von JSON-LD-Schemas für `LocalBusiness`, `Service` und `ContactPage` im `<head>` zur Verbesserung von Rich Snippets.
+- **SEO-Dateien**: 
+  - `@astrojs/sitemap` wurde installiert und konfiguriert, um automatisch eine `sitemap.xml` zu generieren.
+  - Eine `public/robots.txt` wurde erstellt, um Crawlern Anweisungen zu geben und auf die Sitemap zu verweisen.
+- **Social Previews**: `og:image` und `twitter:image` Meta-Tags wurden samt Alt-Texten im `Layout.astro` hinzugefügt, um die Darstellung beim Teilen in sozialen Netzwerken zu optimieren.
+- **Zentrale Datenquelle**: Eine Datei `src/data/site.ts` wurde angelegt, um globale Unternehmensinformationen wie Kontaktdaten, Adresse und Social-Media-Links zu zentralisieren.
+
+### Changed
+- **Komponenten-Refactoring**: Die Komponenten `Footer.astro` und `kontakt.astro` wurden überarbeitet und beziehen ihre Daten nun aus der zentralen `site.ts`-Quelle statt aus hartkodierten Werten.
+- **Bild-SEO**: Der `alt`-Text für Bilder auf der `/about`-Seite wurde verbessert, um beschreibender und SEO-freundlicher zu sein.
+
 ## [2.1.1] - 2024-07-29
 
 ### Fixed

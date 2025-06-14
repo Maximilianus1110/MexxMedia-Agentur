@@ -1,4 +1,6 @@
 ---
+import { SITE } from '../data/site';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
@@ -16,10 +18,10 @@ const footerLinks = {
       <!-- MexxMedia -->
       <div>
         <h3 class="font-display text-lg text-neutral-900 dark:text-white mb-4">
-          MexxMedia
+          {SITE.name}
         </h3>
         <p class="text-neutral-600 dark:text-neutral-400 text-sm">
-          Ihre Webagentur für digitalen Erfolg. Design, SEO und Hosting aus einer Hand.
+          {SITE.description.split('.')[0]}.
         </p>
       </div>
 
@@ -48,9 +50,9 @@ const footerLinks = {
           Kontakt
         </h3>
         <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-          <li><a href="tel:+4915772150009" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">+49 157 7215 0009</a></li>
-          <li><a href="mailto:info@mexxmedia.de" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">info@mexxmedia.de</a></li>
-          <li>Nürnberg, Deutschland</li>
+          <li><a href={`tel:${SITE.contact.phone}`} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{SITE.contact.phone}</a></li>
+          <li><a href={`mailto:${SITE.contact.email}`} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{SITE.contact.email}</a></li>
+          <li>{SITE.contact.address.city}, {SITE.contact.address.country}</li>
         </ul>
       </div>
 
@@ -83,7 +85,7 @@ const footerLinks = {
     <!-- Copyright -->
     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-neutral-900 text-center">
       <p class="text-sm text-neutral-600 dark:text-neutral-400">
-        © {currentYear} MexxMedia GmbH. Alle Rechte vorbehalten.
+        © {currentYear} {SITE.name}. Alle Rechte vorbehalten.
       </p>
     </div>
   </div>
