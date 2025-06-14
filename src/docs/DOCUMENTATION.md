@@ -209,4 +209,27 @@ Ein neues Feature zur Online-Terminbuchung ist in Planung und wird die folgende 
 ### 13.4 Zusätzliche geplante Features
 - **Automatische Erinnerungen**: Kunden erhalten 24 Stunden vor dem Termin eine automatische Erinnerungs-E-Mail.
 - **Stornierungs-Link**: Die Bestätigungs-E-Mail enthält einen Link, über den der Kunde den Termin einfach stornieren kann.
-- **Pufferzeiten**: Automatische Blockierung von Zeitfenstern vor und nach einem gebuchten Termin, um Überbuchungen zu vermeiden. 
+- **Pufferzeiten**: Automatische Blockierung von Zeitfenstern vor und nach einem gebuchten Termin, um Überbuchungen zu vermeiden.
+
+## Komponenten
+
+### About (`components/About.astro`)
+- Zeigt das Team und Unternehmenswerte auf der Startseite
+- Enthält eine kompakte Stats-Sektion mit animierten Zahlen:
+  - Kleinere Darstellung für bessere Integration
+  - Einfaches, schlichtes Design
+  - Animation beim Sichtbarwerden
+
+### Über uns (`pages/about.astro`)
+- Ausführliche Teamvorstellung und Unternehmensphilosophie
+- Enthält eine erweiterte Stats-Sektion mit:
+  - Interaktive Karten mit Icons
+  - Hover-Effekte und Farbübergänge
+  - Größere Darstellung der Zahlen
+  - Animation beim Sichtbarwerden
+
+### Gemeinsame Funktionen
+- Beide Stats-Sektionen verwenden:
+  - IntersectionObserver für Scroll-basierte Animation
+  - Konsistente Zahlen und Beschreibungen
+  - Anpassung an Dark/Light Mode 

@@ -46,6 +46,12 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ### Changed
 - **Komponenten-Refactoring**: Die Komponenten `Footer.astro` und `kontakt.astro` wurden überarbeitet und beziehen ihre Daten nun aus der zentralen `site.ts`-Quelle statt aus hartkodierten Werten.
 - **Bild-SEO**: Der `alt`-Text für Bilder auf der `/about`-Seite wurde verbessert, um beschreibender und SEO-freundlicher zu sein.
+- Stats-Sektion überarbeitet:
+  - Zahlen aktualisiert: "10+ Projekte im Aufbau" (statt 30+) und "3+ Jahre Erfahrung" (statt 5+)
+  - Stats direkt in About-Komponente und Über-uns-Seite integriert
+  - Unterschiedliches Design für bessere visuelle Abwechslung
+  - Kompakteres Design in der About-Komponente
+  - Interaktives Card-Design mit Icons auf der Über-uns-Seite
 
 ## [2.1.1] - 2024-07-29
 

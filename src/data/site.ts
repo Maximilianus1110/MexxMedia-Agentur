@@ -6,9 +6,9 @@ export const SITE = {
   // Kontaktdaten
   contact: {
     email: 'info@mexxmedia.de',
-    phone: '+49 157 72150009',
+    phone: '+49 179 2224063',
     address: {
-      street: 'Beispielstraße 123',
+      street: 'Beispielstraße 21',
       city: 'Nürnberg',
       zip: '90402',
       country: 'Deutschland',
