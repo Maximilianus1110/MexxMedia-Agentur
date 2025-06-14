@@ -1,53 +1,72 @@
 ---
-const plans = [
+interface PricingFeature {
+  text: string;
+  included: boolean;
+}
+
+interface PricingPlan {
+  name: string;
+  description: string;
+  price: string;
+  features: string[];
+  additionalInfo?: string;
+  isPopular?: boolean;
+}
+
+const plans: PricingPlan[] = [
   {
-    name: "Starter",
-    price: "640",
-    description: "Perfekt für kleine Unternehmen und Startups",
+    name: "Web Basic",
+    description: "Dein kompakter Webauftritt zum Einstieg",
+    price: "ab 640 €",
     features: [
-      "Responsive Website",
-      "5 Unterseiten",
-      "Kontaktformular",
-      "SEO Grundoptimierung",
-      "SSL-Verschlüsselung",
-      "3 Monate Support"
+      "Moderner Onepager mit klarer Struktur",
+      "Mobiloptimiert & responsiv",
+      "Impressum & Datenschutz inklusive",
+      "Individualisiertes Design",
+      "Google Maps Integration",
+      "Social Media Verlinkung",
+      "Barrierefreiheit (grundlegend)",
+      "Persönlicher Ansprechpartner",
+      "Hosting durch MexxMedia möglich"
     ],
-    cta: "Starter wählen",
-    popular: false
+    additionalInfo: "Mehrseitige Struktur oder Zusatzfunktionen zubuchbar"
   },
   {
-    name: "Professional",
-    price: "945",
-    description: "Ideal für wachsende Unternehmen",
+    name: "Web Plus",
+    description: "Der nächste Schritt für deinen Online-Erfolg",
+    price: "ab 945 €",
     features: [
-      "Alles aus Starter, plus:",
-      "10 Unterseiten",
-      "Blog-System",
+      "Alles aus dem Web Basic-Paket",
+      "Strukturierte Website mit bis zu 10 Seiten",
+      "Zielgruppenbasierte Werbetexte",
+      "Digitale Speisekarte oder Leistungsübersicht mit QR-Code",
+      "Grundlegende Formulare (z. B. Kontakt, Anfrage)",
+      "Google Business Einrichtung",
+      "SEO (grundlegend)",
+      "Barrierefreiheit (grundlegend)",
+      "Persönlicher Ansprechpartner",
+      "Hosting durch MexxMedia möglich"
+    ],
+    additionalInfo: "Zusätzliche Module oder Funktionen",
+    isPopular: true
+  },
+  {
+    name: "Web Max",
+    description: "Für maximale Wirkung & volle Flexibilität",
+    price: "ab 1.500 €",
+    features: [
+      "Alles aus dem Web Plus-Paket",
+      "Unbegrenzte Seitenanzahl & individuelle Struktur",
+      "Online-Buchungssystem (MexxCal light)",
       "Newsletter-Integration",
-      "Social Media Integration",
-      "6 Monate Support",
-      "Performance Optimierung",
-      "Analytics Setup"
+      "Social-Media Integration (z. B. Instagram Embed)",
+      "Mehrsprachigkeit (z. B. DE | EN)",
+      "Erweiterte SEO (technisch & inhaltlich)",
+      "Barrierefreiheit (grundlegend)",
+      "Persönlicher Ansprechpartner",
+      "Hosting durch MexxMedia möglich"
     ],
-    cta: "Professional wählen",
-    popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "1.500",
-    description: "Maßgeschneiderte Lösungen für große Unternehmen",
-    features: [
-      "Alles aus Professional, plus:",
-      "Unbegrenzte Unterseiten",
-      "Custom Design",
-      "E-Commerce Integration",
-      "API Entwicklung",
-      "12 Monate Support",
-      "Dedicated Account Manager",
-      "24/7 Priority Support"
-    ],
-    cta: "Enterprise wählen",
-    popular: false
+    additionalInfo: "Individuelle Sonderfunktionen & Module"
   }
 ];
 ---
@@ -68,19 +87,19 @@ const plans = [
     </div>
     
     <!-- Decorative elements -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(31,63,255,0.05)_0%,transparent_40%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(31,63,255,0.05)_0%,transparent_40%)]"></div>
+    <div class="absolute -right-40 -top-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
     <div class="absolute -left-40 -bottom-40 w-[500px] h-[500px] rounded-full bg-primary-600/5 blur-3xl"></div>
-    <div class="absolute -right-40 top-40 w-[400px] h-[400px] rounded-full bg-primary-600/5 blur-3xl"></div>
   </div>
 
   <div class="container mx-auto px-4 relative">
     <!-- Section Header -->
     <div class="max-w-4xl mx-auto text-center mb-16">
       <p class="text-primary-600 dark:text-primary-400 font-medium tracking-wide uppercase text-sm mb-4">
-        Preise
+        Unsere Pakete
       </p>
       <h2 class="font-display text-4xl md:text-5xl text-neutral-900 dark:text-white mb-6">
-        Transparente Preisgestaltung
+        Die richtige Lösung für Ihr Projekt
       </h2>
       <p class="font-body text-lg text-neutral-700 dark:text-neutral-300">
         Wählen Sie das passende Paket für Ihre Anforderungen
@@ -88,111 +107,103 @@ const plans = [
     </div>
 
     <!-- Pricing Grid -->
-    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
       {plans.map((plan) => (
-        <div class="relative">
-          {plan.popular && (
-            <div class="absolute -top-4 left-0 right-0 flex justify-center">
-              <span class="px-4 py-1 bg-primary-600 text-white text-sm font-medium rounded-lg">
-                Beliebt
-              </span>
+        <div class={`relative flex flex-col bg-white dark:bg-neutral-900 rounded-2xl shadow-lg transition-all duration-300 hover:scale-[1.02] 
+          ${plan.isPopular ? 'ring-2 ring-primary-500 dark:ring-primary-400' : 'ring-1 ring-neutral-200/50 dark:ring-neutral-800/50'}`}>
+          
+          {plan.isPopular && (
+            <div class="absolute -top-5 left-0 right-0 mx-auto w-fit px-4 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
+              Meistgewählt
             </div>
           )}
-          
-          <div class={`h-full p-8 bg-white dark:bg-neutral-900 rounded-lg shadow-lg dark:shadow-none
-                       border ${plan.popular ? 'border-primary-600 dark:border-primary-400' : 'border-gray-200 dark:border-neutral-800'}
-                       transition-all duration-300 ease-in-out
-                       hover:-translate-y-1 hover:shadow-xl`}>
-            <!-- Plan Header -->
-            <div class="text-center mb-8">
-              <h3 class="font-display text-2xl text-neutral-900 dark:text-white mb-4">
-                {plan.name}
-              </h3>
-              <div class="flex items-baseline justify-center mb-4">
-                <span class="text-6xl font-display text-neutral-900 dark:text-white">{plan.price}</span>
-                <span class="text-4xl font-display text-neutral-900 dark:text-white">€</span>
-              </div>
-              <p class="font-body text-neutral-700 dark:text-neutral-300">
-                {plan.description}
-              </p>
-            </div>
 
-            <!-- Features List -->
+          <div class="p-8">
+            <h3 class="font-display text-2xl text-neutral-900 dark:text-white mb-2">
+              {plan.name}
+            </h3>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+              {plan.description}
+            </p>
+            <p class="text-3xl font-display text-neutral-900 dark:text-white mb-8">
+              {plan.price}
+            </p>
+
             <ul class="space-y-4 mb-8">
               {plan.features.map((feature) => (
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-primary-500 dark:text-primary-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span class="font-body text-neutral-700 dark:text-neutral-300">
-                    {feature}
-                  </span>
+                  <span class="text-neutral-700 dark:text-neutral-300">{feature}</span>
                 </li>
               ))}
             </ul>
 
-            <!-- CTA Button -->
-            <div class="mt-auto">
-              <a
-                href="/kontakt"
-                class={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-body
-                        transition-all duration-300 ease-in-out
-                        ${plan.popular
-                          ? 'text-white bg-primary-600 hover:bg-primary-700 hover:shadow-glow'
-                          : 'text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 hover:bg-primary-600/10 dark:hover:bg-primary-400/10'
-                        }`}
-              >
-                {plan.cta}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
+            {plan.additionalInfo && (
+              <div class="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-800">
+                <div class="flex items-center">
+                  <span class="text-2xl font-bold text-primary-500 dark:text-primary-400 mr-2">➕</span>
+                  <p class="text-neutral-700 dark:text-neutral-300">{plan.additionalInfo}</p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="p-8 mt-auto">
+            <a
+              href="/kontakt"
+              class={`block w-full text-center px-6 py-3 rounded-lg font-medium transition-colors duration-200
+                ${plan.isPopular 
+                  ? 'bg-primary-500 text-white hover:bg-primary-600' 
+                  : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700'}`}
+            >
+              Jetzt anfragen
+            </a>
           </div>
         </div>
       ))}
     </div>
 
     <!-- Consultation Block -->
-<div class="max-w-3xl mx-auto mt-16 p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 text-center">
-  <h3 class="font-display text-2xl text-neutral-900 dark:text-white mb-4">
-    Nicht sicher, welches Paket zu dir passt?
-  </h3>
-  <p class="font-body text-lg text-neutral-700 dark:text-neutral-300 mb-8">
-    Kein Problem – wir finden gemeinsam heraus, was du wirklich brauchst und stellen dir ein individuelles Angebot zusammen.
-  </p>
+    <div class="max-w-3xl mx-auto mt-16 p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 text-center">
+      <h3 class="font-display text-2xl text-neutral-900 dark:text-white mb-4">
+        Nicht sicher, welches Paket zu dir passt?
+      </h3>
+      <p class="font-body text-lg text-neutral-700 dark:text-neutral-300 mb-8">
+        Kein Problem – wir finden gemeinsam heraus, was du wirklich brauchst und stellen dir ein individuelles Angebot zusammen.
+      </p>
 
-  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-    <!-- Beratung -->
-    <a
-      href="/kontakt"
-      class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-body text-white bg-neutral-900 dark:bg-white dark:text-neutral-900
-             transition-all duration-300 ease-in-out
-             hover:bg-neutral-800 dark:hover:bg-neutral-100 hover:-translate-y-1 hover:shadow-lg"
-    >
-      Jetzt kostenlos beraten lassen
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    </a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <!-- Beratung -->
+        <a
+          href="/kontakt"
+          class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-body text-white bg-neutral-900 dark:bg-white dark:text-neutral-900
+                 transition-all duration-300 ease-in-out
+                 hover:bg-neutral-800 dark:hover:bg-neutral-100 hover:-translate-y-1 hover:shadow-lg"
+        >
+          Jetzt kostenlos beraten lassen
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </a>
 
-    <!-- Features anzeigen -->
-    <button
-      onclick="document.getElementById('feature-section')?.scrollIntoView({ behavior: 'smooth' });"
-      class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-body text-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:text-white
-             transition-all duration-300 ease-in-out
-             hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:-translate-y-1 hover:shadow-lg"
-    >
-      Alle Features anzeigen
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 7l5 5m0 0l-5 5m5-5H6" />
-      </svg>
-    </button>
-  </div>
-</div>
-
+        <!-- Features anzeigen -->
+        <button
+          onclick="document.getElementById('feature-section')?.scrollIntoView({ behavior: 'smooth' });"
+          class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-body text-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:text-white
+                 transition-all duration-300 ease-in-out
+                 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:-translate-y-1 hover:shadow-lg"
+        >
+          Alle Features anzeigen
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
     <!-- FAQ Link -->
     <div class="text-center mt-12">

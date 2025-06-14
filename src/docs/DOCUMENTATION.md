@@ -242,4 +242,65 @@ Ein neues Feature zur Online-Terminbuchung ist in Planung und wird die folgende 
 - Beide Stats-Sektionen verwenden:
   - IntersectionObserver für Scroll-basierte Animation
   - Konsistente Zahlen und Beschreibungen
-  - Anpassung an Dark/Light Mode 
+  - Anpassung an Dark/Light Mode
+
+## Pricing-Komponente
+
+Die Pricing-Komponente (`src/components/Pricing.astro`) zeigt die verschiedenen Webseitenpakete an.
+
+### Struktur
+
+Die Komponente verwendet TypeScript-Interfaces für eine bessere Typisierung:
+
+```typescript
+interface PricingPlan {
+  name: string;
+  description: string;
+  price: string;
+  features: string[];
+  additionalInfo?: string;
+  isPopular?: boolean;
+}
+```
+
+### Pakete
+
+Es gibt drei vordefinierte Pakete:
+
+1. **Web Basic** (ab 640 €)
+   - Basis-Paket für Einsteiger
+   - Fokus auf One-Page-Websites
+   - Grundlegende Features und Optimierungen
+
+2. **Web Plus** (ab 945 €)
+   - Erweitertes Paket für wachsende Unternehmen
+   - Bis zu 10 Seiten
+   - Zusätzliche Features wie digitale Speisekarte und Formulare
+
+3. **Web Max** (ab 1.500 €)
+   - Premium-Paket für maximale Flexibilität
+   - Unbegrenzte Seitenanzahl
+   - Erweiterte Features wie Mehrsprachigkeit und Online-Buchung
+
+### Design-Features
+
+- Responsive Grid-Layout (3 Spalten auf Desktop)
+- Hervorhebung des populären Pakets (Web Plus)
+- Hover-Effekte für bessere Interaktivität
+- Dark/Light Mode Unterstützung
+- Animierter Hintergrund mit Grid-Pattern
+- Konsistente Typografie mit Clash Display und Inter
+
+### Verwendung
+
+```astro
+---
+import Pricing from '../components/Pricing.astro';
+---
+
+<Pricing />
+```
+
+### Anpassung
+
+Die Paketinhalte können in der Komponente unter `const plans: PricingPlan[]` angepasst werden. Jedes Paket folgt der PricingPlan-Interface-Struktur. 
