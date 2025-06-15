@@ -136,7 +136,8 @@ const { id } = Astro.props;
         <button
           type="submit"
           form="inquiry-form"
-          class="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-primary-600 hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+          disabled
+          class="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-primary-600 hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-600"
         >
           <span class="text-loading hidden">
             <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -174,6 +175,14 @@ const { id } = Astro.props;
     const submitButton = modal?.querySelector('button[type="submit"]') as HTMLButtonElement;
     const loadingText = submitButton?.querySelector('.text-loading') as HTMLElement;
     const defaultText = submitButton?.querySelector('.text-default') as HTMLElement;
+    const privacyCheckbox = modal?.querySelector('#privacy') as HTMLInputElement;
+
+    // Enable submit button when privacy checkbox is checked
+    privacyCheckbox?.addEventListener('change', () => {
+      if (submitButton) {
+        submitButton.disabled = !privacyCheckbox.checked;
+      }
+    });
 
     // Open modal
     window.openInquiryModal = (packageName: string) => {
