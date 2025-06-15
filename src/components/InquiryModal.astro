@@ -95,7 +95,7 @@ const { id } = Astro.props;
               name="message"
               rows="4"
               class="w-full px-4 py-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-600/50 focus:border-primary-600 dark:focus:border-primary-400 transition-colors resize-none"
-              placeholder="Hast du spezielle Wünsche oder Fragen?"
+              placeholder="Hast du spezielle Wünsche oder Fragen? \nBereits Informationen die du uns mitteilen möchtest?\nwww.example.com"
             ></textarea>
           </div>
 
@@ -136,9 +136,7 @@ const { id } = Astro.props;
           </span>
           <span class="text-default">
             Anfrage absenden
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+          
           </span>
         </button>
       </div>
@@ -148,112 +146,117 @@ const { id } = Astro.props;
 
 <script>
   // Modal handling
-  const modal = document.getElementById('inquiry-modal');
-  const closeButton = modal?.querySelector('[data-close-modal]');
-  const modalContent = modal?.querySelector('[data-modal-content]');
-  const packageNameSpan = modal?.querySelector('[data-package-name]');
-  const packageInput = modal?.querySelector('[data-package-input]');
-  const form = modal?.querySelector('[data-inquiry-form]');
-  const submitButton = form?.querySelector('button[type="submit"]');
-  const loadingText = submitButton?.querySelector('.text-loading');
-  const defaultText = submitButton?.querySelector('.text-default');
+  const setupModal = () => {
+    const modal = document.getElementById('inquiry-modal');
+    const closeButton = modal?.querySelector('[data-close-modal]');
+    const modalContent = modal?.querySelector('[data-modal-content]');
+    const packageNameSpan = modal?.querySelector('[data-package-name]');
+    const packageInput = modal?.querySelector('[data-package-input]');
+    const form = modal?.querySelector('[data-inquiry-form]');
+    const submitButton = form?.querySelector('button[type="submit"]');
+    const loadingText = submitButton?.querySelector('.text-loading');
+    const defaultText = submitButton?.querySelector('.text-default');
 
-  // Open modal
-  window.openInquiryModal = (packageName: string) => {
-    if (modal && packageNameSpan && packageInput) {
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      packageNameSpan.textContent = packageName;
-      packageInput.value = packageName;
-    }
-  };
-
-  // Close modal
-  const closeModal = () => {
-    if (modal) {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-      if (form) form.reset();
-    }
-  };
-
-  // Close on backdrop click
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Close on button click
-  closeButton?.addEventListener('click', closeModal);
-
-  // Prevent closing when clicking modal content
-  modalContent?.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-
-  // Form handling
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    if (submitButton && loadingText && defaultText) {
-      // Show loading state
-      submitButton.disabled = true;
-      loadingText.classList.remove('hidden');
-      defaultText.classList.add('hidden');
-
-      try {
-        const formData = new FormData(form);
-        const response = await fetch('/api/submit-inquiry', {
-          method: 'POST',
-          body: formData
-        });
-
-        if (response.ok) {
-          // Show success message
-          const successModal = document.createElement('div');
-          successModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
-          successModal.innerHTML = `
-            <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
-              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
-                Anfrage erfolgreich gesendet!
-              </h3>
-              <p class="text-neutral-600 dark:text-neutral-400 mb-8">
-                Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-              </p>
-              <button class="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
-                Schließen
-              </button>
-            </div>
-          `;
-
-          closeModal();
-          document.body.appendChild(successModal);
-          successModal.querySelector('button')?.addEventListener('click', () => {
-            successModal.remove();
-          });
-        } else {
-          throw new Error('Fehler beim Senden der Anfrage');
-        }
-      } catch (error) {
-        // Show error message
-        alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
-      } finally {
-        // Reset button state
-        submitButton.disabled = false;
-        loadingText.classList.add('hidden');
-        defaultText.classList.remove('hidden');
+    // Open modal
+    window.openInquiryModal = (packageName: string) => {
+      if (modal && packageNameSpan && packageInput) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        packageNameSpan.textContent = packageName;
+        packageInput.value = packageName;
       }
-    }
-  });
+    };
 
-  // Close on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-      closeModal();
-    }
-  });
+    // Close modal
+    const closeModal = () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (form) form.reset();
+      }
+    };
+
+    // Close on backdrop click
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close on button click
+    closeButton?.addEventListener('click', closeModal);
+
+    // Prevent closing when clicking modal content
+    modalContent?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Form handling
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (submitButton && loadingText && defaultText) {
+        // Show loading state
+        submitButton.disabled = true;
+        loadingText.classList.remove('hidden');
+        defaultText.classList.add('hidden');
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch('/api/submit-inquiry', {
+            method: 'POST',
+            body: formData
+          });
+
+          if (response.ok) {
+            // Show success message
+            const successModal = document.createElement('div');
+            successModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+            successModal.innerHTML = `
+              <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
+                  Anfrage erfolgreich gesendet!
+                </h3>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-8">
+                  Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                </p>
+                <button class="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                  Schließen
+                </button>
+              </div>
+            `;
+
+            closeModal();
+            document.body.appendChild(successModal);
+            successModal.querySelector('button')?.addEventListener('click', () => {
+              successModal.remove();
+            });
+          } else {
+            throw new Error('Fehler beim Senden der Anfrage');
+          }
+        } catch (error) {
+          // Show error message
+          alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+        } finally {
+          // Reset button state
+          submitButton.disabled = false;
+          loadingText.classList.add('hidden');
+          defaultText.classList.remove('hidden');
+        }
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  };
+
+  // Run the setup function on initial page load and after every Astro navigation
+  document.addEventListener('astro:page-load', setupModal);
 </script>
