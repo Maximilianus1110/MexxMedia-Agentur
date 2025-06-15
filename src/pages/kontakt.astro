@@ -83,7 +83,20 @@ const allSocials = [emailSocial, ...SITE.socials];
             </p>
           </div>
 
-          <form id="contactForm" class="space-y-8">
+          <form 
+            id="contactForm" 
+            class="space-y-8"
+            action="https://formspree.io/f/xeoalzro"
+            method="POST"
+          >
+            <!-- Honeypot field -->
+            <div class="hidden">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Hidden package field -->
+            <input type="hidden" name="package" value="Allgemeine Anfrage" />
+
             <div>
               <label for="name" class="block text-sm font-medium text-neutral-900 dark:text-white mb-2">
                 Name
@@ -279,6 +292,9 @@ const allSocials = [emailSocial, ...SITE.socials];
   // Enable submit button when privacy checkbox is checked
   const privacyCheckbox = document.getElementById('privacy') as HTMLInputElement;
   const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const loadingText = submitButton?.querySelector('.text-loading');
+  const defaultText = submitButton?.querySelector('.text-default');
 
   privacyCheckbox?.addEventListener('change', () => {
     if (submitButton) {
@@ -287,10 +303,100 @@ const allSocials = [emailSocial, ...SITE.socials];
   });
 
   // Handle form submission
-  const contactForm = document.getElementById('contactForm');
-  contactForm?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted');
+
+    if (submitButton && loadingText && defaultText) {
+      // Show loading state
+      submitButton.disabled = true;
+      loadingText.classList.remove('hidden');
+      defaultText.classList.add('hidden');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Show success message
+          const successModal = document.createElement('div');
+          successModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+          successModal.innerHTML = `
+            <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
+                Nachricht erfolgreich gesendet!
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mb-8">
+                Vielen Dank für Ihre Nachricht. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+              </p>
+              <button class="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                Schließen
+              </button>
+            </div>
+          `;
+
+          document.body.appendChild(successModal);
+          form.reset();
+          
+          successModal.querySelector('button')?.addEventListener('click', () => {
+            successModal.remove();
+            submitButton.disabled = !privacyCheckbox.checked;
+            loadingText.classList.add('hidden');
+            defaultText.classList.remove('hidden');
+          });
+        } else {
+          throw new Error('Fehler beim Senden der Nachricht');
+        }
+      } catch (error) {
+        // Show error message with retry button
+        const errorModal = document.createElement('div');
+        errorModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+        errorModal.innerHTML = `
+          <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
+            <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <svg class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
+              Ein Fehler ist aufgetreten
+            </h3>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-8">
+              Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.
+            </p>
+            <div class="flex gap-4 justify-center">
+              <button class="retry-button px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                Erneut versuchen
+              </button>
+              <button class="close-button px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                Schließen
+              </button>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(errorModal);
+        
+        errorModal.querySelector('.retry-button')?.addEventListener('click', () => {
+          errorModal.remove();
+          submitButton.disabled = !privacyCheckbox.checked;
+          loadingText.classList.add('hidden');
+          defaultText.classList.remove('hidden');
+        });
+
+        errorModal.querySelector('.close-button')?.addEventListener('click', () => {
+          errorModal.remove();
+        });
+      }
+    }
   });
 </script> 
