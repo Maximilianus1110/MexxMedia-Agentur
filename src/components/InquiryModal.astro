@@ -44,7 +44,18 @@ const { id } = Astro.props;
           Füll kurz das Formular aus – wir melden uns bei dir.
         </p>
 
-        <form class="space-y-6" data-inquiry-form>
+        <form 
+          id="inquiry-form"
+          class="space-y-6" 
+          data-inquiry-form
+          action="https://formspree.io/f/xeoalzro"
+          method="POST"
+        >
+          <!-- Honeypot field -->
+          <div class="hidden">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div>
             <label class="block text-sm font-medium text-neutral-900 dark:text-white mb-2" for="name">
               Name
@@ -145,17 +156,24 @@ const { id } = Astro.props;
 </div>
 
 <script>
+  // Define the global openInquiryModal function type
+  declare global {
+    interface Window {
+      openInquiryModal: (packageName: string) => void;
+    }
+  }
+
   // Modal handling
   const setupModal = () => {
     const modal = document.getElementById('inquiry-modal');
     const closeButton = modal?.querySelector('[data-close-modal]');
     const modalContent = modal?.querySelector('[data-modal-content]');
-    const packageNameSpan = modal?.querySelector('[data-package-name]');
-    const packageInput = modal?.querySelector('[data-package-input]');
-    const form = modal?.querySelector('[data-inquiry-form]');
-    const submitButton = form?.querySelector('button[type="submit"]');
-    const loadingText = submitButton?.querySelector('.text-loading');
-    const defaultText = submitButton?.querySelector('.text-default');
+    const packageNameSpan = modal?.querySelector('[data-package-name]') as HTMLSpanElement;
+    const packageInput = modal?.querySelector('[data-package-input]') as HTMLInputElement;
+    const form = modal?.querySelector('[data-inquiry-form]') as HTMLFormElement;
+    const submitButton = modal?.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const loadingText = submitButton?.querySelector('.text-loading') as HTMLElement;
+    const defaultText = submitButton?.querySelector('.text-default') as HTMLElement;
 
     // Open modal
     window.openInquiryModal = (packageName: string) => {
@@ -200,10 +218,12 @@ const { id } = Astro.props;
         defaultText.classList.add('hidden');
 
         try {
-          const formData = new FormData(form);
-          const response = await fetch('/api/submit-inquiry', {
+          const response = await fetch(form.action, {
             method: 'POST',
-            body: formData
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
           });
 
           if (response.ok) {
@@ -231,6 +251,7 @@ const { id } = Astro.props;
 
             closeModal();
             document.body.appendChild(successModal);
+            
             successModal.querySelector('button')?.addEventListener('click', () => {
               successModal.remove();
             });
@@ -238,13 +259,48 @@ const { id } = Astro.props;
             throw new Error('Fehler beim Senden der Anfrage');
           }
         } catch (error) {
-          // Show error message
-          alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
-        } finally {
-          // Reset button state
-          submitButton.disabled = false;
-          loadingText.classList.add('hidden');
-          defaultText.classList.remove('hidden');
+          // Show error message with retry button
+          const errorModal = document.createElement('div');
+          errorModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+          errorModal.innerHTML = `
+            <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                <svg class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
+                Ein Fehler ist aufgetreten
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mb-8">
+                Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.
+              </p>
+              <div class="flex gap-4 justify-center">
+                <button class="retry-button px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                  Erneut versuchen
+                </button>
+                <button class="close-button px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                  Schließen
+                </button>
+              </div>
+            </div>
+          `;
+
+          document.body.appendChild(errorModal);
+          
+          const retryButton = errorModal.querySelector('.retry-button') as HTMLButtonElement;
+          const closeButton = errorModal.querySelector('.close-button') as HTMLButtonElement;
+
+          retryButton?.addEventListener('click', () => {
+            errorModal.remove();
+            submitButton.disabled = false;
+            loadingText.classList.add('hidden');
+            defaultText.classList.remove('hidden');
+          });
+
+          closeButton?.addEventListener('click', () => {
+            errorModal.remove();
+          });
         }
       }
     });
