@@ -1,0 +1,259 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div
+  id={id}
+  class="fixed inset-0 z-50 hidden"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm"></div>
+
+  <!-- Modal -->
+  <div class="fixed inset-0 flex items-center justify-center p-4">
+    <div 
+      class="w-full max-w-lg bg-white dark:bg-neutral-900 rounded-2xl shadow-xl"
+      data-modal-content
+    >
+      <!-- Header -->
+      <div class="relative p-6 pb-4 border-b border-neutral-200/50 dark:border-neutral-800/50">
+        <h3 class="font-display text-2xl text-neutral-900 dark:text-white pr-8">
+          Du interessierst dich für <span data-package-name></span>
+        </h3>
+        <button
+          type="button"
+          class="absolute top-4 right-4 p-2 text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+          data-close-modal
+        >
+          <span class="sr-only">Schließen</span>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6">
+        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+          Füll kurz das Formular aus – wir melden uns bei dir.
+        </p>
+
+        <form class="space-y-6" data-inquiry-form>
+          <div>
+            <label class="block text-sm font-medium text-neutral-900 dark:text-white mb-2" for="name">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-600/50 focus:border-primary-600 dark:focus:border-primary-400 transition-colors"
+              placeholder="Max Mustermann"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-neutral-900 dark:text-white mb-2" for="email">
+              E-Mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-600/50 focus:border-primary-600 dark:focus:border-primary-400 transition-colors"
+              placeholder="max@beispiel.de"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-neutral-900 dark:text-white mb-2" for="phone">
+              Telefon (optional)
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-600/50 focus:border-primary-600 dark:focus:border-primary-400 transition-colors"
+              placeholder="+49 123 45678"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-neutral-900 dark:text-white mb-2" for="message">
+              Deine Nachricht an uns (optional)
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-600/50 focus:border-primary-600 dark:focus:border-primary-400 transition-colors resize-none"
+              placeholder="Hast du spezielle Wünsche oder Fragen?"
+            ></textarea>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                id="privacy"
+                name="privacy"
+                type="checkbox"
+                required
+                class="w-4 h-4 rounded border-neutral-300 text-primary-600 focus:ring-primary-600/50"
+              />
+            </div>
+            <div class="ml-3">
+              <label class="text-sm text-neutral-600 dark:text-neutral-400" for="privacy">
+                Ich akzeptiere die <a href="/datenschutz" class="text-primary-600 dark:text-primary-400 hover:underline">Datenschutzerklärung</a>
+              </label>
+            </div>
+          </div>
+
+          <input type="hidden" name="package" data-package-input />
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="p-6 pt-4 border-t border-neutral-200/50 dark:border-neutral-800/50">
+        <button
+          type="submit"
+          form="inquiry-form"
+          class="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-primary-600 hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600/50"
+        >
+          <span class="text-loading hidden">
+            <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Wird gesendet...
+          </span>
+          <span class="text-default">
+            Anfrage absenden
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal handling
+  const modal = document.getElementById('inquiry-modal');
+  const closeButton = modal?.querySelector('[data-close-modal]');
+  const modalContent = modal?.querySelector('[data-modal-content]');
+  const packageNameSpan = modal?.querySelector('[data-package-name]');
+  const packageInput = modal?.querySelector('[data-package-input]');
+  const form = modal?.querySelector('[data-inquiry-form]');
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const loadingText = submitButton?.querySelector('.text-loading');
+  const defaultText = submitButton?.querySelector('.text-default');
+
+  // Open modal
+  window.openInquiryModal = (packageName: string) => {
+    if (modal && packageNameSpan && packageInput) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      packageNameSpan.textContent = packageName;
+      packageInput.value = packageName;
+    }
+  };
+
+  // Close modal
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (form) form.reset();
+    }
+  };
+
+  // Close on backdrop click
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on button click
+  closeButton?.addEventListener('click', closeModal);
+
+  // Prevent closing when clicking modal content
+  modalContent?.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+
+  // Form handling
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (submitButton && loadingText && defaultText) {
+      // Show loading state
+      submitButton.disabled = true;
+      loadingText.classList.remove('hidden');
+      defaultText.classList.add('hidden');
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/api/submit-inquiry', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          // Show success message
+          const successModal = document.createElement('div');
+          successModal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+          successModal.innerHTML = `
+            <div class="bg-white dark:bg-neutral-900 p-8 rounded-2xl max-w-md mx-4 text-center">
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-display text-neutral-900 dark:text-white mb-4">
+                Anfrage erfolgreich gesendet!
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400 mb-8">
+                Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+              </p>
+              <button class="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                Schließen
+              </button>
+            </div>
+          `;
+
+          closeModal();
+          document.body.appendChild(successModal);
+          successModal.querySelector('button')?.addEventListener('click', () => {
+            successModal.remove();
+          });
+        } else {
+          throw new Error('Fehler beim Senden der Anfrage');
+        }
+      } catch (error) {
+        // Show error message
+        alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        loadingText.classList.add('hidden');
+        defaultText.classList.remove('hidden');
+      }
+    }
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+</script>

@@ -1,4 +1,6 @@
 ---
+import InquiryModal from './InquiryModal.astro';
+
 interface PricingFeature {
   text: string;
   included: boolean;
@@ -162,15 +164,16 @@ const plans: PricingPlan[] = [
           </div>
 
           <div class="p-8 mt-auto">
-            <a
-              href="/kontakt"
+            <button
+              type="button"
+              onclick={`openInquiryModal('${plan.name}')`}
               class={`block w-full text-center px-6 py-3 rounded-lg font-medium transition-colors duration-200
                 ${plan.isPopular 
                   ? 'bg-primary-500 text-white hover:bg-primary-600' 
                   : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700'}`}
             >
               Jetzt anfragen
-            </a>
+            </button>
           </div>
         </div>
       ))}
@@ -227,6 +230,8 @@ const plans: PricingPlan[] = [
     </div>
   </div>
 </section>
+
+<InquiryModal id="inquiry-modal" />
 
 <style>
   @keyframes grid-fade {
