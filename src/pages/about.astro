@@ -3,24 +3,24 @@ import Layout from '../layouts/Layout.astro';
 
 const team = [
   {
-    name: "Max",
+    name: "Max Baron",
     role: "Strategie & Entwicklung",
     quote: "Code ist wie Poesie – er sollte elegant, effizient und verständlich sein.",
     image: "/team/max.png",
-    socials: {
+    /*socials: {
       github: "#",
       linkedin: "#"
-    }
+    }*/
   },
   {
-    name: "Kürsat",
+    name: "Kürsat Öztürk",
     role: "Design & Kundenkontakt",
     quote: "Design ist nicht nur wie es aussieht, sondern wie es funktioniert.",
     image: "/team/kursat.png",
-    socials: {
+    /*socials: {
       behance: "#",
       linkedin: "#"
-    }
+    }*/
   }
 ];
 
@@ -135,17 +135,17 @@ const description = "Wer wir sind, wie wir arbeiten, und warum das wirkt.";
             <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
-            Seit 2023 am Start
+            Seit 2024 am Start
           </div>
           <div class="flex items-center gap-2">
             <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            +25 erfolgreiche Projekte
+            10+ Projekte im Aufbau
           </div>
         </div>
       </div>
-    </div>
+    </div>s
     <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-neutral-950 to-transparent"></div>
   </section>
 
@@ -258,7 +258,7 @@ const description = "Wer wir sind, wie wir arbeiten, und warum das wirkt.";
               <blockquote class="text-lg text-neutral-600 dark:text-neutral-400 italic mb-6">
                 "{member.quote}"
               </blockquote>
-              <div class="flex gap-4">
+              {/*<div class="flex gap-4">
                 {Object.entries(member.socials).map(([platform, url]) => (
                   <a 
                     href={url}
@@ -270,7 +270,7 @@ const description = "Wer wir sind, wie wir arbeiten, und warum das wirkt.";
                     <i class={`fab fa-${platform} text-xl`}></i>
                   </a>
                 ))}
-              </div>
+              </div>*/}
             </div>
           </div>
         ))}

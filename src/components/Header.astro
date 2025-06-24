@@ -75,11 +75,28 @@ import ThemeToggle from './ThemeToggle.astro';
   </div>
 </header>
 
-<script>
-  const menuButton = document.getElementById('menuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
 
-  menuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
+<script is:inline>
+  function setupMobileMenu() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuButton && mobileMenu) {
+      // Remove existing listener to prevent duplicates if script runs multiple times
+      // (though with astro:page-load, this specific scenario is less likely for this simple toggle)
+      // For more complex setups, a more robust listener management might be needed.
+      const newMenuButton = menuButton.cloneNode(true);
+      menuButton.parentNode.replaceChild(newMenuButton, menuButton);
+
+      newMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  }
+
+  // Run on initial page load
+  setupMobileMenu();
+
+  // Run after each Astro page transition
+  document.addEventListener('astro:page-load', setupMobileMenu);
 </script> 
